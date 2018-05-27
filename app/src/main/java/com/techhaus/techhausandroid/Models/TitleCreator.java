@@ -10,7 +10,7 @@ public class TitleCreator {
 
     public TitleCreator(Context context){
         _titleParents = new ArrayList<>();
-        for(int i = 1; i < 100 ; i++){
+        for(int i = 1; i < 5 ; i++){
             TitleParent title = new TitleParent(String.format("Caller #%d", i));
             _titleParents.add(title);
         }
