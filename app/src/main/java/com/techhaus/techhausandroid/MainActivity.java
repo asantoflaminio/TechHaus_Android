@@ -26,37 +26,29 @@ public class MainActivity extends AppCompatActivity {
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    Intent intent = new Intent(MainActivity.this, ActivityOne.class);
                     if(finalI == 0){
-                        Intent intent = new Intent(MainActivity.this, ActivityOne.class);
-                        startActivity(intent);
+                        intent.putExtra("info", "Favorites was selected");
                     }else if(finalI == 1){
-                        Intent intent = new Intent(MainActivity.this, ActivityAlarms.class);
-                        startActivity(intent);
+                        intent.putExtra("info", "This is alarms ");
+                    }else if(finalI == 2){
+                        intent.putExtra("info", "This is lamps");
+                    }else if(finalI == 3){
+                        intent.putExtra("info", "This is blinds");
+                    }else if(finalI == 4){
+                        intent.putExtra("info", "This is doors");
+                    }else if(finalI == 5){
+                        intent.putExtra("info", "This is ACs");
+                    }else if(finalI == 5){
+                        intent.putExtra("info", "This is refrigerators");
+                    }else {
+                        intent.putExtra("info", "This is ovens");
                     }
-                    else if(finalI == 2){
-                        Intent intent = new Intent(MainActivity.this, ActivityLamps.class);
-                        startActivity(intent);
-                    }
-                    else if(finalI == 3){
-                        Intent intent = new Intent(MainActivity.this, ActivityBlinds.class);
-                        startActivity(intent);
-                    }
-                    else if(finalI == 4){
-                        Intent intent = new Intent(MainActivity.this, ActivityDoors.class);
-                        startActivity(intent);
-                    }
-                    else if(finalI == 5){
-                        Intent intent = new Intent(MainActivity.this, ActivityACs.class);
-                        startActivity(intent);
-                    }
-                    else if(finalI == 6){
-                        Intent intent = new Intent(MainActivity.this, ActivityRefrigerators.class);
-                        startActivity(intent);
-                    }
-                    else {
-                        Intent intent = new Intent(MainActivity.this, ActivityOvens.class);
-                        startActivity(intent);
-                    }
+
+
+                    startActivity(intent);
+
                 }
             });
         }

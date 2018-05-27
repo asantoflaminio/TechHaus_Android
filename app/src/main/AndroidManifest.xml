@@ -17,13 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActivityOne" />
-        <activity android:name=".ActivityAlarms" />
-        <activity android:name=".ActivityLamps" />
-        <activity android:name=".ActivityBlinds" />
-        <activity android:name=".ActivityDoors" />
-        <activity android:name=".ActivityACs" />
-        <activity android:name=".ActivityRefrigerators" />
-        <activity android:name=".ActivityOvens"></activity>
     </application>
 
 </manifest>
