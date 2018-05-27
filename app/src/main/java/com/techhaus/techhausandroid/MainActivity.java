@@ -29,21 +29,21 @@ public class MainActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(MainActivity.this, ActivityOne.class);
                     if(finalI == 0){
-                        intent.putExtra("info", "Favorites was selected");
+                        intent.putExtra("info", "Favorite devices");
                     }else if(finalI == 1){
-                        intent.putExtra("info", "This is alarms ");
+                        intent.putExtra("info", "Alarms ");
                     }else if(finalI == 2){
-                        intent.putExtra("info", "This is lamps");
+                        intent.putExtra("info", "Lamps");
                     }else if(finalI == 3){
-                        intent.putExtra("info", "This is blinds");
+                        intent.putExtra("info", "Blinds");
                     }else if(finalI == 4){
-                        intent.putExtra("info", "This is doors");
+                        intent.putExtra("info", "Doors");
                     }else if(finalI == 5){
-                        intent.putExtra("info", "This is ACs");
+                        intent.putExtra("info", "ACs");
                     }else if(finalI == 5){
-                        intent.putExtra("info", "This is refrigerators");
+                        intent.putExtra("info", "Refrigerators");
                     }else {
-                        intent.putExtra("info", "This is ovens");
+                        intent.putExtra("info", "Ovens");
                     }
 
 
