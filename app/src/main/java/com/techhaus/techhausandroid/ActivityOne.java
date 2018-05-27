@@ -2,9 +2,27 @@ package com.techhaus.techhausandroid;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
+import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
+import com.techhaus.techhausandroid.Adapter.MyAdapter;
+import com.techhaus.techhausandroid.Models.TitleChild;
+import com.techhaus.techhausandroid.Models.TitleCreator;
+import com.techhaus.techhausandroid.Models.TitleParent;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class ActivityOne extends AppCompatActivity {
+    RecyclerView recyclerView;
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        ((MyAdapter) recyclerView.getAdapter()).onSaveInstanceState(outState);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -12,9 +30,30 @@ public class ActivityOne extends AppCompatActivity {
         setContentView(R.layout.activity_one);
 
         TextView txtInfo = (TextView) findViewById(R.id.txtInfo);
+
+
+        recyclerView = (RecyclerView) findViewById(R.id.myRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        MyAdapter adapter = new MyAdapter(this, initData());
+        adapter.setParentClickableViewAnimationDefaultDuration();
+        adapter.setParentAndIconExpandOnClick(true);
+        recyclerView.setAdapter(adapter);
         if(getIntent() != null){
             String info = getIntent().getStringExtra("info");
             txtInfo.setText(info);
         }
+    }
+
+    private List<ParentObject> initData() {
+        TitleCreator titleCreator = TitleCreator.get(this);
+        List<TitleParent> titles = titleCreator.getAll();
+        List<ParentObject> parentObject = new ArrayList<>();
+        for(TitleParent title: titles){
+            List<Object> childList = new ArrayList<>();
+            childList.add(new TitleChild("sth", "sth2"));
+            title.setChildObjectList(childList);
+            parentObject.add(title);
+        }
+        return parentObject;
     }
 }
