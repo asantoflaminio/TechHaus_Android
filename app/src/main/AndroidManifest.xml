@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActivityOne" />
+        <activity android:name=".NotificationsActivity" />
+        <activity android:name=".RoutinesActivity"></activity>
     </application>
 
 </manifest>

@@ -1,9 +1,13 @@
 package com.techhaus.techhausandroid;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
@@ -42,7 +46,34 @@ public class ActivityOne extends AppCompatActivity {
             String info = getIntent().getStringExtra("info");
             txtInfo.setText(info);
         }
+
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            switch(item.getItemId()){
+                case R.id.nav_devices:
+                    Intent intent = new Intent(ActivityOne.this, MainActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.nav_notifications:
+                    Intent intent2 = new Intent(ActivityOne.this, NotificationsActivity.class);
+                    startActivity(intent2);
+                    break;
+                case R.id.nav_routines:
+                    Intent intent3 = new Intent(ActivityOne.this, RoutinesActivity.class);
+                    startActivity(intent3);
+                    break;
+            }
+
+
+            return true;
+        }
+    };
 
     private List<ParentObject> initData() {
         TitleCreator titleCreator = TitleCreator.get(this);
