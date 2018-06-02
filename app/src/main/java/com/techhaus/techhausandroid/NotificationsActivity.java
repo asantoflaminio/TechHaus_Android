@@ -33,6 +33,7 @@ public class NotificationsActivity extends AppCompatActivity {
                     break;
                 case R.id.nav_routines:
                     Intent intent3 = new Intent(NotificationsActivity.this, RoutinesActivity.class);
+                    intent3.putExtra("info", "Routines");
                     startActivity(intent3);
                     break;
             }

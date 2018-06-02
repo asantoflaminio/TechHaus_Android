@@ -21,13 +21,14 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
-                android:layout_weight="0.42">
+                android:layout_weight="0.4">
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
+                    android:scaleType="fitXY"
                     android:src="@drawable/barra" />
 
 
