@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".ActivityOne" />
         <activity android:name=".NotificationsActivity" />
-        <activity android:name=".RoutinesActivity"></activity>
+        <activity android:name=".RoutinesActivity" />
+        <activity android:name=".BlindActivity"></activity>
     </application>
 
 </manifest>
