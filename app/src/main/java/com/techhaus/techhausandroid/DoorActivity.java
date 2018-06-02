@@ -1,4 +1,3 @@
-
 package com.techhaus.techhausandroid;
 
 import android.content.Intent;
@@ -8,12 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-public class BlindActivity extends AppCompatActivity {
+public class DoorActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_blind);
+        setContentView(R.layout.activity_door);
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
@@ -25,15 +24,15 @@ public class BlindActivity extends AppCompatActivity {
 
             switch(item.getItemId()){
                 case R.id.nav_devices:
-                    Intent intent = new Intent(BlindActivity.this, MainActivity.class);
+                    Intent intent = new Intent(DoorActivity.this, MainActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.nav_notifications:
-                    Intent intent2 = new Intent(BlindActivity.this, NotificationsActivity.class);
+                    Intent intent2 = new Intent(DoorActivity.this, NotificationsActivity.class);
                     startActivity(intent2);
                     break;
                 case R.id.nav_routines:
-                    Intent intent3 = new Intent(BlindActivity.this, RoutinesActivity.class);
+                    Intent intent3 = new Intent(DoorActivity.this, RoutinesActivity.class);
                     intent3.putExtra("info", "Routines");
                     startActivity(intent3);
                     break;

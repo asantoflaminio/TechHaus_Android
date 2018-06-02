@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="PasswordButton" parent="Theme.AppCompat">
+        <item name="colorButtonNormal">#324A5E</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
+    </style>
+
 </resources>
