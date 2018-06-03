@@ -21,7 +21,11 @@
         <activity android:name=".RoutinesActivity" />
         <activity android:name=".BlindActivity" />
         <activity android:name=".DoorActivity" />
-        <activity android:name=".AlarmActivity"></activity>
+        <activity android:name=".AlarmActivity" />
+        <activity android:name=".RefrigeratorActivity" />
+        <activity android:name=".OvenActivity" />
+        <activity android:name=".ACActivity" />
+        <activity android:name=".LampActivity"></activity>
     </application>
 
 </manifest>
