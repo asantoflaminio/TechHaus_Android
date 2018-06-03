@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.techhaus.techhausandroid">
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -27,7 +27,8 @@
         <activity android:name=".RefrigeratorActivity" />
         <activity android:name=".OvenActivity" />
         <activity android:name=".ACActivity" />
-        <activity android:name=".LampActivity"></activity>
+        <activity android:name=".LampActivity" />
+        <activity android:name=".RoutActivity"></activity>
     </application>
 
 </manifest>

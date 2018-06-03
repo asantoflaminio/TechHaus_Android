@@ -41,7 +41,7 @@ public class RoutinesActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        ((MyAdapter) recyclerView.getAdapter()).onSaveInstanceState(outState);
+        ((MyAdapterRoutines) recyclerView.getAdapter()).onSaveInstanceState(outState);
     }
 
 
@@ -137,7 +137,6 @@ public class RoutinesActivity extends AppCompatActivity {
         List<ParentObject> parentObject = new ArrayList<>();
         for(TitleParent title: titles){
             List<Object> childList = new ArrayList<>();
-            childList.add(new TitleChild("Algo", "Algo2"));
             title.setChildObjectList(childList);
             parentObject.add(title);
         }
