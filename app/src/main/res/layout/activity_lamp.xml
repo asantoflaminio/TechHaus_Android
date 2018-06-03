@@ -24,7 +24,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
-                android:layout_weight="0.4">
+                android:layout_weight="0.5">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                     android:layout_width="100sp"
                     android:layout_height="100sp"
                     android:layout_gravity="right"
-                    android:scaleType="fitXY"
+                    android:scaleType="center"
                     android:src="@drawable/lamp" />
 
             </RelativeLayout>

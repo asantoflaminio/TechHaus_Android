@@ -6,25 +6,38 @@
     android:layout_marginRight="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/playRoutine"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="8dp"
+            android:src="@drawable/play_gris"
+            android:visibility="visible" />
+
         <TextView
             android:id="@+id/parentTitle"
-            android:padding="16dp"
-            android:textStyle="bold"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:padding="16dp"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
         <ImageButton
             android:id="@+id/expandArrow"
-            android:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_margin="8dp"
             android:src="@drawable/expande_de_lista"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:visibility="visible" />
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>
