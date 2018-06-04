@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.nav_devices:
                     break;
                 case R.id.nav_notifications:
-                    Intent intent2 = new Intent(MainActivity.this, NotificationsActivity.class);
+                    Intent intent2 = new Intent(MainActivity.this, RefrigeratorActivity.class);
                     startActivity(intent2);
                     break;
                 case R.id.nav_routines:
