@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TechHausAndroid</string>
+    <string name="icon_to_be_displayed">Icon To Be Displayed</string>
 </resources>

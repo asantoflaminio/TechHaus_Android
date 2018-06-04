@@ -83,21 +83,20 @@
                     android:textStyle="bold" />
 
 
-
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-
+                android:gravity="center"
+                android:orientation="horizontal">
 
 
                 <Button
                     android:layout_width="48dp"
                     android:layout_height="40dp"
-                    android:gravity="center"
                     android:drawableBottom="@drawable/arrow_white_down"
+                    android:gravity="center"
                     android:theme="@style/PasswordButton" />
 
                 <TextView
@@ -105,16 +104,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:gravity="center"
                     android:paddingTop="0dp"
                     android:text="8°C"
-                    android:gravity="center"
                     android:textSize="30sp" />
 
                 <Button
                     android:layout_width="48dp"
-                    android:gravity="center"
                     android:layout_height="40dp"
                     android:drawableBottom="@drawable/arrow_white_up"
+                    android:gravity="center"
                     android:theme="@style/PasswordButton" />
 
             </LinearLayout>
@@ -142,16 +141,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-
+                android:gravity="center"
+                android:orientation="horizontal">
 
 
                 <Button
                     android:layout_width="48dp"
-                    android:gravity="center"
                     android:layout_height="40dp"
                     android:drawableBottom="@drawable/arrow_white_down"
+                    android:gravity="center"
                     android:theme="@style/PasswordButton" />
 
                 <TextView
@@ -167,15 +165,15 @@
                 <Button
                     android:layout_width="48dp"
                     android:layout_height="40dp"
-                    android:gravity="center"
                     android:drawableBottom="@drawable/arrow_white_up"
+                    android:gravity="center"
                     android:theme="@style/PasswordButton" />
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="131dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
@@ -187,25 +185,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30sp"
                     android:layout_marginTop="30sp"
-                    android:text="Mode: Default"
+                    android:text="Mode"
                     android:textAlignment="viewStart"
                     android:textSize="35sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:layout_width="60sp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="bottom|center|end"
-                    android:gravity="right"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="3dp"
-                    android:paddingTop="2dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/fridge_default" />
-
             </LinearLayout>
 
-
+            <Spinner
+                android:id="@+id/spinner_fridge_mode"
+                android:layout_width="match_parent"
+                android:layout_height="7dp"
+                android:layout_weight="0.5" />
 
 
         </LinearLayout>
