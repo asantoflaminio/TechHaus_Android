@@ -34,6 +34,8 @@ public class RoutActivity extends AppCompatActivity {
 
     private RequestQueue mQueue;
     private RequestQueue mQueue2;
+    private RequestQueue mQueue3;
+    private RequestQueue mQueue4;
     private HashMap<String, String> idConName;
     private HashMap<String, ArrayList<String>> idConActions;
     private String tasks;
@@ -52,9 +54,41 @@ public class RoutActivity extends AppCompatActivity {
         playIcon.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
+
+
+                final String url3 = "http://10.0.2.2:8080/api/routines";
+                final String rutName = rutNameView.getText().toString();
                 Toast.makeText(v.getContext(), rutNameView.getText().toString()+ " was played",
                         Toast.LENGTH_LONG).show();
+                mQueue3 = Volley.newRequestQueue(v.getContext());
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url3, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        try {
+                            String routID = "";
+                            JSONArray jsonArray = response.getJSONArray("routines");
+                            for(int i = 0; i < jsonArray.length(); i++){
+                                JSONObject routine = jsonArray.getJSONObject(i);
+                                if(rutName.equals(routine.getString("name"))){
+                                    routID = routine.getString("id");
+                                    executeRoutine(v, routID);
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("mytag", "Error de response");
+                        error.printStackTrace();
+                    }
+                });
+
+                mQueue3.add(request);
 
             }
         });
@@ -76,6 +110,26 @@ public class RoutActivity extends AppCompatActivity {
 
         mQueue.add(request);
         Log.d("mytag", "i'm out");
+    }
+
+    private void executeRoutine(View v, String routID) {
+        mQueue4 = Volley.newRequestQueue(v.getContext());
+        String url = "http://10.0.2.2:8080/api/routines/" + routID + "/execute";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("mytag", "Executed!");
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("mytag", "Error de response en execute");
+                error.printStackTrace();
+            }
+        });
+
+        mQueue4.add(request);
     }
 
     private void processResponse(JSONObject response) {
