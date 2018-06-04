@@ -45,11 +45,10 @@
                     android:id="@+id/DoorName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="61dp"
+                    android:layout_marginStart="110sp"
                     android:layout_weight="0.05"
-                    android:paddingLeft="8dp"
                     android:text="Nombre de la door"
                     android:textAlignment="viewStart"
                     android:textSize="24sp"
@@ -59,6 +58,7 @@
                     android:layout_width="100sp"
                     android:layout_height="100sp"
                     android:layout_gravity="right"
+                    android:layout_marginStart="7sp"
                     android:scaleType="fitXY"
                     android:src="@drawable/door" />
 
@@ -76,16 +76,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30sp"
-                    android:layout_marginTop="30sp"
-                    android:text="Status: Open       "
+                    android:layout_marginTop="25sp"
+                    android:text="Status"
                     android:textAlignment="viewStart"
-                    android:textSize="35sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="135sp"
+                    android:layout_marginTop="25sp"
+                    android:layout_weight="1"
+                    android:text="Open"
+                    android:textSize="20sp" />
+
                 <ImageView
-                    android:layout_width="60sp"
-                    android:layout_height="60dp"
+                    android:layout_width="55sp"
+                    android:layout_height="55sp"
                     android:layout_gravity="bottom|center|end"
+                    android:layout_marginEnd="15sp"
                     android:gravity="right"
                     android:paddingLeft="5dp"
                     android:paddingRight="3dp"
@@ -99,7 +110,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="5sp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -107,16 +118,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30sp"
-                    android:layout_marginTop="30sp"
-                    android:text="Lock: Unlocked  "
+                    android:layout_marginTop="25sp"
+                    android:text="Lock"
                     android:textAlignment="viewStart"
-                    android:textSize="35sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="115sp"
+                    android:layout_marginTop="25sp"
+                    android:layout_weight="1"
+                    android:text="Unlocked"
+                    android:textSize="20sp" />
+
                 <ImageView
-                    android:layout_width="60sp"
-                    android:layout_height="60dp"
+                    android:layout_width="55sp"
+                    android:layout_height="50sp"
                     android:layout_gravity="bottom|center|end"
+                    android:layout_marginEnd="15sp"
                     android:gravity="right"
                     android:paddingLeft="5dp"
                     android:paddingRight="3dp"

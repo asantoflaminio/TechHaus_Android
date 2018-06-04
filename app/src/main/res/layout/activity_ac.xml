@@ -46,8 +46,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="120sp"
-                    android:layout_toEndOf="@+id/null"
+                    android:layout_marginStart="130sp"
                     android:layout_weight="0.05"
                     android:text="Nombre del AC"
                     android:textAlignment="viewStart"
@@ -71,30 +70,20 @@
                 android:layout_centerHorizontal="true"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/OvenState"
+                <Switch
+                    android:id="@+id/switch2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30sp"
+                    android:layout_marginRight="10sp"
                     android:layout_marginTop="25sp"
-                    android:text="Status: On  "
-                    android:textAlignment="viewStart"
+                    android:layout_weight="1"
+                    android:text="Status"
+                    android:textColor="#6f6f6f"
+                    android:textOff="Off"
+                    android:textOn="On"
                     android:textSize="20sp"
                     android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_width="78dp"
-                    android:layout_height="35dp"
-                    android:layout_gravity="bottom|center|end"
-                    android:layout_marginEnd="30sp"
-                    android:layout_marginStart="110sp"
-                    android:layout_marginTop="20sp"
-                    android:gravity="right"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="3dp"
-                    android:paddingTop="2dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/toggle_on" />
 
             </LinearLayout>
 
@@ -117,42 +106,42 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="164dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="170sp"
-                android:layout_marginTop="-35sp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-
-                <Button
-                    android:layout_width="48dp"
-                    android:layout_height="40dp"
-                    android:drawableBottom="@drawable/arrow_white_down"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:layout_marginStart="45sp"
+                    android:layout_marginTop="25sp"
                     android:gravity="center"
-                    android:theme="@style/PasswordButton" />
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/TempNumb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    android:paddingTop="0dp"
-                    android:text="25°C"
-                    android:textSize="20sp" />
 
-                <Button
-                    android:layout_width="48dp"
-                    android:layout_height="40dp"
-                    android:drawableBottom="@drawable/arrow_white_up"
-                    android:gravity="center"
-                    android:theme="@style/PasswordButton" />
+                    <Button
+                        android:layout_width="48dp"
+                        android:layout_height="40dp"
+                        android:drawableBottom="@drawable/arrow_white_down"
+                        android:gravity="center"
+                        android:theme="@style/PasswordButton" />
+
+                    <TextView
+                        android:id="@+id/TempNumb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3sp"
+                        android:layout_marginTop="3sp"
+                        android:gravity="center"
+                        android:paddingTop="0dp"
+                        android:text="25°C"
+                        android:textSize="20sp" />
+
+                    <Button
+                        android:layout_width="48dp"
+                        android:layout_height="40dp"
+                        android:drawableBottom="@drawable/arrow_white_up"
+                        android:gravity="center"
+                        android:theme="@style/PasswordButton" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -168,7 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30sp"
-                    android:layout_marginTop="25sp"
+                    android:layout_marginTop="30sp"
                     android:text="Mode"
                     android:textAlignment="viewStart"
                     android:textSize="20sp"
@@ -178,9 +167,9 @@
                     android:id="@+id/spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="30sp"
-                    android:layout_marginStart="80sp"
-                    android:layout_marginTop="10sp"
+                    android:layout_marginEnd="10sp"
+                    android:layout_marginStart="100sp"
+                    android:layout_marginTop="20sp"
                     android:layout_weight="1" />
 
             </LinearLayout>
@@ -207,8 +196,8 @@
                     android:id="@+id/spinner2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="30sp"
-                    android:layout_marginStart="103sp"
+                    android:layout_marginEnd="10sp"
+                    android:layout_marginStart="123sp"
                     android:layout_marginTop="10sp"
                     android:layout_weight="1" />
 
@@ -237,8 +226,8 @@
                     android:id="@+id/spinner3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="30sp"
-                    android:layout_marginStart="68sp"
+                    android:layout_marginEnd="10sp"
+                    android:layout_marginStart="88sp"
                     android:layout_marginTop="10sp"
                     android:layout_weight="1" />
 
@@ -267,8 +256,8 @@
                     android:id="@+id/spinner4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="30sp"
-                    android:layout_marginStart="44sp"
+                    android:layout_marginEnd="10sp"
+                    android:layout_marginStart="64sp"
                     android:layout_marginTop="10sp"
                     android:layout_weight="1" />
 

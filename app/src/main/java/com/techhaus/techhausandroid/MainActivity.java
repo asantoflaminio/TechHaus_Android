@@ -1,18 +1,19 @@
 package com.techhaus.techhausandroid;
 
+<<<<<<< Updated upstream
 import android.app.Fragment;
 
+=======
+>>>>>>> Stashed changes
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
-
-import java.sql.Ref;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.nav_devices:
                     break;
                 case R.id.nav_notifications:
-                    Intent intent2 = new Intent(MainActivity.this, BlindActivity.class);
+                    Intent intent2 = new Intent(MainActivity.this, OvenActivity.class);
                     startActivity(intent2);
                     break;
                 case R.id.nav_routines:

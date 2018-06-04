@@ -21,9 +21,9 @@ public class LampActivity extends AppCompatActivity {
         SeekBar seekBar = findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(seekBarChangeListener);
 
-        int progress = seekBar.getProgress();
-        tvProgressLabel = findViewById(R.id.textView);
-        tvProgressLabel.setText("Progress: " + progress);
+       // int progress = seekBar.getProgress();
+       // tvProgressLabel = findViewById(R.id.textView);
+       // tvProgressLabel.setText("Progress: " + progress);
     }
 
     SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
@@ -31,7 +31,7 @@ public class LampActivity extends AppCompatActivity {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
             // updated continuously as the user slides the thumb
-            tvProgressLabel.setText("Brightness: " + progress);
+            //tvProgressLabel.setText("Brightness: " + progress);
         }
 
         @Override
