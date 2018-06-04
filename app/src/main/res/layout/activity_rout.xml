@@ -82,8 +82,19 @@
                     android:textStyle="bold" />
 
 
-            </LinearLayout>
 
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/TasksList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30sp"
+                android:layout_marginTop="30sp"
+                android:text="Loading..."
+                android:textAlignment="viewStart"
+                android:textSize="25sp"
+                android:textStyle="" />
 
 
 

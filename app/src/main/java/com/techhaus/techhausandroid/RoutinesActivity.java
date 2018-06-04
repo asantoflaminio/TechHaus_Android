@@ -82,7 +82,6 @@ public class RoutinesActivity extends AppCompatActivity {
 
     private void processResponse(JSONObject response) {
         try {
-            Log.d("mytag", "BUENO ACA ESTOY");
             _titleParents = new ArrayList<>();
             JSONArray jsonArray = response.getJSONArray("routines");
             for(int i = 0; i < jsonArray.length(); i++){
