@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("info", "Doors");
                     }else if(finalI == 5){
                         intent.putExtra("info", "ACs");
-                    }else if(finalI == 5){
+                    }else if(finalI == 6){
                         intent.putExtra("info", "Refrigerators");
                     }else {
                         intent.putExtra("info", "Ovens");

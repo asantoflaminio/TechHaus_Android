@@ -130,9 +130,7 @@ public class RoutinesActivity extends AppCompatActivity {
 
     private List<ParentObject> initData() {
         TitleCreator titleCreator = TitleCreator.get(this);
-        Log.d("mytag", "Antes de asignar");
         List<TitleParent> titles = _titleParents;
-        Log.d("mytag", "Despues de asignar");
         List<ParentObject> parentObject = new ArrayList<>();
         for(TitleParent title: titles){
             List<Object> childList = new ArrayList<>();

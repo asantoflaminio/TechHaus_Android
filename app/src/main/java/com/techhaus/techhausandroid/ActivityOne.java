@@ -7,20 +7,34 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 import com.techhaus.techhausandroid.Adapter.MyAdapter;
 import com.techhaus.techhausandroid.Models.TitleChild;
 import com.techhaus.techhausandroid.Models.TitleCreator;
 import com.techhaus.techhausandroid.Models.TitleParent;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ActivityOne extends AppCompatActivity {
     RecyclerView recyclerView;
+    List<TitleParent> _titleParents;
+    private RequestQueue mQueue;
+    private RequestQueue mQueue2;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -36,20 +50,118 @@ public class ActivityOne extends AppCompatActivity {
         TextView txtInfo = (TextView) findViewById(R.id.txtInfo);
 
 
+        if(getIntent() != null){
+            String info = getIntent().getStringExtra("info");
+            txtInfo.setText(info);
+        }
+        String urlTypes = "http://10.0.2.2:8080/api/devicetypes";
+        mQueue = Volley.newRequestQueue(this);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, urlTypes, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    processResponse(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("mytag", "Error de response");
+                error.printStackTrace();
+            }
+        });
+
+        mQueue.add(request);
+
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
+    }
+
+    private void processResponse(JSONObject response) throws JSONException {
+        String info = getIntent().getStringExtra("info");
+
+        String searchId = "";
+        JSONArray jsonArray = response.getJSONArray("devices");
+        if(info.equals("Alarms")){
+            searchId = "alarm" ;
+        }else if(info.equals("Lamps")){
+            searchId = "lamp";
+        }else if(info.equals("Blinds")){
+            searchId = "blind";
+        }else if(info.equals("Doors")){
+            searchId = "door";
+        }else if(info.equals("ACs")){
+            searchId = "ac";
+        }else if(info.equals("Refrigerators")){
+            searchId = "refrigerator";
+        }else if(info.equals("Ovens")){
+            searchId = "oven";
+        }else{
+            searchId = "faves";
+
+        }
+        if(searchId.equals("faves")){
+            //busco favoritos
+        }else{
+            String typeName = "";
+            String typeId = "";
+            for(int i = 0; i < jsonArray.length(); i++){
+                JSONObject type = jsonArray.getJSONObject(i);
+                typeName = type.getString("name");
+                typeId = type.getString("id");
+                if(typeName.equals(searchId)){
+                    getDevicesForType(typeId);
+                }
+
+            }
+        }
+
+
+    }
+
+    private void getDevicesForType(String typeId) {
+        String urlDevicesForType = "http://10.0.2.2:8080/api/devices/devicetypes/" + typeId;
+        mQueue2 = Volley.newRequestQueue(this);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, urlDevicesForType, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    processDevices(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("mytag", "Error de response");
+                error.printStackTrace();
+            }
+        });
+        mQueue2.add(request);
+
+
+    }
+
+    private void processDevices(JSONObject response) throws JSONException {
+        JSONArray jsonArray = response.getJSONArray("devices");
+        _titleParents = new ArrayList<>();
+        for(int i = 0; i < jsonArray.length(); i++){
+            JSONObject device = jsonArray.getJSONObject(i);
+            String name = device.getString("name");
+            TitleParent title = new TitleParent(String.format(name, i));
+            _titleParents.add(title);
+        }
         recyclerView = (RecyclerView) findViewById(R.id.myRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         MyAdapter adapter = new MyAdapter(this, initData());
         adapter.setParentClickableViewAnimationDefaultDuration();
         adapter.setParentAndIconExpandOnClick(true);
         recyclerView.setAdapter(adapter);
-        if(getIntent() != null){
-            String info = getIntent().getStringExtra("info");
-            txtInfo.setText(info);
-        }
-
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
     }
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -78,7 +190,7 @@ public class ActivityOne extends AppCompatActivity {
 
     private List<ParentObject> initData() {
         TitleCreator titleCreator = TitleCreator.get(this);
-        List<TitleParent> titles = titleCreator.getAll();
+        List<TitleParent> titles = _titleParents;
         List<ParentObject> parentObject = new ArrayList<>();
         for(TitleParent title: titles){
             List<Object> childList = new ArrayList<>();
