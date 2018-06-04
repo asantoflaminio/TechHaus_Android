@@ -82,7 +82,6 @@ public class ActivityOne extends AppCompatActivity {
         List<ParentObject> parentObject = new ArrayList<>();
         for(TitleParent title: titles){
             List<Object> childList = new ArrayList<>();
-            childList.add(new TitleChild("sth", "sth2"));
             title.setChildObjectList(childList);
             parentObject.add(title);
         }
