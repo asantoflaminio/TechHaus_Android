@@ -28,7 +28,7 @@
         <activity android:name=".OvenActivity" />
         <activity android:name=".ACActivity" />
         <activity android:name=".LampActivity" />
-        <activity android:name=".RoutActivity"></activity>
+        <activity android:name=".RoutActivity"/>
     </application>
 
 </manifest>

@@ -104,7 +104,7 @@ public class MyAdapterRoutines extends ExpandableRecyclerAdapter<TitleParentView
                 Intent intent2 = new Intent(v.getContext(), RoutActivity.class);
                 intent2.putExtra("rutName", rutName);
                 v.getContext().startActivity(intent2);
-                //aca abro un nuevo intent activity etc
+
 
             }
         });

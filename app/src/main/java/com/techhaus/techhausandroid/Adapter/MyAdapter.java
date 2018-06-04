@@ -1,6 +1,7 @@
 package com.techhaus.techhausandroid.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +17,17 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bignerdranch.expandablerecyclerview.Adapter.ExpandableRecyclerAdapter;
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
+import com.techhaus.techhausandroid.ACActivity;
+import com.techhaus.techhausandroid.AlarmActivity;
+import com.techhaus.techhausandroid.BlindActivity;
+import com.techhaus.techhausandroid.DoorActivity;
+import com.techhaus.techhausandroid.LampActivity;
 import com.techhaus.techhausandroid.Models.TitleChild;
 import com.techhaus.techhausandroid.Models.TitleParent;
+import com.techhaus.techhausandroid.OvenActivity;
 import com.techhaus.techhausandroid.R;
+import com.techhaus.techhausandroid.RefrigeratorActivity;
+import com.techhaus.techhausandroid.RoutActivity;
 import com.techhaus.techhausandroid.ViewHolders.TitleChildViewHolder;
 import com.techhaus.techhausandroid.ViewHolders.TitleParentViewHolder;
 
@@ -34,6 +43,8 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
 
     LayoutInflater inflater;
     private RequestQueue mQueue;
+    private RequestQueue mQueue2;
+    private RequestQueue mQueue3;
 
     public MyAdapter(Context context, List<ParentObject> parentItemList) {
         super(context, parentItemList);
@@ -85,7 +96,134 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
         });
 
         mQueue.add(request);
+
+
+        ImageView expandIcon = (ImageView) view.findViewById(R.id.expandArrow);
+        expandIcon.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(final View v) {
+                final String devName = devNameView.getText().toString();
+
+
+
+                mQueue2 = Volley.newRequestQueue(v.getContext());
+                String url = "http://10.0.2.2:8080/api/devices/";
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        JSONArray jsonArray = null;
+                        try {
+                            jsonArray = response.getJSONArray("devices");
+                            for(int i = 0; i < jsonArray.length(); i++){
+                                JSONObject device = jsonArray.getJSONObject(i);
+                                if(devName.equals(device.getString("name"))){
+                                    String typeId = device.getString("typeId");
+                                    String name = device.getString("name");
+                                    String devId = device.getString("id");
+                                    openActivity(v, name, devId, typeId);
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("mytag", "Error de response en expand");
+                        error.printStackTrace();
+                    }
+                });
+
+                mQueue2.add(request);
+
+
+
+
+
+            }
+        });
+
         return new TitleParentViewHolder(view);
+    }
+
+    private void openActivity(final View v, final String name, final String devId, final String typeId) {
+        mQueue3 = Volley.newRequestQueue(v.getContext());
+        String url = "http://10.0.2.2:8080/api/devicetypes";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                JSONArray jsonArray = null;
+                try {
+                    jsonArray = response.getJSONArray("devices");
+                    for(int i = 0; i < jsonArray.length(); i++){
+                        JSONObject type = jsonArray.getJSONObject(i);
+                        if(typeId.equals(type.getString("id"))){
+                            String typeName = type.getString("name");
+                            if(typeName.equals("blind")){
+                                Intent intent2 = new Intent(v.getContext(), BlindActivity.class);
+                                intent2.putExtra("devName", name);
+                                intent2.putExtra("typeId", typeId);
+                                intent2.putExtra("devId", devId);
+                                v.getContext().startActivity(intent2);
+                            }else if(typeName.equals("alarm")){
+                                Intent intent2 = new Intent(v.getContext(), AlarmActivity.class);
+                                intent2.putExtra("devName", name);
+                                intent2.putExtra("typeId", typeId);
+                                intent2.putExtra("devId", devId);
+                                v.getContext().startActivity(intent2);
+                            }else if(typeName.equals("refrigerator")){
+                                Intent intent2 = new Intent(v.getContext(), RefrigeratorActivity.class);
+                                intent2.putExtra("devName", name);
+                                intent2.putExtra("typeId", typeId);
+                                intent2.putExtra("devId", devId);
+                                v.getContext().startActivity(intent2);
+                            }else if(typeName.equals("lamp")){
+                                Intent intent2 = new Intent(v.getContext(), LampActivity.class);
+                                intent2.putExtra("devName", name);
+                                intent2.putExtra("typeId", typeId);
+                                intent2.putExtra("devId", devId);
+                                v.getContext().startActivity(intent2);
+                            }else if(typeName.equals("ac")){
+                                Intent intent2 = new Intent(v.getContext(), ACActivity.class);
+                                intent2.putExtra("devName", name);
+                                intent2.putExtra("typeId", typeId);
+                                intent2.putExtra("devId", devId);
+                                v.getContext().startActivity(intent2);
+                            }else if(typeName.equals("door")){
+                                Intent intent2 = new Intent(v.getContext(), DoorActivity.class);
+                                intent2.putExtra("devName", name);
+                                intent2.putExtra("typeId", typeId);
+                                intent2.putExtra("devId", devId);
+                                v.getContext().startActivity(intent2);
+                            }else{
+                                //es oven
+                                Intent intent2 = new Intent(v.getContext(), OvenActivity.class);
+                                intent2.putExtra("devName", name);
+                                intent2.putExtra("typeId", typeId);
+                                intent2.putExtra("devId", devId);
+                                v.getContext().startActivity(intent2);
+                            }
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("mytag", "Error de response en openActivity");
+                error.printStackTrace();
+            }
+        });
+        mQueue3.add(request);
+
     }
 
     @Override
