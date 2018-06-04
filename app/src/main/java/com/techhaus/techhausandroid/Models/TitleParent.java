@@ -1,6 +1,7 @@
 package com.techhaus.techhausandroid.Models;
 
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
+import com.techhaus.techhausandroid.R;
 
 import java.util.List;
 import java.util.UUID;
@@ -31,6 +32,8 @@ public class TitleParent implements ParentObject{
     public void setTitle(String title) {
         this.title = title;
     }
+
+
 
     @Override
     public List<Object> getChildObjectList() {

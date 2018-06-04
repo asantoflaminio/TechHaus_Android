@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                     if(finalI == 0){
                         intent.putExtra("info", "Favorite devices");
                     }else if(finalI == 1){
-                        intent.putExtra("info", "Alarms ");
+                        intent.putExtra("info", "Alarms");
                     }else if(finalI == 2){
                         intent.putExtra("info", "Lamps");
                     }else if(finalI == 3){
