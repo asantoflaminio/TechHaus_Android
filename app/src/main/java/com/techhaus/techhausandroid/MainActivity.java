@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
 
+import java.sql.Ref;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.nav_devices:
                     break;
                 case R.id.nav_notifications:
-                    Intent intent2 = new Intent(MainActivity.this, RefrigeratorActivity.class);
+                    Intent intent2 = new Intent(MainActivity.this, BlindActivity.class);
                     startActivity(intent2);
                     break;
                 case R.id.nav_routines:
