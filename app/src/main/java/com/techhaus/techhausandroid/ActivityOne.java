@@ -28,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ActivityOne extends AppCompatActivity {
@@ -103,7 +104,7 @@ public class ActivityOne extends AppCompatActivity {
 
         }
         if(searchId.equals("faves")){
-            //busco favoritos
+            getFavedDevices();
         }else{
             String typeName = "";
             String typeId = "";
@@ -118,6 +119,29 @@ public class ActivityOne extends AppCompatActivity {
             }
         }
 
+
+    }
+
+    private void getFavedDevices() {
+        String urlDevices = "http://10.0.2.2:8080/api/devices/";
+        mQueue2 = Volley.newRequestQueue(this);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, urlDevices, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    processDevicesFaved(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("mytag", "Error de response");
+                error.printStackTrace();
+            }
+        });
+        mQueue2.add(request);
 
     }
 
@@ -143,6 +167,27 @@ public class ActivityOne extends AppCompatActivity {
         mQueue2.add(request);
 
 
+    }
+
+    private void processDevicesFaved(JSONObject response) throws JSONException {
+        JSONArray jsonArray = response.getJSONArray("devices");
+        _titleParents = new ArrayList<>();
+        for(int i = 0; i < jsonArray.length(); i++){
+            JSONObject device = jsonArray.getJSONObject(i);
+            String meta = device.getString("meta");
+            List<String> elephantList = Arrays.asList(meta.replace("{","").replace("}","").split(","));
+            if(elephantList.size() > 1 && elephantList.get(1).equals(" faved")){
+                String name = device.getString("name");
+                TitleParent title = new TitleParent(String.format(name, i));
+                _titleParents.add(title);
+            }
+        }
+        recyclerView = (RecyclerView) findViewById(R.id.myRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        MyAdapter adapter = new MyAdapter(this, initData());
+        adapter.setParentClickableViewAnimationDefaultDuration();
+        adapter.setParentAndIconExpandOnClick(true);
+        recyclerView.setAdapter(adapter);
     }
 
     private void processDevices(JSONObject response) throws JSONException {
