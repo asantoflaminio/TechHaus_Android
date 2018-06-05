@@ -80,6 +80,9 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
                             if(elephantList.size() > 1 && elephantList.get(1).equals(" faved")){
                                 Log.d("mytag", "Encontre un faved");
                               heartIcon.setImageResource(R.drawable.heart_filled);
+                              heartIcon.setTag(Integer.valueOf(R.drawable.heart_filled));
+                            }else{
+                                heartIcon.setTag(Integer.valueOf(R.drawable.heart_unfilled));
                             }
                         }
                     }
@@ -96,6 +99,29 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
         });
 
         mQueue.add(request);
+
+        final ImageView faveIcon = (ImageView) view.findViewById(R.id.faveIcon);
+
+        faveIcon.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(final View v) {
+                if(((Integer) faveIcon.getTag()).equals(R.drawable.heart_filled)){
+                    faveIcon.setImageResource(R.drawable.heart_unfilled);
+                    heartIcon.setTag(Integer.valueOf(R.drawable.heart_unfilled));
+                    //desfaveo
+                }else{
+                    faveIcon.setImageResource(R.drawable.heart_filled);
+                    heartIcon.setTag(Integer.valueOf(R.drawable.heart_filled));
+                    //faveo
+                }
+
+            }
+        });
+
+
+
+
 
 
         ImageView expandIcon = (ImageView) view.findViewById(R.id.expandArrow);
@@ -139,6 +165,8 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
                 });
 
                 mQueue2.add(request);
+
+
 
 
 
