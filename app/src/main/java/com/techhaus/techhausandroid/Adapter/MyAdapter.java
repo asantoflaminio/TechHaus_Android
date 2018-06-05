@@ -73,9 +73,6 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
                         if(devName.equals(device.getString("name"))){
                             String meta = device.getString("meta");
                             List<String> elephantList = Arrays.asList(meta.replace("{","").replace("}","").split(","));
-                            if(elephantList.size() > 1){
-                                Log.d("mytag", "Segundo elem es " + elephantList.get(1));
-                            }
 
                             if(elephantList.size() > 1 && elephantList.get(1).equals(" faved")){
                                 Log.d("mytag", "Encontre un faved");
