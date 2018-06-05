@@ -1,10 +1,5 @@
 package com.techhaus.techhausandroid;
 
-<<<<<<< Updated upstream
-import android.app.Fragment;
-
-=======
->>>>>>> Stashed changes
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
