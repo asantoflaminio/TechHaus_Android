@@ -43,40 +43,7 @@ public class BlindActivity extends AppCompatActivity {
         }
         mQueue = Volley.newRequestQueue(this);
         getState(getIntent().getStringExtra("devId"));
-        /*
-        mQueue = Volley.newRequestQueue(this);
-        final String url = "http://10.0.2.2:8080/api/devices";
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-
-                try {
-                    String devName = txtInfo.getText().toString();
-                    JSONArray jsonArray = response.getJSONArray("devices");
-                    for(int i = 0; i < jsonArray.length(); i++){
-                        JSONObject device = jsonArray.getJSONObject(i);
-                        if(devName.equals(device.getString("name"))){
-
-                           // GETSTATE ETC
-                            Log.d("mytag", "FOUND");
-                            getState(getIntent().getStringExtra("devId"));
-
-                        }
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("mytag", "Error de response");
-                error.printStackTrace();
-            }
-        });
-
-        mQueue.add(request);*/
+        
 
 
 
