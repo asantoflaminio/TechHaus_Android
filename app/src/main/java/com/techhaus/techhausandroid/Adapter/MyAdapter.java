@@ -37,6 +37,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, TitleChildViewHolder> {
@@ -75,7 +76,6 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
                             List<String> elephantList = Arrays.asList(meta.replace("{","").replace("}","").split(","));
 
                             if(elephantList.size() > 1 && elephantList.get(1).equals(" faved")){
-                                Log.d("mytag", "Encontre un faved");
                               heartIcon.setImageResource(R.drawable.heart_filled);
                               heartIcon.setTag(Integer.valueOf(R.drawable.heart_filled));
                             }else{
@@ -103,14 +103,82 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
 
             @Override
             public void onClick(final View v) {
-                if(((Integer) faveIcon.getTag()).equals(R.drawable.heart_filled)){
+                if(((Integer) faveIcon.getTag()).equals(R.drawable.heart_filled)) {
                     faveIcon.setImageResource(R.drawable.heart_unfilled);
                     heartIcon.setTag(Integer.valueOf(R.drawable.heart_unfilled));
-                    //desfaveo
+                    //desfaveo en API
+                    //hago request de devices hast encontrar el nombre coincidente
+                    //llamo a unfave con el string id del device, el string type id, string name
+                    // y el string en meta que lo q hace es
+                    // hacer un request con el update
+
+
+                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+
+                            try {
+                                String devName = devNameView.getText().toString();
+                                JSONArray jsonArray = response.getJSONArray("devices");
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject device = jsonArray.getJSONObject(i);
+                                    if (devName.equals(device.getString("name"))) {
+                                        String meta = device.getString("meta");
+                                        String devId = device.getString("id");
+                                        String typeId = device.getString("typeId");
+                                        String name = device.getString("name");
+                                        unfaveDevice(name, meta, devId, typeId);
+                                    }
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.d("mytag", "Error unfaving");
+                                error.printStackTrace();
+                            }
+                    });
+
+                    mQueue.add(request);
+
                 }else{
                     faveIcon.setImageResource(R.drawable.heart_filled);
                     heartIcon.setTag(Integer.valueOf(R.drawable.heart_filled));
                     //faveo
+
+                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+
+                            try {
+                                String devName = devNameView.getText().toString();
+                                JSONArray jsonArray = response.getJSONArray("devices");
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject device = jsonArray.getJSONObject(i);
+                                    if (devName.equals(device.getString("name"))) {
+                                        String meta = device.getString("meta");
+                                        String devId = device.getString("id");
+                                        String typeId = device.getString("typeId");
+                                        String name = device.getString("name");
+                                        faveDevice(name, meta, devId, typeId);
+                                    }
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.d("mytag", "Error unfaving");
+                            error.printStackTrace();
+                        }
+                    });
+
+                    mQueue.add(request);
                 }
 
             }
@@ -173,6 +241,57 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
         });
 
         return new TitleParentViewHolder(view);
+    }
+
+    private void unfaveDevice(final String name, final String meta, String devId, final String typeId) {
+        String url = "http://10.0.2.2:8080/api/devices/" + devId;
+        HashMap<String, String> mRequestParams = new HashMap<String, String>();
+        mRequestParams.put("typeId",typeId);
+        mRequestParams.put("name", name);
+
+
+        String newMeta = "{" + meta.replace("{","").replace("}","").split(",")[0] + "}";
+        mRequestParams.put("meta", newMeta);
+        final JSONObject jsonObject = new JSONObject(mRequestParams);
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                // ok I guess
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("mytag", "Error de response");
+                error.printStackTrace();
+            }
+        });
+        mQueue.add(request);
+    }
+
+    private void faveDevice(final String name, final String meta, String devId, final String typeId) {
+        String url = "http://10.0.2.2:8080/api/devices/" + devId;
+        HashMap<String, String> mRequestParams = new HashMap<String, String>();
+        mRequestParams.put("typeId",typeId);
+        mRequestParams.put("name", name);
+
+        String newMeta = "{" + meta.replace("{","").replace("}","").split(",")[0] + ", faved}";
+        
+        mRequestParams.put("meta", newMeta);
+        final JSONObject jsonObject = new JSONObject(mRequestParams);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                // ok I guess
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("mytag", "Error de response");
+                error.printStackTrace();
+            }
+        });
+        mQueue.add(request);
     }
 
     private void openActivity(final View v, final String name, final String devId, final String typeId) {
