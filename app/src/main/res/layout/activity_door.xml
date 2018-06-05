@@ -89,10 +89,11 @@
                     android:layout_marginStart="135sp"
                     android:layout_marginTop="25sp"
                     android:layout_weight="1"
-                    android:text="Open"
+                    android:text="Loading..."
                     android:textSize="20sp" />
 
                 <ImageView
+                    android:id="@+id/openClosedIcon"
                     android:layout_width="55sp"
                     android:layout_height="55sp"
                     android:layout_gravity="bottom|center|end"
@@ -102,7 +103,7 @@
                     android:paddingRight="3dp"
                     android:paddingTop="2dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/open" />
+                    android:src="@drawable/loading" />
 
             </LinearLayout>
 
@@ -131,10 +132,11 @@
                     android:layout_marginStart="115sp"
                     android:layout_marginTop="25sp"
                     android:layout_weight="1"
-                    android:text="Unlocked"
+                    android:text="Loading..."
                     android:textSize="20sp" />
 
                 <ImageView
+                    android:id="@+id/lockIcon"
                     android:layout_width="55sp"
                     android:layout_height="50sp"
                     android:layout_gravity="bottom|center|end"
@@ -144,7 +146,7 @@
                     android:paddingRight="3dp"
                     android:paddingTop="2dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/unlocked_inside" />
+                    android:src="@drawable/loading" />
 
             </LinearLayout>
 

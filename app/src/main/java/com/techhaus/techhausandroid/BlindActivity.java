@@ -43,7 +43,7 @@ public class BlindActivity extends AppCompatActivity {
         }
         mQueue = Volley.newRequestQueue(this);
         getState(getIntent().getStringExtra("devId"));
-        
+
 
 
 
