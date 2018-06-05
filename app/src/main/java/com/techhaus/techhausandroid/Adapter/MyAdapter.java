@@ -276,7 +276,7 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
         mRequestParams.put("name", name);
 
         String newMeta = "{" + meta.replace("{","").replace("}","").split(",")[0] + ", faved}";
-        
+
         mRequestParams.put("meta", newMeta);
         final JSONObject jsonObject = new JSONObject(mRequestParams);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, jsonObject, new Response.Listener<JSONObject>() {
