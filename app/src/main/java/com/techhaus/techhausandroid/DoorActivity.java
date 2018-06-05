@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class DoorActivity extends AppCompatActivity {
 
@@ -16,6 +17,12 @@ public class DoorActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        TextView txtInfo = (TextView) findViewById(R.id.DoorName);
+        if(getIntent() != null){
+            String info = getIntent().getStringExtra("devName");
+            txtInfo.setText(info);
+        }
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {

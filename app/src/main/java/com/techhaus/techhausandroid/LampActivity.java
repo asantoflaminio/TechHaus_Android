@@ -17,6 +17,13 @@ public class LampActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lamp);
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        TextView txtInfo = (TextView) findViewById(R.id.LampName);
+        if(getIntent() != null){
+            String info = getIntent().getStringExtra("devName");
+            txtInfo.setText(info);
+        }
+
         // set a change listener on the SeekBar
         SeekBar seekBar = findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(seekBarChangeListener);

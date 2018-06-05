@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -25,6 +26,12 @@ public class ACActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ac);
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        TextView txtInfo = (TextView) findViewById(R.id.ACName);
+        if(getIntent() != null){
+            String info = getIntent().getStringExtra("devName");
+            txtInfo.setText(info);
+        }
 
         //custom spinner
         mode_spinner = findViewById(R.id.spinner);

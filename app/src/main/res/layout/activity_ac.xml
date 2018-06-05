@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/AlarmName"
+                    android:id="@+id/ACName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
