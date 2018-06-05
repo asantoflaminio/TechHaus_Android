@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,7 +41,9 @@ public class BlindActivity extends AppCompatActivity {
             String info = getIntent().getStringExtra("devName");
             txtInfo.setText(info);
         }
-
+        mQueue = Volley.newRequestQueue(this);
+        getState(getIntent().getStringExtra("devId"));
+        /*
         mQueue = Volley.newRequestQueue(this);
         final String url = "http://10.0.2.2:8080/api/devices";
 
@@ -57,16 +60,8 @@ public class BlindActivity extends AppCompatActivity {
 
                            // GETSTATE ETC
                             Log.d("mytag", "FOUND");
-                            getState(device.getString("id"));
-                           /* String meta = device.getString("meta");
-                            List<String> elephantList = Arrays.asList(meta.replace("{","").replace("}","").split(","));
+                            getState(getIntent().getStringExtra("devId"));
 
-                            if(elephantList.size() > 1 && elephantList.get(1).equals(" faved")){
-                                heartIcon.setImageResource(R.drawable.heart_filled);
-                                heartIcon.setTag(Integer.valueOf(R.drawable.heart_filled));
-                            }else{
-                                heartIcon.setTag(Integer.valueOf(R.drawable.heart_unfilled));
-                            }*/
                         }
                     }
                 } catch (JSONException e) {
@@ -81,9 +76,61 @@ public class BlindActivity extends AppCompatActivity {
             }
         });
 
+        mQueue.add(request);*/
+
+
+
+
+        final ImageView upDownIcon = (ImageView) findViewById(R.id.UpDownIcon);
+
+        upDownIcon.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(final View v) {
+                if(upDownIcon.getTag().equals(R.drawable.blind_down)){
+                    //la quiero abrir
+                    upDownIcon.setImageResource(R.drawable.blind_up);
+                    upDownIcon.setTag(Integer.valueOf(R.drawable.blind_up));
+                    TextView what = (TextView) findViewById(R.id.textView4);
+                    what.setText("Up");
+                    changeBlindState("up", getIntent().getStringExtra("devId"));
+                }else{
+                    //la quiero cerrar
+                    upDownIcon.setImageResource(R.drawable.blind_down);
+                    upDownIcon.setTag(Integer.valueOf(R.drawable.blind_down));
+                    TextView what = (TextView) findViewById(R.id.textView4);
+                    what.setText("Down");
+                    changeBlindState("down", getIntent().getStringExtra("devId"));
+                }
+            }
+        });
+
+
+    }
+
+    private void changeBlindState(String action, String id) {
+        Log.d("mytag","Ok my id es " + id);
+        String url = "";
+        if(action.equals("down")){
+            url = "http://10.0.2.2:8080/api/devices/" + id + "/down";
+        }else{
+            url = "http://10.0.2.2:8080/api/devices/" + id + "/up";
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("mytag", "Status changed!");
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("mytag", "Error de response");
+                error.printStackTrace();
+            }
+        });
+
         mQueue.add(request);
-
-
     }
 
     private void getState(String id) {
