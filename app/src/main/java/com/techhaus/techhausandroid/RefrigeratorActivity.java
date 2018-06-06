@@ -54,7 +54,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
         mQueue = Volley.newRequestQueue(this);
         getTemps(getIntent().getStringExtra("devId"));
         getMode(getIntent().getStringExtra("devId"));
-        final String deviceId =getIntent().getStringExtra("devId");
+        final String deviceId = getIntent().getStringExtra("devId");
 
         final Button tempDown = (Button) findViewById(R.id.TempDown);
         tempDown.setOnClickListener(new View.OnClickListener() {
