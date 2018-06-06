@@ -92,6 +92,7 @@
 
 
                     <Button
+                        android:id="@+id/TempDown"
                         android:layout_width="48dp"
                         android:layout_height="40dp"
                         android:drawableBottom="@drawable/arrow_white_down"
@@ -106,10 +107,11 @@
                         android:layout_marginTop="5dp"
                         android:gravity="center"
                         android:paddingTop="0dp"
-                        android:text="8°C"
+                        android:text="..."
                         android:textSize="20sp" />
 
                     <Button
+                        android:id="@+id/TempUp"
                         android:layout_width="48dp"
                         android:layout_height="40dp"
                         android:drawableBottom="@drawable/arrow_white_up"
@@ -150,6 +152,7 @@
 
 
                     <Button
+                        android:id="@+id/FTempDown"
                         android:layout_width="48dp"
                         android:layout_height="40dp"
                         android:drawableBottom="@drawable/arrow_white_down"
@@ -164,10 +167,11 @@
                         android:layout_marginTop="5dp"
                         android:gravity="center"
                         android:paddingTop="0dp"
-                        android:text="-5°C"
+                        android:text="..."
                         android:textSize="20sp" />
 
                     <Button
+                        android:id="@+id/FTempUp"
                         android:layout_width="48dp"
                         android:layout_height="40dp"
                         android:drawableBottom="@drawable/arrow_white_up"
