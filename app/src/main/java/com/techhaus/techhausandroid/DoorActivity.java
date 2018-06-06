@@ -7,8 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -38,6 +40,100 @@ public class DoorActivity extends AppCompatActivity {
         }
         mQueue = Volley.newRequestQueue(this);
         getState(getIntent().getStringExtra("devId"));
+
+
+        final ImageView openClosedIcon = (ImageView) findViewById(R.id.openClosedIcon);
+
+        openClosedIcon.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(final View v) {
+                if(openClosedIcon.getTag().equals(R.drawable.closed)){
+                    //la quiero abrir
+
+                    TextView what = (TextView) findViewById(R.id.textView5);
+                    ImageView lockIcon =(ImageView) findViewById(R.id.lockIcon);
+                    if(!lockIcon.getTag().equals(Integer.valueOf(R.drawable.locked_inside))){
+                        what.setText("Open");
+                        openClosedIcon.setImageResource(R.drawable.open);
+                        openClosedIcon.setTag(Integer.valueOf(R.drawable.open));
+                        changeDoorState("open", getIntent().getStringExtra("devId"));
+                    }else{
+                        Toast.makeText(v.getContext(), "Door must be unlocked first", Toast.LENGTH_LONG).show();
+                    }
+
+                }else{
+                    //la quiero cerrar
+                    openClosedIcon.setImageResource(R.drawable.closed);
+                    openClosedIcon.setTag(Integer.valueOf(R.drawable.closed));
+                    TextView what = (TextView) findViewById(R.id.textView5);
+                    what.setText("Closed");
+                    changeDoorState("close", getIntent().getStringExtra("devId"));
+                }
+            }
+        });
+
+
+
+        //ahora con lock
+        final ImageView lockIcon = (ImageView) findViewById(R.id.lockIcon);
+
+        lockIcon.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(final View v) {
+                if(lockIcon.getTag().equals(R.drawable.locked_inside)){
+                    //la quiero abrir
+
+                    TextView what = (TextView) findViewById(R.id.textView6);
+                        what.setText("Unlocked");
+                        lockIcon.setImageResource(R.drawable.unlocked_inside);
+                        lockIcon.setTag(Integer.valueOf(R.drawable.unlocked_inside));
+                        changeDoorState("unlock", getIntent().getStringExtra("devId"));
+
+
+                }else{
+                    //la quiero cerrar
+                    ImageView openClosedIcon = (ImageView) findViewById(R.id.openClosedIcon);
+                    if(!openClosedIcon.getTag().equals(Integer.valueOf(R.drawable.open))){
+                        lockIcon.setImageResource(R.drawable.locked_inside);
+                        lockIcon.setTag(Integer.valueOf(R.drawable.locked_inside));
+                        TextView what = (TextView) findViewById(R.id.textView6);
+                        what.setText("Locked");
+                        changeDoorState("lock", getIntent().getStringExtra("devId"));
+                    }else{
+                        Toast.makeText(v.getContext(), "Door must be closed first", Toast.LENGTH_LONG).show();
+                    }
+
+                }
+            }
+        });
+
+
+
+
+
+    }
+
+    private void changeDoorState(String action, String devId) {
+
+        String url = "http://10.0.2.2:8080/api/devices/" + devId + "/" + action;
+
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("mytag", "Status changed!");
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("mytag", "Error de response");
+                error.printStackTrace();
+            }
+        });
+
+        mQueue.add(request);
     }
 
 
