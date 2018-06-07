@@ -1,13 +1,24 @@
 package com.techhaus.techhausandroid;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -54,16 +65,20 @@ public class LampActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // do something, the isChecked will be
                 // true if the switch is in the On position
-                if(++check > 1){
+
                     if(isChecked){
-                        Toast.makeText(LampActivity.this, "Turned on", Toast.LENGTH_SHORT).show();
+                        if(++check > 1){
+                            Toast.makeText(LampActivity.this, "Turned on", Toast.LENGTH_SHORT).show();
+                        }
                         changeStatus(deviceId, "/turnOn");
 
                     }else{
-                        Toast.makeText(LampActivity.this, "Turned off", Toast.LENGTH_SHORT).show();
+                        if(++check > 1){
+                            Toast.makeText(LampActivity.this, "Turned off", Toast.LENGTH_SHORT).show();
+                        }
                         changeStatus(deviceId, "/turnOff");
                     }
-                }
+
 
             }
         });
@@ -123,6 +138,7 @@ public class LampActivity extends AppCompatActivity {
     private void getState(String devId) {
         String url = "http://10.0.2.2:8080/api/devices/" + devId + "/getState";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onResponse(JSONObject response) {
 
@@ -132,12 +148,20 @@ public class LampActivity extends AppCompatActivity {
                     String color = result.getString("color");
                     String brightness = result.getString("brightness");
                     Switch s = (Switch) findViewById(R.id.switch3);
-                    //TextView col = (TextView) findViewById(R.id.Color);
+                    //color = "0xF0" + color;
                     SeekBar bar = (SeekBar) findViewById(R.id.seekBar);
+                    ImageView circ = (ImageView) findViewById(R.id.circle);
+                    GradientDrawable drawable = (GradientDrawable) circ.getDrawable();
+                   // drawable.setColor(Integer.parseInt("F0"+color,16));
+                    drawable.setColor(Color.parseColor("#F0" + color));
+
+
                    // col.setText("#" + color);
                     if(status.equals("on")){
+
                         s.setChecked(true);
                     }else{
+                        check++;
                         s.setChecked(false);
                     }
                     bar.setProgress(Integer.parseInt(brightness));
