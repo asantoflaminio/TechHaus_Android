@@ -290,8 +290,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
         String modeParam = "[\"" + mode.toLowerCase() + "\"]";
         JSONArray jarray = new JSONArray();
         jarray.put(mode.toLowerCase());
-       // final JSONObject jsonObject = new JSONObject();
-       // jsonObject.put("", jarray);
+
         final JsonArrayRequest request = new JsonArrayRequest(Request.Method.PUT, url, jarray, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -310,7 +309,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
             }
         });
         mQueue.add(request);
-        //getTemps(id);
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {

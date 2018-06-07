@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -51,7 +54,6 @@ public class OvenActivity extends AppCompatActivity {
         }
         mQueue = Volley.newRequestQueue(this);
         getState(getIntent().getStringExtra("devId"));
-        //simple spinners
 
 
 
@@ -59,16 +61,105 @@ public class OvenActivity extends AppCompatActivity {
 
 
 
+        final String deviceId = getIntent().getStringExtra("devId");
+        final Button tempDown = (Button) findViewById(R.id.TempDown);
+        tempDown.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(final View v) {
+                TextView tmp = (TextView) findViewById(R.id.TempNumb);
+                int temp = Integer.valueOf(tmp.getText().toString().replace("°", "").replace("C", ""));
+                if(temp == 90){
+                    Toast.makeText(OvenActivity.this, "Temperature is at minimum value", Toast.LENGTH_SHORT).show();
 
+                }else{
+                    temp = temp-10;
+                    tmp.setText(temp + "°C");
+                    updateTemp(temp, deviceId);
+                }
+            }
+        });
 
+        final Button tempUp = (Button) findViewById(R.id.TempUp);
+        tempUp.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(final View v) {
+                TextView tmp = (TextView) findViewById(R.id.TempNumb);
+                int temp = Integer.valueOf(tmp.getText().toString().replace("°", "").replace("C", ""));
+                if(temp ==  230){
+                    Toast.makeText(OvenActivity.this, "Temperature is at maximum value", Toast.LENGTH_SHORT).show();
 
+                }else{
+                    temp = temp+10;
+                    tmp.setText(temp + "°C");
+                    updateTemp(temp, deviceId);
+                }
+            }
+        });
+
+        Switch s = (Switch) findViewById(R.id.switch1);
+        s.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // do something, the isChecked will be
+                // true if the switch is in the On position
+                if(isChecked){
+                    Toast.makeText(OvenActivity.this, "Turned on", Toast.LENGTH_SHORT).show();
+                    changeStatus(deviceId, "/turnOn");
+
+                }else{
+                    Toast.makeText(OvenActivity.this, "Turned off", Toast.LENGTH_SHORT).show();
+                    changeStatus(deviceId, "/turnOff");
+                }
+            }
+        });
 
 
     }
 
-    private void getState(String devId) {
+    private void changeStatus(String deviceId, String s) {
+        String url = "http://10.0.2.2:8080/api/devices/" + deviceId + s;
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                // ok I guess
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("mytag", "Error de response");
+                error.printStackTrace();
+            }
+        });
+        mQueue.add(request);
+    }
+
+    private void updateTemp(int temp, String deviceId) {
+
+        String url = "http://10.0.2.2:8080/api/devices/" + deviceId + "/setTemperature";
+
+        String t = String.valueOf(temp);
+        JSONArray jarray = new JSONArray();
+        jarray.put(t);
+
+        final JsonArrayRequest request = new JsonArrayRequest(Request.Method.PUT, url, jarray, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("mytag", "Error de response");
+                error.printStackTrace();
+
+            }
+        });
+        mQueue.add(request);
+    }
+
+    private void getState(final String devId) {
         String url = "http://10.0.2.2:8080/api/devices/" + devId + "/getState";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -118,7 +209,7 @@ public class OvenActivity extends AppCompatActivity {
                         public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
                             if(++check > 1) {
                                 Toast.makeText(OvenActivity.this, heat_spinner_list.get(i), Toast.LENGTH_SHORT).show();
-
+                                changeMode(devId, heat_spinner_list.get(i), "/setHeat");
                             }
                            }
 
@@ -155,6 +246,7 @@ public class OvenActivity extends AppCompatActivity {
                         public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
                             if(++check2 > 1) {
                                 Toast.makeText(OvenActivity.this, grill_spinner_list.get(i), Toast.LENGTH_SHORT).show();
+                                changeMode(devId, grill_spinner_list.get(i), "/setGrill");
                             }
                         }
 
@@ -188,7 +280,7 @@ public class OvenActivity extends AppCompatActivity {
                         public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
                             if(++check3 > 1) {
                                 Toast.makeText(OvenActivity.this, convection_spinner_list.get(i), Toast.LENGTH_SHORT).show();
-
+                                changeMode(devId, convection_spinner_list.get(i), "/setConvection");
                             }
                         }
 
@@ -211,6 +303,30 @@ public class OvenActivity extends AppCompatActivity {
         mQueue.add(request);
 
             }
+
+    private void changeMode(String devId, String option, String action) {
+        String url = "http://10.0.2.2:8080/api/devices/" + devId + action;
+        JSONArray jarray = new JSONArray();
+        jarray.put(option.toLowerCase());
+
+        final JsonArrayRequest request = new JsonArrayRequest(Request.Method.PUT, url, jarray, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+            }
+
+
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("mytag", "Error de response");
+                error.printStackTrace();
+            }
+        });
+        mQueue.add(request);
+    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
