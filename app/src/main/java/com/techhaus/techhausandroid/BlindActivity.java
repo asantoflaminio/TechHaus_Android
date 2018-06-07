@@ -2,10 +2,12 @@
 package com.techhaus.techhausandroid;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,9 +24,6 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class BlindActivity extends AppCompatActivity {
     private RequestQueue mQueue;
@@ -43,9 +42,6 @@ public class BlindActivity extends AppCompatActivity {
         }
         mQueue = Volley.newRequestQueue(this);
         getState(getIntent().getStringExtra("devId"));
-
-
-
 
 
         final ImageView upDownIcon = (ImageView) findViewById(R.id.UpDownIcon);
@@ -72,7 +68,27 @@ public class BlindActivity extends AppCompatActivity {
             }
         });
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar2);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
+
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+
+        Intent intent = new Intent(BlindActivity.this, ActivityOne.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("info", "Blinds");
+        startActivity(intent);
+
+        return true;
     }
 
     private void changeBlindState(String action, String id) {
@@ -151,7 +167,7 @@ public class BlindActivity extends AppCompatActivity {
 
             switch(item.getItemId()){
                 case R.id.nav_devices:
-                    Intent intent = new Intent(BlindActivity.this, MainActivity.class);
+                    Intent intent = new Intent(BlindActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     break;
                 case R.id.nav_notifications:

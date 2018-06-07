@@ -201,7 +201,7 @@ public class LampActivity extends AppCompatActivity {
 
             switch(item.getItemId()){
                 case R.id.nav_devices:
-                    Intent intent = new Intent(LampActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LampActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     break;
                 case R.id.nav_notifications:

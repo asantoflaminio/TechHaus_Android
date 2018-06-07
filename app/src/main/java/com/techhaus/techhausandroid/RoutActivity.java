@@ -1,12 +1,10 @@
 package com.techhaus.techhausandroid;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,8 +18,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.techhaus.techhausandroid.Adapter.MyAdapterRoutines;
-import com.techhaus.techhausandroid.Models.TitleParent;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -214,7 +210,7 @@ public class RoutActivity extends AppCompatActivity {
 
             switch(item.getItemId()){
                 case R.id.nav_devices:
-                    Intent intent = new Intent(RoutActivity.this, MainActivity.class);
+                    Intent intent = new Intent(RoutActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     break;
                 case R.id.nav_notifications:

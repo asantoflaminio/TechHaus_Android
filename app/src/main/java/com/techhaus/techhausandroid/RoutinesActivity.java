@@ -1,10 +1,10 @@
 package com.techhaus.techhausandroid;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,9 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
-import com.techhaus.techhausandroid.Adapter.MyAdapter;
 import com.techhaus.techhausandroid.Adapter.MyAdapterRoutines;
-import com.techhaus.techhausandroid.Models.TitleChild;
 import com.techhaus.techhausandroid.Models.TitleCreator;
 import com.techhaus.techhausandroid.Models.TitleParent;
 
@@ -109,7 +107,7 @@ public class RoutinesActivity extends AppCompatActivity {
 
             switch(item.getItemId()){
                 case R.id.nav_devices:
-                    Intent intent = new Intent(RoutinesActivity.this, MainActivity.class);
+                    Intent intent = new Intent(RoutinesActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     break;
                 case R.id.nav_notifications:

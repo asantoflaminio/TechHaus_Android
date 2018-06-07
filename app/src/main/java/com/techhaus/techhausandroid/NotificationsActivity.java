@@ -24,7 +24,7 @@ public class NotificationsActivity extends AppCompatActivity {
 
             switch(item.getItemId()){
                 case R.id.nav_devices:
-                    Intent intent = new Intent(NotificationsActivity.this, MainActivity.class);
+                    Intent intent = new Intent(NotificationsActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     break;
                 case R.id.nav_notifications:

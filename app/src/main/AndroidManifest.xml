@@ -11,6 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!-- MainActivity -->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,17 +20,93 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityOne" />
+
+        <!-- ActivityOne -->
+        <activity android:name=".ActivityOne"
+            android:parentActivityName=".MainActivity" >
+
+        <!-- Parent activity meta-data to support 4.0 and lower -->
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+        </activity>
+
         <activity android:name=".NotificationsActivity" />
         <activity android:name=".RoutinesActivity" />
-        <activity android:name=".BlindActivity" />
-        <activity android:name=".DoorActivity" />
-        <activity android:name=".AlarmActivity" />
-        <activity android:name=".RefrigeratorActivity" />
-        <activity android:name=".OvenActivity" />
-        <activity android:name=".ACActivity" />
-        <activity android:name=".LampActivity" />
+
+        <!-- BlindActivity -->
+        <activity android:name=".BlindActivity"
+            android:parentActivityName=".ActivityOne" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ActivityOne" />
+        </activity>
+
+        <!-- DoorActivity -->
+        <activity android:name=".DoorActivity"
+            android:parentActivityName=".ActivityOne" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ActivityOne" />
+        </activity>
+
+        <!-- AlarmActivity -->
+        <activity android:name=".AlarmActivity"
+            android:parentActivityName=".ActivityOne" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ActivityOne" />
+        </activity>
+
+        <!-- RefrigeratorActivity -->
+        <activity android:name=".RefrigeratorActivity"
+            android:parentActivityName=".ActivityOne" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ActivityOne" />
+        </activity>
+
+        <!-- OvenActivity -->
+        <activity android:name=".OvenActivity"
+            android:parentActivityName=".ActivityOne" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ActivityOne" />
+        </activity>
+
+        <!-- ACActivity -->
+        <activity android:name=".ACActivity"
+            android:parentActivityName=".ActivityOne" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ActivityOne" />
+        </activity>
+
+        <!-- LampActivity -->
+        <activity android:name=".LampActivity"
+            android:parentActivityName=".ActivityOne" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ActivityOne" />
+        </activity>
+
         <activity android:name=".RoutActivity"/>
     </application>
+
+
 
 </manifest>

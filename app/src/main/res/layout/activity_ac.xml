@@ -26,14 +26,26 @@
                 android:layout_height="4dp"
                 android:layout_weight="0.4">
 
-                <ImageView
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar4"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="61dp"
                     android:layout_alignParentStart="true"
-                    android:accessibilityLiveRegion="none"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/barra" />
+                    android:layout_alignParentTop="true"
+                    android:background="#324a5e"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="@style/myToolbarTheme" />
 
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="228dp"
+                    android:layout_height="54dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="62dp"
+                    android:layout_marginStart="68dp"
+                    android:layout_marginTop="3dp"
+                    app:srcCompat="@drawable/barra" />
 
             </RelativeLayout>
 

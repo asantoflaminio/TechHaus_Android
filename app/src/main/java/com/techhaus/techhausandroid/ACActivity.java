@@ -3,8 +3,10 @@ package com.techhaus.techhausandroid;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -112,18 +114,27 @@ public class ACActivity extends AppCompatActivity {
             }
         });
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar4);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
 
 
+    }
 
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
 
+        Intent intent = new Intent(ACActivity.this, ActivityOne.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("info", "ACs");
+        startActivity(intent);
 
-
-        //simple spinners
-
-
-
-
-
+        return true;
     }
 
     private void getState(final String devId) {
@@ -452,7 +463,7 @@ public class ACActivity extends AppCompatActivity {
 
             switch(item.getItemId()){
                 case R.id.nav_devices:
-                    Intent intent = new Intent(ACActivity.this, MainActivity.class);
+                    Intent intent = new Intent(ACActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     break;
                 case R.id.nav_notifications:

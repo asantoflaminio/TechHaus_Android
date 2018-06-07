@@ -1,12 +1,14 @@
 package com.techhaus.techhausandroid;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -19,7 +21,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 import com.techhaus.techhausandroid.Adapter.MyAdapter;
-import com.techhaus.techhausandroid.Models.TitleChild;
 import com.techhaus.techhausandroid.Models.TitleCreator;
 import com.techhaus.techhausandroid.Models.TitleParent;
 
@@ -78,6 +79,27 @@ public class ActivityOne extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar8);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
+
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+
+        Intent intent = new Intent(ActivityOne.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+
+        return true;
     }
 
     private void processResponse(JSONObject response) throws JSONException {
@@ -214,7 +236,7 @@ public class ActivityOne extends AppCompatActivity {
 
             switch(item.getItemId()){
                 case R.id.nav_devices:
-                    Intent intent = new Intent(ActivityOne.this, MainActivity.class);
+                    Intent intent = new Intent(ActivityOne.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     break;
                 case R.id.nav_notifications:
