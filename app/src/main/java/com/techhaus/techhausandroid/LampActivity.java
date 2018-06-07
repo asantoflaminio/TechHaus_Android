@@ -3,18 +3,13 @@ package com.techhaus.techhausandroid;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.media.Image;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.CompoundButton;
@@ -107,6 +102,28 @@ public class LampActivity extends AppCompatActivity {
        // int progress = seekBar.getProgress();
        // tvProgressLabel = findViewById(R.id.textView);
        // tvProgressLabel.setText("Progress: " + progress);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar11);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
+
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+
+        Intent intent = new Intent(LampActivity.this, ActivityOne.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("info", "Lamps");
+        startActivity(intent);
+
+        return true;
     }
 
     private void changeBrightness(int progress, String deviceId) {
