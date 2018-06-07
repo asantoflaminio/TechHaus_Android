@@ -123,30 +123,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30sp"
-                    android:layout_marginTop="25sp"
+                    android:layout_marginTop="35sp"
                     android:text="Color"
                     android:textAlignment="viewStart"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
 
-                <TextView
-                    android:id="@+id/Color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="20sp"
                     android:layout_marginLeft="5sp"
-                    android:layout_marginStart="190sp"
+                    android:layout_marginStart="250sp"
                     android:layout_marginTop="25sp"
-                    android:text="#FFFFFF"
-                    android:textAlignment="viewStart"
-                    android:textSize="20sp"
-                    android:textStyle="italic" />
-
-
-
+                    android:src="@drawable/la_shape"
+                    />
 
 
             </LinearLayout>
+
+
 
             <Button
                 android:layout_width="match_parent"

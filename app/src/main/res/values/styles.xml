@@ -5,12 +5,12 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">#6EE69F</item>
     </style>
 
     <style name="PasswordButton" parent="Theme.AppCompat">
         <item name="colorButtonNormal">#324A5E</item>
-        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="colorControlHighlight">#6EE69F</item>
     </style>
 
 </resources>
