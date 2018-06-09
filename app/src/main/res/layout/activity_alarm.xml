@@ -129,9 +129,10 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/passButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Change Password"
+                    android:text="Change Code"
                     android:theme="@style/PasswordButton" />
 
             </LinearLayout>
