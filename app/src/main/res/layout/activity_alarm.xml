@@ -102,10 +102,11 @@
                     android:layout_marginStart="110sp"
                     android:layout_marginTop="25sp"
                     android:layout_weight="1"
-                    android:text="Armed"
+                    android:text="Loading..."
                     android:textSize="20sp" />
 
                 <ImageView
+                    android:id="@+id/alarmStatusIcon"
                     android:layout_width="60sp"
                     android:layout_height="60dp"
                     android:layout_gravity="bottom|center|end"
@@ -116,7 +117,7 @@
                     android:paddingRight="3dp"
                     android:paddingTop="2dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/alarm_wo_people" />
+                    android:src="@drawable/loading" />
 
             </LinearLayout>
 
