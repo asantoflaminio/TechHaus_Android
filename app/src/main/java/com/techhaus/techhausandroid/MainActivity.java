@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -42,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent3);
                     break;
             }
-
 
             return true;
         }

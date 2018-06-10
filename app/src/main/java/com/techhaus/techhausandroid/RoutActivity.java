@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -106,8 +108,28 @@ public class RoutActivity extends AppCompatActivity {
 
         mQueue.add(request);
         Log.d("mytag", "i'm out");
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar12);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
+
+
     }
 
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+
+        Intent intent = new Intent(RoutActivity.this, RoutinesActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+
+        return true;
+    }
     private void executeRoutine(View v, String routID) {
         mQueue4 = Volley.newRequestQueue(v.getContext());
         String url = "http://10.0.2.2:8080/api/routines/" + routID + "/execute";
@@ -214,11 +236,11 @@ public class RoutActivity extends AppCompatActivity {
                     startActivity(intent);
                     break;
                 case R.id.nav_notifications:
-                    Intent intent2 = new Intent(RoutActivity.this, NotificationsActivity.class);
+                    Intent intent2 = new Intent(RoutActivity.this, NotificationsActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent2);
                     break;
                 case R.id.nav_routines:
-                    Intent intent3 = new Intent(RoutActivity.this, RoutinesActivity.class);
+                    Intent intent3 = new Intent(RoutActivity.this, RoutinesActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent3.putExtra("info", "Routines");
                     startActivity(intent3);
                     break;

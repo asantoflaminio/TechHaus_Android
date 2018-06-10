@@ -104,7 +104,14 @@
                 android:value=".ActivityOne" />
         </activity>
 
-        <activity android:name=".RoutActivity"/>
+        <activity android:name=".RoutActivity"
+            android:parentActivityName=".RoutinesActivity" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RoutinesActivity" />
+        </activity>
     </application>
 
 

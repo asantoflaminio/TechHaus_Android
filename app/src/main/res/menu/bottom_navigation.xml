@@ -3,15 +3,20 @@
     <item
         android:id="@+id/nav_devices"
         android:icon="@drawable/ic_device_hub_black_24dp"
+        android:enabled="true"
         android:title="Devices"/>
 
     <item
         android:id="@+id/nav_notifications"
         android:icon="@drawable/notifications"
+        android:enabled="true"
         android:title="Notifications"/>
 
     <item
         android:id="@+id/nav_routines"
         android:icon="@drawable/routines"
+        android:enabled="true"
         android:title="Routines"/>
+
 </menu>
+

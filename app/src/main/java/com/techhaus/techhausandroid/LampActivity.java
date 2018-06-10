@@ -246,11 +246,11 @@ public class LampActivity extends AppCompatActivity {
                     startActivity(intent);
                     break;
                 case R.id.nav_notifications:
-                    Intent intent2 = new Intent(LampActivity.this, NotificationsActivity.class);
+                    Intent intent2 = new Intent(LampActivity.this, NotificationsActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent2);
                     break;
                 case R.id.nav_routines:
-                    Intent intent3 = new Intent(LampActivity.this, RoutinesActivity.class);
+                    Intent intent3 = new Intent(LampActivity.this, RoutinesActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent3.putExtra("info", "Routines");
                     startActivity(intent3);
                     break;
