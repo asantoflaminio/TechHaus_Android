@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
@@ -21,7 +22,16 @@ public class MainActivity extends AppCompatActivity {
         setSingleEvent(mainGrid);
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+
+        Menu menu = bottomNav.getMenu();
+        MenuItem menuItem = menu.getItem(0);
+        menuItem.setChecked(true);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -32,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.nav_devices:
                     break;
                 case R.id.nav_notifications:
-                    Intent intent2 = new Intent(MainActivity.this, RefrigeratorActivity.class);
+                    Intent intent2 = new Intent(MainActivity.this, NotificationsActivity.class);
                     startActivity(intent2);
                     break;
                 case R.id.nav_routines:
