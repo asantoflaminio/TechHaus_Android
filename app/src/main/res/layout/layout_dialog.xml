@@ -2,12 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:padding="16dp">
-    
+
     <EditText
         android:id="@+id/edit_code"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Code"
         android:inputType="textPassword"/>
+
+
 
 </RelativeLayout>

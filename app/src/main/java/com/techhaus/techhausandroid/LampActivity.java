@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -31,7 +33,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class LampActivity extends AppCompatActivity {
+public class LampActivity extends AppCompatActivity implements  ColorPicker.ColorPickerListener{
     TextView tvProgressLabel;
     private RequestQueue mQueue;
     int check = 0;
@@ -42,6 +44,15 @@ public class LampActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lamp);
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        Button colorB = (Button) findViewById(R.id.changeColorButton);
+        colorB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                openDialog();
+            }
+        });
 
         TextView txtInfo = (TextView) findViewById(R.id.LampName);
         if(getIntent() != null){
@@ -260,4 +271,38 @@ public class LampActivity extends AppCompatActivity {
             return true;
         }
     };
+
+    private void openDialog() {
+        ColorPicker colorPicker = new ColorPicker();
+        colorPicker.show(getSupportFragmentManager(), "code dialog");
+    }
+
+    @Override
+    public void applyHex(String hexcode) {
+        ImageView circ = (ImageView) findViewById(R.id.circle);
+        GradientDrawable drawable = (GradientDrawable) circ.getDrawable();
+        // drawable.setColor(Integer.parseInt("F0"+color,16));
+        drawable.setColor(Color.parseColor("#F0" + hexcode));
+        //falta cambiar en API
+
+        String url = "http://10.0.2.2:8080/api/devices/" + getIntent().getStringExtra("devId") + "/setColor";
+
+        JSONArray jarray = new JSONArray();
+        jarray.put(hexcode);
+
+        final JsonArrayRequest request = new JsonArrayRequest(Request.Method.PUT, url, jarray, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("mytag", "Error de response");
+                error.printStackTrace();
+
+            }
+        });
+        mQueue.add(request);
+    }
 }
