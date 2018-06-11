@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ColorPicker extends AppCompatDialogFragment {
     private EditText editTextCode;
@@ -33,6 +34,26 @@ public class ColorPicker extends AppCompatDialogFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        final AlertDialog dialog = (AlertDialog)getDialog();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String code = editTextCode.getText().toString();
+                if(code.length() != 6 || !code.matches("[0-9A-F]+")){
+                    Log.d("mytag", "ACA pondria letras en rojo");
+                    dialog.setTitle("Insert a valid 6 digit hexcode");
+                    
+                } else{
+                    listener.applyHex(code);
+                    dialog.dismiss();
+                }
+            }
+        });
+    }
+
+    @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -45,17 +66,19 @@ public class ColorPicker extends AppCompatDialogFragment {
 
             }
         });
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+       builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String code = editTextCode.getText().toString();
                 if(code.length() != 6 && !code.matches("[0-9A-F]+")){
-                    //mostrar letras en rojo o algo
-                    Log.d("mytag", "A la grande le puse CUCA");
+                    Log.d("mytag", "WRONG LISTENER inside if");
                 }
                 listener.applyHex(code);
+                Log.d("mytag", "WRONG LISTENER ");
             }
         });
+
         editTextCode = view.findViewById(R.id.edit_color);
         editTextCode.addTextChangedListener(new TextWatcher() {
             @Override
