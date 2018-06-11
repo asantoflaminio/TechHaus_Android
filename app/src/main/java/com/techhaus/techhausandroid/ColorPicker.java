@@ -42,9 +42,9 @@ public class ColorPicker extends AppCompatDialogFragment {
             public void onClick(View v) {
                 String code = editTextCode.getText().toString();
                 if(code.length() != 6 || !code.matches("[0-9A-F]+")){
-                    Log.d("mytag", "ACA pondria letras en rojo");
                     dialog.setTitle("Insert a valid 6 digit hexcode");
-                    
+
+
                 } else{
                     listener.applyHex(code);
                     dialog.dismiss();
