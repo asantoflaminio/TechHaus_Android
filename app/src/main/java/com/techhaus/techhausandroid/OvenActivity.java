@@ -41,6 +41,7 @@ public class OvenActivity extends AppCompatActivity {
     int check = 0;
     int check2 = 0;
     int check3 = 0;
+    int check4 = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,8 +103,11 @@ public class OvenActivity extends AppCompatActivity {
                 // do something, the isChecked will be
                 // true if the switch is in the On position
                 if(isChecked){
-                    Toast.makeText(OvenActivity.this, "Turned on", Toast.LENGTH_SHORT).show();
-                    changeStatus(deviceId, "/turnOn");
+                    if(++check4 > 1) {
+                        Toast.makeText(OvenActivity.this, "Turned on", Toast.LENGTH_SHORT).show();
+                        changeStatus(deviceId, "/turnOn");
+                    }
+
 
                 }else{
                     Toast.makeText(OvenActivity.this, "Turned off", Toast.LENGTH_SHORT).show();
@@ -205,6 +209,7 @@ public class OvenActivity extends AppCompatActivity {
                     if(status.equals("on")){
                         s.setChecked(true);
                     }else{
+                        check4++;
                         s.setChecked(false);
                     }
                     Log.d("mytag", "heat es" + heat);

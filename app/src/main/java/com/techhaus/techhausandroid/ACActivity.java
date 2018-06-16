@@ -42,6 +42,7 @@ public class ACActivity extends AppCompatActivity {
     int check2 = 0;
     int check3 = 0;
     int check4 = 0;
+    int check5 = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +69,11 @@ public class ACActivity extends AppCompatActivity {
                 // do something, the isChecked will be
                 // true if the switch is in the On position
                 if(isChecked){
-                    Toast.makeText(ACActivity.this, "Turned on", Toast.LENGTH_SHORT).show();
-                    changeStatus(deviceId, "/turnOn");
+                    if(++check5 > 1) {
+                        Toast.makeText(ACActivity.this, "Turned on", Toast.LENGTH_SHORT).show();
+                        changeStatus(deviceId, "/turnOn");
+                    }
+
 
                 }else{
                     Toast.makeText(ACActivity.this, "Turned off", Toast.LENGTH_SHORT).show();
@@ -166,6 +170,7 @@ public class ACActivity extends AppCompatActivity {
                     if(status.equals("on")){
                         s.setChecked(true);
                     }else{
+                        check5++;
                         s.setChecked(false);
                     }
 
