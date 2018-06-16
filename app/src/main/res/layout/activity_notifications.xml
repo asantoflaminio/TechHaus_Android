@@ -6,12 +6,55 @@
     android:layout_height="match_parent"
     tools:context=".NotificationsActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="EN NOTIF"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg"
+            android:orientation="vertical"
+            android:weightSum="10">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_weight="0.4">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar_notif"
+                    android:layout_width="match_parent"
+                    android:layout_height="61dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:background="#324a5e"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="@style/myToolbarTheme" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="228dp"
+                    android:layout_height="54dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="3dp"
+                    app:srcCompat="@drawable/barra" />
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/normal_notif"
+                android:layout_width="match_parent"
+                android:layout_height="17dp"
+                android:layout_weight="0.4"
+                android:onClick="showNotification"
+                android:text="show notif" />
+        </LinearLayout>
+    </ScrollView>
 
     <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
@@ -34,6 +77,7 @@
                 app:itemIconTint="@drawable/bottom_nav_colors"
                 app:itemTextColor="@drawable/bottom_nav_colors"
                 app:menu="@menu/bottom_navigation" />
+
         </RelativeLayout>
     </android.support.constraint.ConstraintLayout>
 
