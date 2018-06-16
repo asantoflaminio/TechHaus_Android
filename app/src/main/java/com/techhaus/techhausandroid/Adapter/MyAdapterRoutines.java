@@ -19,6 +19,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bignerdranch.expandablerecyclerview.Adapter.ExpandableRecyclerAdapter;
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
+import com.techhaus.techhausandroid.API;
 import com.techhaus.techhausandroid.Models.TitleChild;
 import com.techhaus.techhausandroid.Models.TitleParent;
 import com.techhaus.techhausandroid.NotificationsActivity;
@@ -40,7 +41,7 @@ public class MyAdapterRoutines extends ExpandableRecyclerAdapter<TitleParentView
 
     LayoutInflater inflater;
     private RequestQueue mQueue;
-    private RequestQueue mQueue2;
+   // private RequestQueue mQueue2;
 
     public MyAdapterRoutines(Context context, List<ParentObject> parentItemList) {
         super(context, parentItemList);
@@ -59,7 +60,7 @@ public class MyAdapterRoutines extends ExpandableRecyclerAdapter<TitleParentView
 
             @Override
             public void onClick(final View v) {
-                final String url = "http://10.0.2.2:8080/api/routines";
+                final String url = API.getRoutines();
                 final String rutName = rutNameView.getText().toString();
                 Toast.makeText(v.getContext(), rutName + " was played",
                         Toast.LENGTH_LONG).show();
@@ -112,8 +113,8 @@ public class MyAdapterRoutines extends ExpandableRecyclerAdapter<TitleParentView
     }
 
     private void executeRoutine(View v, String routID) {
-        mQueue2 = Volley.newRequestQueue(v.getContext());
-        String url = "http://10.0.2.2:8080/api/routines/" + routID + "/execute";
+       // mQueue2 = Volley.newRequestQueue(v.getContext());
+        String url = API.getRoutines() + routID + "/execute";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -128,7 +129,7 @@ public class MyAdapterRoutines extends ExpandableRecyclerAdapter<TitleParentView
             }
         });
 
-        mQueue2.add(request);
+        mQueue.add(request);
 
     }
 

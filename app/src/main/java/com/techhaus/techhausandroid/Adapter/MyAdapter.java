@@ -18,6 +18,7 @@ import com.android.volley.toolbox.Volley;
 import com.bignerdranch.expandablerecyclerview.Adapter.ExpandableRecyclerAdapter;
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 import com.techhaus.techhausandroid.ACActivity;
+import com.techhaus.techhausandroid.API;
 import com.techhaus.techhausandroid.AlarmActivity;
 import com.techhaus.techhausandroid.BlindActivity;
 import com.techhaus.techhausandroid.DoorActivity;
@@ -44,8 +45,8 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
 
     LayoutInflater inflater;
     private RequestQueue mQueue;
-    private RequestQueue mQueue2;
-    private RequestQueue mQueue3;
+   // private RequestQueue mQueue2;
+   // private RequestQueue mQueue3;
 
     public MyAdapter(Context context, List<ParentObject> parentItemList) {
         super(context, parentItemList);
@@ -57,7 +58,7 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
     public TitleParentViewHolder onCreateParentViewHolder(ViewGroup viewGroup) {
         View view = inflater.inflate(R.layout.list_devices, viewGroup, false);
         final ImageView heartIcon = (ImageView) view.findViewById(R.id.faveIcon);
-        final String url = "http://10.0.2.2:8080/api/devices";
+        final String url = API.getDevices();
         final TextView devNameView = (TextView) view.findViewById(R.id.parentTitle);
 
         mQueue = Volley.newRequestQueue(view.getContext());
@@ -198,8 +199,8 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
 
 
 
-                mQueue2 = Volley.newRequestQueue(v.getContext());
-                String url = "http://10.0.2.2:8080/api/devices/";
+               // mQueue2 = Volley.newRequestQueue(v.getContext());
+                String url = API.getDevices();
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -229,7 +230,7 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
                     }
                 });
 
-                mQueue2.add(request);
+                mQueue.add(request);
 
 
 
@@ -244,7 +245,7 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
     }
 
     private void unfaveDevice(final String name, final String meta, String devId, final String typeId) {
-        String url = "http://10.0.2.2:8080/api/devices/" + devId;
+        String url = API.getDevices() + devId;
         HashMap<String, String> mRequestParams = new HashMap<String, String>();
         mRequestParams.put("typeId",typeId);
         mRequestParams.put("name", name);
@@ -270,7 +271,7 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
     }
 
     private void faveDevice(final String name, final String meta, String devId, final String typeId) {
-        String url = "http://10.0.2.2:8080/api/devices/" + devId;
+        String url = API.getDevices() + devId;
         HashMap<String, String> mRequestParams = new HashMap<String, String>();
         mRequestParams.put("typeId",typeId);
         mRequestParams.put("name", name);
@@ -295,8 +296,8 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
     }
 
     private void openActivity(final View v, final String name, final String devId, final String typeId) {
-        mQueue3 = Volley.newRequestQueue(v.getContext());
-        String url = "http://10.0.2.2:8080/api/devicetypes";
+        //mQueue3 = Volley.newRequestQueue(v.getContext());
+        String url = API.getDeviceTypes();
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -366,7 +367,7 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
                 error.printStackTrace();
             }
         });
-        mQueue3.add(request);
+        mQueue.add(request);
 
     }
 
