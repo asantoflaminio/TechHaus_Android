@@ -87,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30sp"
                     android:layout_marginTop="25sp"
-                    android:text="Status"
+                    android:text="@string/Status"
                     android:textAlignment="viewStart"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -99,7 +99,7 @@
                     android:layout_marginStart="135sp"
                     android:layout_marginTop="25sp"
                     android:layout_weight="1"
-                    android:text="Loading..."
+                    android:text="@string/Loading"
                     android:textSize="20sp" />
 
                 <ImageView
@@ -130,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30sp"
                     android:layout_marginTop="25sp"
-                    android:text="Lock"
+                    android:text="@string/Lock"
                     android:textAlignment="viewStart"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -142,7 +142,7 @@
                     android:layout_marginStart="115sp"
                     android:layout_marginTop="25sp"
                     android:layout_weight="1"
-                    android:text="Loading..."
+                    android:text="@string/Loading"
                     android:textSize="20sp" />
 
                 <ImageView

@@ -88,7 +88,7 @@
                     android:layout_marginRight="10sp"
                     android:layout_marginTop="25sp"
                     android:layout_weight="1"
-                    android:text="Status"
+                    android:text="@string/Status"
                     android:textColor="#6f6f6f"
                     android:textOff="Off"
                     android:textOn="On"
@@ -111,7 +111,7 @@
 
                     android:layout_marginLeft="30sp"
                     android:layout_marginTop="25sp"
-                    android:text="Temperature"
+                    android:text="@string/Temperature"
                     android:textAlignment="inherit"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -170,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30sp"
                     android:layout_marginTop="30sp"
-                    android:text="Mode"
+                    android:text="@string/Mode"
                     android:textAlignment="viewStart"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -199,7 +199,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30sp"
                     android:layout_marginTop="10sp"
-                    android:text="Fan Speed"
+                    android:text="@string/FanSpeed"
                     android:textAlignment="viewStart"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -229,7 +229,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30sp"
                     android:layout_marginTop="10sp"
-                    android:text="Vertical Swing"
+                    android:text="@string/VSwing"
                     android:textAlignment="viewStart"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -259,7 +259,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30sp"
                     android:layout_marginTop="10sp"
-                    android:text="Horizontal Swing"
+                    android:text="@string/HSwing"
                     android:textAlignment="viewStart"
                     android:textSize="20sp"
                     android:textStyle="bold" />

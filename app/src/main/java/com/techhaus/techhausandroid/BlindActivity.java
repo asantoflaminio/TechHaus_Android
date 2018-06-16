@@ -55,14 +55,14 @@ public class BlindActivity extends AppCompatActivity {
                     upDownIcon.setImageResource(R.drawable.blind_up);
                     upDownIcon.setTag(Integer.valueOf(R.drawable.blind_up));
                     TextView what = (TextView) findViewById(R.id.textView4);
-                    what.setText("Up");
+                    what.setText(getString(R.string.Up));
                     changeBlindState("up", getIntent().getStringExtra("devId"));
                 }else{
                     //la quiero cerrar
                     upDownIcon.setImageResource(R.drawable.blind_down);
                     upDownIcon.setTag(Integer.valueOf(R.drawable.blind_down));
                     TextView what = (TextView) findViewById(R.id.textView4);
-                    what.setText("Down");
+                    what.setText(getString(R.string.Down));
                     changeBlindState("down", getIntent().getStringExtra("devId"));
                 }
             }
@@ -85,10 +85,10 @@ public class BlindActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected (MenuItem item) {
         String from = getIntent().getStringExtra("from");
         Intent intent = new Intent(BlindActivity.this, ActivityOne.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        if(from.equals("Favorites")){
-            intent.putExtra("info", "Favorites");
+        if(from.equals(getString(R.string.Favorites))){
+            intent.putExtra("info", getString(R.string.Favorites));
         }else{
-            intent.putExtra("info", "Blinds");
+            intent.putExtra("info", getString(R.string.Blinds));
         }
 
 
@@ -138,12 +138,11 @@ public class BlindActivity extends AppCompatActivity {
                     if(status.equals("closing") || status.equals("closed")){
                         //imagen blind down
                         //tag de cerrado/down
-                        Log.d("mytag", "ESTA DOWN");
                         ImageView icon = (ImageView) findViewById(R.id.UpDownIcon);
                         TextView what = (TextView) findViewById(R.id.textView4);
                         icon.setImageResource(R.drawable.blind_down);
                         icon.setTag(Integer.valueOf(R.drawable.blind_down));
-                        what.setText("Down");
+                        what.setText(getString(R.string.Down));
                     }else{
                         //imagen de blind up
                         //tag de up
@@ -151,7 +150,7 @@ public class BlindActivity extends AppCompatActivity {
                         icon.setImageResource(R.drawable.blind_up);
                         icon.setTag(Integer.valueOf(R.drawable.blind_up));
                         TextView what = (TextView) findViewById(R.id.textView4);
-                        what.setText("Up");
+                        what.setText(getString(R.string.Up));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

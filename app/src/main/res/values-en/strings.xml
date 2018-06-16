@@ -27,4 +27,25 @@
     <string name="AlreadyDisarmed">Alarm already disarmed</string>
     <string name="AlreadyAway">Alarm already in armAway mode</string>
     <string name="AlreadyStay">Alarm already in armStay mode</string>
+    <string name="TempAtMax">Temperature is at maximum value</string>
+    <string name="TempAtMin">Temperature is at minimum value</string>
+    <string name="Mode">Mode</string>
+    <string name="Temperature">Temperature</string>
+    <string name="FanSpeed">Fan Speed</string>
+    <string name="VSwing">Vertical Swing</string>
+    <string name="HSwing">Horizontal Swing</string>
+    <string name="TurnedOn">Turned on</string>
+    <string name="TurnedOff">Turned off</string>
+    <string name="Down">Down</string>
+    <string name="Up">Up</string>
+    <string name="Closed">Closed</string>
+    <string name="Open">Open</string>
+    <string name="Locked">Locked</string>
+    <string name="Unlocked">Unlocked</string>
+    <string name="Lock">Lock</string>
+    <string name="DoorClosedFirst">Door must be closed first</string>
+    <string name="DoorUnlockedFirst">Door must be unlocked first</string>
+    <string name="Brightness">Brightness</string>
+    <string name="ChangeColor">Change Color</string>
+
 </resources>

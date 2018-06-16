@@ -25,6 +25,27 @@
     <string name="Cancel">Cancelar</string>
     <string name="EnterCode">Ingresar Código</string>
     <string name="AlreadyDisarmed">Alarma ya está desarmada</string>
-    <string name="AlreadyAway">Alarm ya está en modo armAway</string>
+    <string name="AlreadyAway">Alarma ya está en modo armAway</string>
     <string name="AlreadyStay">Alarma ya está en modo armStay</string>
+    <string name="TempAtMax">Temperatura está al máximo</string>
+    <string name="TempAtMin">Temperatura está al mínimo</string>
+    <string name="Mode">Mode</string>
+    <string name="Temperature">Temperatura</string>
+    <string name="FanSpeed">Velocidad</string>
+    <string name="VSwing">Swing Vertical</string>
+    <string name="HSwing">Swing Horizontal</string>
+    <string name="TurnedOn">Encendido</string>
+    <string name="TurnedOff">Apagado</string>
+    <string name="Down">Cerrada</string>
+    <string name="Up">Abierta</string>
+    <string name="Closed">Cerrada</string>
+    <string name="Open">Abierta</string>
+    <string name="Locked">Trabada</string>
+    <string name="Unlocked">Destrabada</string>
+    <string name="Lock">Traba</string>
+    <string name="DoorClosedFirst">La puerta debe estar cerrada</string>
+    <string name="DoorUnlockedFirst">La puerta debe estar destrabada</string>
+    <string name="Brightness">Brillo</string>
+    <string name="ChangeColor">Cambiar Color</string>
+
 </resources>

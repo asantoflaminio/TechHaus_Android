@@ -89,7 +89,7 @@
                     android:layout_marginRight="10sp"
                     android:layout_marginTop="25sp"
                     android:layout_weight="1"
-                    android:text="Status"
+                    android:text="@string/Status"
                     android:textColor="#6f6f6f"
                     android:textOff="Off"
                     android:textOn="On"
@@ -110,7 +110,7 @@
                     android:layout_marginLeft="30sp"
                     android:layout_marginTop="25sp"
                     android:layout_weight="1"
-                    android:text="Brightness"
+                    android:text="@string/Brightness"
                     android:textStyle="bold"
                     android:textSize="20sp" />
 
@@ -160,7 +160,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
-                android:text="Change Color"
+                android:text="@string/ChangeColor"
                 android:theme="@style/PasswordButton" />
 
 

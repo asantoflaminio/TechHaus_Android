@@ -75,13 +75,13 @@ public class LampActivity extends AppCompatActivity implements  ColorPicker.Colo
 
                     if(isChecked){
                         if(++check > 1){
-                            Toast.makeText(LampActivity.this, "Turned on", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LampActivity.this, getString(R.string.TurnedOn), Toast.LENGTH_SHORT).show();
                         }
                         changeStatus(deviceId, "/turnOn");
 
                     }else{
                         if(++check > 1){
-                            Toast.makeText(LampActivity.this, "Turned off", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LampActivity.this, getString(R.string.TurnedOff), Toast.LENGTH_SHORT).show();
                         }
                         changeStatus(deviceId, "/turnOff");
                     }
@@ -132,10 +132,10 @@ public class LampActivity extends AppCompatActivity implements  ColorPicker.Colo
     public boolean onOptionsItemSelected (MenuItem item) {
         String from = getIntent().getStringExtra("from");
         Intent intent = new Intent(LampActivity.this, ActivityOne.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        if(from.equals("Favorites")){
-            intent.putExtra("info", "Favorites");
+        if(from.equals(getString(R.string.Favorites))){
+            intent.putExtra("info", getString(R.string.Favorites));
         }else{
-            intent.putExtra("info", "Lamps");
+            intent.putExtra("info", getString(R.string.Lamps));
         }
 
 

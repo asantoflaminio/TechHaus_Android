@@ -56,12 +56,12 @@ public class DoorActivity extends AppCompatActivity {
                     TextView what = (TextView) findViewById(R.id.textView5);
                     ImageView lockIcon =(ImageView) findViewById(R.id.lockIcon);
                     if(!lockIcon.getTag().equals(Integer.valueOf(R.drawable.locked_inside))){
-                        what.setText("Open");
+                        what.setText(getString(R.string.Open));
                         openClosedIcon.setImageResource(R.drawable.open);
                         openClosedIcon.setTag(Integer.valueOf(R.drawable.open));
                         changeDoorState("open", getIntent().getStringExtra("devId"));
                     }else{
-                        Toast.makeText(v.getContext(), "Door must be unlocked first", Toast.LENGTH_LONG).show();
+                        Toast.makeText(v.getContext(), getString(R.string.DoorUnlockedFirst), Toast.LENGTH_LONG).show();
                     }
 
                 }else{
@@ -69,7 +69,7 @@ public class DoorActivity extends AppCompatActivity {
                     openClosedIcon.setImageResource(R.drawable.closed);
                     openClosedIcon.setTag(Integer.valueOf(R.drawable.closed));
                     TextView what = (TextView) findViewById(R.id.textView5);
-                    what.setText("Closed");
+                    what.setText(getString(R.string.Closed));
                     changeDoorState("close", getIntent().getStringExtra("devId"));
                 }
             }
@@ -88,7 +88,7 @@ public class DoorActivity extends AppCompatActivity {
                     //la quiero abrir
 
                     TextView what = (TextView) findViewById(R.id.textView6);
-                        what.setText("Unlocked");
+                        what.setText(getString(R.string.Unlocked));
                         lockIcon.setImageResource(R.drawable.unlocked_inside);
                         lockIcon.setTag(Integer.valueOf(R.drawable.unlocked_inside));
                         changeDoorState("unlock", getIntent().getStringExtra("devId"));
@@ -101,10 +101,10 @@ public class DoorActivity extends AppCompatActivity {
                         lockIcon.setImageResource(R.drawable.locked_inside);
                         lockIcon.setTag(Integer.valueOf(R.drawable.locked_inside));
                         TextView what = (TextView) findViewById(R.id.textView6);
-                        what.setText("Locked");
+                        what.setText(getString(R.string.Locked));
                         changeDoorState("lock", getIntent().getStringExtra("devId"));
                     }else{
-                        Toast.makeText(v.getContext(), "Door must be closed first", Toast.LENGTH_LONG).show();
+                        Toast.makeText(v.getContext(), getString(R.string.DoorClosedFirst), Toast.LENGTH_LONG).show();
                     }
 
                 }
@@ -128,10 +128,10 @@ public class DoorActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected (MenuItem item) {
         String from = getIntent().getStringExtra("from");
         Intent intent = new Intent(DoorActivity.this, ActivityOne.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        if(from.equals("Favorites")){
-            intent.putExtra("info", "Favorites");
+        if(from.equals(getString(R.string.Favorites))){
+            intent.putExtra("info", getString(R.string.Favorites));
         }else{
-            intent.putExtra("info", "Doors");
+            intent.putExtra("info", getString(R.string.Doors));
         }
 
         startActivity(intent);
@@ -182,7 +182,7 @@ public class DoorActivity extends AppCompatActivity {
                         TextView what = (TextView) findViewById(R.id.textView5);
                         icon.setImageResource(R.drawable.closed);
                         icon.setTag(Integer.valueOf(R.drawable.closed));
-                        what.setText("Closed");
+                        what.setText(getString(R.string.Closed));
                     }else{
                         //imagen de blind up
                         //tag de up
@@ -190,20 +190,20 @@ public class DoorActivity extends AppCompatActivity {
                         icon.setImageResource(R.drawable.open);
                         icon.setTag(Integer.valueOf(R.drawable.open));
                         TextView what = (TextView) findViewById(R.id.textView5);
-                        what.setText("Open");
+                        what.setText(getString(R.string.Open));
                     }
                     if(lock.equals("locked")){
                         ImageView icon = (ImageView) findViewById(R.id.lockIcon);
                         TextView what = (TextView) findViewById(R.id.textView6);
                         icon.setImageResource(R.drawable.locked_inside);
                         icon.setTag(Integer.valueOf(R.drawable.locked_inside));
-                        what.setText("Locked");
+                        what.setText(getString(R.string.Locked));
                     }else{
                         ImageView icon = (ImageView) findViewById(R.id.lockIcon);
                         TextView what = (TextView) findViewById(R.id.textView6);
                         icon.setImageResource(R.drawable.unlocked_inside);
                         icon.setTag(Integer.valueOf(R.drawable.unlocked_inside));
-                        what.setText("Unlocked");
+                        what.setText(getString(R.string.Unlocked));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

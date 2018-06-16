@@ -70,13 +70,13 @@ public class ACActivity extends AppCompatActivity {
                 // true if the switch is in the On position
                 if(isChecked){
                     if(++check5 > 1) {
-                        Toast.makeText(ACActivity.this, "Turned on", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ACActivity.this, getString(R.string.TurnedOn), Toast.LENGTH_SHORT).show();
                         changeStatus(deviceId, "/turnOn");
                     }
 
 
                 }else{
-                    Toast.makeText(ACActivity.this, "Turned off", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ACActivity.this, getString(R.string.TurnedOff), Toast.LENGTH_SHORT).show();
                     changeStatus(deviceId, "/turnOff");
                 }
             }
@@ -90,7 +90,7 @@ public class ACActivity extends AppCompatActivity {
                 TextView tmp = (TextView) findViewById(R.id.TempNumb);
                 int temp = Integer.valueOf(tmp.getText().toString().replace("°", "").replace("C", ""));
                 if(temp == 18){
-                    Toast.makeText(ACActivity.this, "Temperature is at minimum value", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ACActivity.this, getString(R.string.TempAtMin), Toast.LENGTH_SHORT).show();
 
                 }else{
                     temp = temp-1;
@@ -108,7 +108,7 @@ public class ACActivity extends AppCompatActivity {
                 TextView tmp = (TextView) findViewById(R.id.TempNumb);
                 int temp = Integer.valueOf(tmp.getText().toString().replace("°", "").replace("C", ""));
                 if(temp ==  38){
-                    Toast.makeText(ACActivity.this, "Temperature is at maximum value", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ACActivity.this, getString(R.string.TempAtMax), Toast.LENGTH_SHORT).show();
 
                 }else{
                     temp = temp+1;
@@ -135,10 +135,10 @@ public class ACActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected (MenuItem item) {
         String from = getIntent().getStringExtra("from");
         Intent intent = new Intent(ACActivity.this, ActivityOne.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        if(from.equals("Favorites")){
-            intent.putExtra("info", "Favorites");
+        if(from.equals(getString(R.string.Favorites))){
+            intent.putExtra("info", getString(R.string.Favorites));
         }else{
-            intent.putExtra("info", "ACs");
+            intent.putExtra("info", getString(R.string.ACs));
         }
 
         startActivity(intent);
@@ -165,7 +165,7 @@ public class ACActivity extends AppCompatActivity {
 
                     TextView temp1 = (TextView) findViewById(R.id.TempNumb);
                     temp1.setText(temp + "°C");
-                    Log.d("mytag", "status es " + status);
+
                     Switch s = (Switch) findViewById(R.id.switch2);
                     if(status.equals("on")){
                         s.setChecked(true);
