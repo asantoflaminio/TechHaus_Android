@@ -128,9 +128,14 @@ public class OvenActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected (MenuItem item) {
-
+        String from = getIntent().getStringExtra("from");
         Intent intent = new Intent(OvenActivity.this, ActivityOne.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("info", "Ovens");
+        if(from.equals("Favorites")){
+            intent.putExtra("info", "Favorites");
+        }else{
+            intent.putExtra("info", "Ovens");
+        }
+
         startActivity(intent);
 
         return true;

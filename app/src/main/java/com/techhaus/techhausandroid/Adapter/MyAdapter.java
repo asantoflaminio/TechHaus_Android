@@ -295,6 +295,9 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
             public void onResponse(JSONObject response) {
                 JSONArray jsonArray = null;
                 try {
+                    TextView tv = (TextView ) v.getRootView().findViewById(R.id.txtInfo);
+                    Log.d("mytag", "Vengo de "+ tv.getText() );
+                    String from =  tv.getText().toString();
                     jsonArray = response.getJSONArray("devices");
                     for(int i = 0; i < jsonArray.length(); i++){
                         JSONObject type = jsonArray.getJSONObject(i);
@@ -305,36 +308,42 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
                                 intent2.putExtra("devName", name);
                                 intent2.putExtra("typeId", typeId);
                                 intent2.putExtra("devId", devId);
+                                intent2.putExtra("from", from);
                                 v.getContext().startActivity(intent2);
                             }else if(typeName.equals("alarm")){
                                 Intent intent2 = new Intent(v.getContext(), AlarmActivity.class);
                                 intent2.putExtra("devName", name);
                                 intent2.putExtra("typeId", typeId);
                                 intent2.putExtra("devId", devId);
+                                intent2.putExtra("from", from);
                                 v.getContext().startActivity(intent2);
                             }else if(typeName.equals("refrigerator")){
                                 Intent intent2 = new Intent(v.getContext(), RefrigeratorActivity.class);
                                 intent2.putExtra("devName", name);
                                 intent2.putExtra("typeId", typeId);
                                 intent2.putExtra("devId", devId);
+                                intent2.putExtra("from", from);
                                 v.getContext().startActivity(intent2);
                             }else if(typeName.equals("lamp")){
                                 Intent intent2 = new Intent(v.getContext(), LampActivity.class);
                                 intent2.putExtra("devName", name);
                                 intent2.putExtra("typeId", typeId);
                                 intent2.putExtra("devId", devId);
+                                intent2.putExtra("from", from);
                                 v.getContext().startActivity(intent2);
                             }else if(typeName.equals("ac")){
                                 Intent intent2 = new Intent(v.getContext(), ACActivity.class);
                                 intent2.putExtra("devName", name);
                                 intent2.putExtra("typeId", typeId);
                                 intent2.putExtra("devId", devId);
+                                intent2.putExtra("from", from);
                                 v.getContext().startActivity(intent2);
                             }else if(typeName.equals("door")){
                                 Intent intent2 = new Intent(v.getContext(), DoorActivity.class);
                                 intent2.putExtra("devName", name);
                                 intent2.putExtra("typeId", typeId);
                                 intent2.putExtra("devId", devId);
+                                intent2.putExtra("from", from);
                                 v.getContext().startActivity(intent2);
                             }else{
                                 //es oven
@@ -342,6 +351,7 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
                                 intent2.putExtra("devName", name);
                                 intent2.putExtra("typeId", typeId);
                                 intent2.putExtra("devId", devId);
+                                intent2.putExtra("from", from);
                                 v.getContext().startActivity(intent2);
                             }
                         }

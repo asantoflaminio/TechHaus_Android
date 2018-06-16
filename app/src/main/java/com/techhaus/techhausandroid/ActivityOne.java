@@ -36,7 +36,7 @@ public class ActivityOne extends AppCompatActivity {
     RecyclerView recyclerView;
     List<TitleParent> _titleParents;
     private RequestQueue mQueue;
-    //private RequestQueue mQueue2;
+    private RequestQueue mQueue2;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {

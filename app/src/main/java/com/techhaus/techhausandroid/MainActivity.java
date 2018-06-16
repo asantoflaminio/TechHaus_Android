@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(MainActivity.this, ActivityOne.class);
                     if(finalI == 0){
-                        intent.putExtra("info", "Favorite devices");
+                        intent.putExtra("info", "Favorites");
                     }else if(finalI == 1){
                         intent.putExtra("info", "Alarms");
                     }else if(finalI == 2){

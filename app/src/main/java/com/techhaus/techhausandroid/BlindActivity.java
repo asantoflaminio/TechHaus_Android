@@ -83,9 +83,15 @@ public class BlindActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected (MenuItem item) {
-
+        String from = getIntent().getStringExtra("from");
         Intent intent = new Intent(BlindActivity.this, ActivityOne.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("info", "Blinds");
+        if(from.equals("Favorites")){
+            intent.putExtra("info", "Favorites");
+        }else{
+            intent.putExtra("info", "Blinds");
+        }
+
+
         startActivity(intent);
 
         return true;

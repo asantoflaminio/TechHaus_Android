@@ -250,9 +250,14 @@ public class AlarmActivity extends AppCompatActivity implements  CodeDialog.Code
 
     @Override
     public boolean onOptionsItemSelected (MenuItem item) {
-
+        String from = getIntent().getStringExtra("from");
         Intent intent = new Intent(AlarmActivity.this, ActivityOne.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("info", "Alarms");
+        if(from.equals("Favorites")){
+            intent.putExtra("info", "Favorites");
+        }else{
+            intent.putExtra("info", "Alarms");
+        }
+
         startActivity(intent);
 
         return true;

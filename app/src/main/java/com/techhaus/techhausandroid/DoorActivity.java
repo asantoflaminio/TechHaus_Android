@@ -126,9 +126,14 @@ public class DoorActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected (MenuItem item) {
-
+        String from = getIntent().getStringExtra("from");
         Intent intent = new Intent(DoorActivity.this, ActivityOne.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("info", "Doors");
+        if(from.equals("Favorites")){
+            intent.putExtra("info", "Favorites");
+        }else{
+            intent.putExtra("info", "Doors");
+        }
+
         startActivity(intent);
 
         return true;

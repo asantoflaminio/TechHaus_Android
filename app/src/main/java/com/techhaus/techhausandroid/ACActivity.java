@@ -129,9 +129,14 @@ public class ACActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected (MenuItem item) {
-
+        String from = getIntent().getStringExtra("from");
         Intent intent = new Intent(ACActivity.this, ActivityOne.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("info", "ACs");
+        if(from.equals("Favorites")){
+            intent.putExtra("info", "Favorites");
+        }else{
+            intent.putExtra("info", "ACs");
+        }
+
         startActivity(intent);
 
         return true;
