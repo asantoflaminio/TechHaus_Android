@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -60,6 +62,7 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
         final ImageView heartIcon = (ImageView) view.findViewById(R.id.faveIcon);
         final String url = API.getDevices();
         final TextView devNameView = (TextView) view.findViewById(R.id.parentTitle);
+        final RelativeLayout relativeLay = (RelativeLayout) view.findViewById(R.id.rel_lay);
 
         mQueue = Volley.newRequestQueue(view.getContext());
 
@@ -186,20 +189,14 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
         });
 
 
-
-
-
-
-        ImageView expandIcon = (ImageView) view.findViewById(R.id.expandArrow);
-        expandIcon.setOnClickListener(new View.OnClickListener() {
-
+        relativeLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 final String devName = devNameView.getText().toString();
 
 
 
-               // mQueue2 = Volley.newRequestQueue(v.getContext());
+                // mQueue2 = Volley.newRequestQueue(v.getContext());
                 String url = API.getDevices();
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
@@ -231,15 +228,10 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
                 });
 
                 mQueue.add(request);
-
-
-
-
-
-
-
             }
         });
+
+
 
         return new TitleParentViewHolder(view);
     }
@@ -374,6 +366,7 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
     @Override
     public TitleChildViewHolder onCreateChildViewHolder(ViewGroup viewGroup) {
         View view = inflater.inflate(R.layout.list_child, viewGroup, false);
+
         return new TitleChildViewHolder(view);
     }
 

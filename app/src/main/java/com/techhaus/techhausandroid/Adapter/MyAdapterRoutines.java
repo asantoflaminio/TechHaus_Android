@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +57,8 @@ public class MyAdapterRoutines extends ExpandableRecyclerAdapter<TitleParentView
         View view = inflater.inflate(R.layout.list_routines, viewGroup, false);
         ImageView playIcon = (ImageView) view.findViewById(R.id.playRoutine);
         final TextView rutNameView = (TextView) view.findViewById(R.id.parentTitle);
+        final RelativeLayout relativeLay = (RelativeLayout) view.findViewById(R.id.rel_lay);
+
         playIcon.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -96,19 +99,17 @@ public class MyAdapterRoutines extends ExpandableRecyclerAdapter<TitleParentView
             }
         });
 
-        ImageView expandIcon = (ImageView) view.findViewById(R.id.expandArrow);
-        expandIcon.setOnClickListener(new View.OnClickListener() {
-
+        relativeLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String rutName = rutNameView.getText().toString();
                 Intent intent2 = new Intent(v.getContext(), RoutActivity.class);
                 intent2.putExtra("rutName", rutName);
                 v.getContext().startActivity(intent2);
-
-
             }
         });
+
+
         return new TitleParentViewHolder(view);
     }
 

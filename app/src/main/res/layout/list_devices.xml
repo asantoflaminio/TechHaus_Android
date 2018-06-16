@@ -8,6 +8,7 @@
     android:layout_height="wrap_content">
     
     <RelativeLayout
+        android:id="@+id/rel_lay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -15,7 +16,7 @@
             android:id="@+id/faveIcon"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_margin="8dp"
             android:src="@drawable/heart_unfilled"
             android:visibility="visible" />
@@ -30,14 +31,7 @@
             android:textSize="20dp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/expandArrow"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_margin="8dp"
-            android:src="@drawable/expandearrow"
-            android:visibility="visible" />
+
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>
