@@ -88,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30sp"
                     android:layout_marginTop="25sp"
-                    android:text="Status   "
+                    android:text="@string/Status"
                     android:textAlignment="viewStart"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -100,7 +100,7 @@
                     android:layout_marginStart="110sp"
                     android:layout_marginTop="25sp"
                     android:layout_weight="1"
-                    android:text="Loading..."
+                    android:text="@string/Loading"
                     android:textSize="20sp" />
 
                 <ImageView
@@ -130,7 +130,7 @@
                     android:id="@+id/passButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Change Code"
+                    android:text="@string/ChangeCode"
                     android:theme="@style/PasswordButton" />
 
             </LinearLayout>
@@ -172,7 +172,7 @@
                     android:id="@+id/button6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Disarm"
+                    android:text="@string/Disarm"
                     android:theme="@style/PasswordButton" />
 
             </LinearLayout>

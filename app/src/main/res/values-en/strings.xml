@@ -16,4 +16,15 @@
     <string name="Tasks">Tasks:   </string>
     <string name="Loading">Loading...</string>
     <string name="WasPlayed">was played</string>
+    <string name="Status">Status</string>
+    <string name="ChangeCode">Change Code</string>
+    <string name="Disarm">Disarm</string>
+    <string name="Code">Code</string>
+    <string name="NewCode">New Code</string>
+    <string name="OldCode">Old Code</string>
+    <string name="Cancel">Cancel</string>
+    <string name="EnterCode">Enter Code</string>
+    <string name="AlreadyDisarmed">Alarm already disarmed</string>
+    <string name="AlreadyAway">Alarm already in armAway mode</string>
+    <string name="AlreadyStay">Alarm already in armStay mode</string>
 </resources>

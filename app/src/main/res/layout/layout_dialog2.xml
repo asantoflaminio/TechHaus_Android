@@ -10,7 +10,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="19dp"
-        android:hint="Old code"
+        android:hint="@string/OldCode"
         android:inputType="textPassword" />
 
     <EditText
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/edit_oldcode"
         android:layout_centerHorizontal="true"
-        android:hint="New code"
+        android:hint="@string/NewCode"
         android:inputType="textPassword" />
 
 </RelativeLayout>

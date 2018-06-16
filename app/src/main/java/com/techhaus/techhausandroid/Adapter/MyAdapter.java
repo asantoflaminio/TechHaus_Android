@@ -312,6 +312,7 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
                                 v.getContext().startActivity(intent2);
                             }else if(typeName.equals("alarm")){
                                 Intent intent2 = new Intent(v.getContext(), AlarmActivity.class);
+                                Log.d("newtag", "En myadapter from vale " + from);
                                 intent2.putExtra("devName", name);
                                 intent2.putExtra("typeId", typeId);
                                 intent2.putExtra("devId", devId);

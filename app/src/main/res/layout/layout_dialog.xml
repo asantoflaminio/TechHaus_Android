@@ -7,7 +7,7 @@
         android:id="@+id/edit_code"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Code"
+        android:hint="@string/Code"
         android:inputType="textPassword"/>
 
 

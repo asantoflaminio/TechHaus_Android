@@ -129,7 +129,7 @@ public class AlarmActivity extends AppCompatActivity implements  CodeDialog.Code
             public void onClick(View v) {
                 TextView what = (TextView) findViewById(R.id.textView2);
                 if(what.getText().equals("disarmed")){
-                    Toast.makeText(v.getContext(), "Alarm already disarmed", Toast.LENGTH_LONG).show();
+                    Toast.makeText(v.getContext(), getString(R.string.AlreadyDisarmed), Toast.LENGTH_LONG).show();
                 }else{
                     action = "DISARM";
                     openDialog();
@@ -144,7 +144,7 @@ public class AlarmActivity extends AppCompatActivity implements  CodeDialog.Code
             public void onClick(View v) {
                 TextView what = (TextView) findViewById(R.id.textView2);
                 if(what.getText().equals("armedAway")){
-                    Toast.makeText(v.getContext(), "Alarm already in armAway mode", Toast.LENGTH_LONG).show();
+                    Toast.makeText(v.getContext(), getString(R.string.AlreadyAway), Toast.LENGTH_LONG).show();
                 }else{
                     action = "ARMAWAY";
                     openDialog();
@@ -159,7 +159,7 @@ public class AlarmActivity extends AppCompatActivity implements  CodeDialog.Code
             public void onClick(View v) {
                 TextView what = (TextView) findViewById(R.id.textView2);
                 if(what.getText().equals("armedStay")){
-                    Toast.makeText(v.getContext(), "Alarm already in armStay mode", Toast.LENGTH_LONG).show();
+                    Toast.makeText(v.getContext(), getString(R.string.AlreadyStay), Toast.LENGTH_LONG).show();
                 }else{
                     action = "ARMSTAY";
                     openDialog();
@@ -251,11 +251,12 @@ public class AlarmActivity extends AppCompatActivity implements  CodeDialog.Code
     @Override
     public boolean onOptionsItemSelected (MenuItem item) {
         String from = getIntent().getStringExtra("from");
+        Log.d("newtag", "En alarmActivty from vale " + from);
         Intent intent = new Intent(AlarmActivity.this, ActivityOne.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        if(from.equals("Favorites")){
-            intent.putExtra("info", "Favorites");
+        if(from.equals(getString(R.string.Favorites))){
+            intent.putExtra("info", getString(R.string.Favorites));
         }else{
-            intent.putExtra("info", "Alarms");
+            intent.putExtra("info", getString(R.string.Alarms));
         }
 
         startActivity(intent);

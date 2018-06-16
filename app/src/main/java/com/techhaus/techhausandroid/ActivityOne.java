@@ -104,22 +104,22 @@ public class ActivityOne extends AppCompatActivity {
 
     private void processResponse(JSONObject response) throws JSONException {
         String info = getIntent().getStringExtra("info");
-
+        Log.d("newtag", "En activityOne info vale " + info);
         String searchId = "";
         JSONArray jsonArray = response.getJSONArray("devices");
-        if(info.equals("Alarms")){
+        if(info.equals(getString(R.string.Alarms))){
             searchId = "alarm" ;
-        }else if(info.equals("Lamps")){
+        }else if(info.equals(getString(R.string.Lamps))){
             searchId = "lamp";
-        }else if(info.equals("Blinds")){
+        }else if(info.equals(getString(R.string.Blinds))){
             searchId = "blind";
-        }else if(info.equals("Doors")){
+        }else if(info.equals(getString(R.string.Doors))){
             searchId = "door";
-        }else if(info.equals("ACs")){
+        }else if(info.equals(getString(R.string.ACs))){
             searchId = "ac";
-        }else if(info.equals("Refrigerators")){
+        }else if(info.equals(getString(R.string.Refrigerators))){
             searchId = "refrigerator";
-        }else if(info.equals("Ovens")){
+        }else if(info.equals(getString(R.string.Ovens))){
             searchId = "oven";
         }else{
             searchId = "faves";

@@ -68,21 +68,21 @@ public class MainActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(MainActivity.this, ActivityOne.class);
                     if(finalI == 0){
-                        intent.putExtra("info", "Favorites");
+                        intent.putExtra("info", getString(R.string.Favorites));
                     }else if(finalI == 1){
-                        intent.putExtra("info", "Alarms");
+                        intent.putExtra("info", getString(R.string.Alarms));
                     }else if(finalI == 2){
-                        intent.putExtra("info", "Lamps");
+                        intent.putExtra("info", getString(R.string.Lamps));
                     }else if(finalI == 3){
-                        intent.putExtra("info", "Blinds");
+                        intent.putExtra("info", getString(R.string.Blinds));
                     }else if(finalI == 4){
-                        intent.putExtra("info", "Doors");
+                        intent.putExtra("info", getString(R.string.Doors));
                     }else if(finalI == 5){
-                        intent.putExtra("info", "ACs");
+                        intent.putExtra("info", getString(R.string.ACs));
                     }else if(finalI == 6){
-                        intent.putExtra("info", "Refrigerators");
+                        intent.putExtra("info", getString(R.string.Refrigerators));
                     }else {
-                        intent.putExtra("info", "Ovens");
+                        intent.putExtra("info", getString(R.string.Ovens));
                     }
 
 

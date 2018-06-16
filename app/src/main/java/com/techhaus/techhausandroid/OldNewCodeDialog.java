@@ -32,8 +32,8 @@ public class OldNewCodeDialog extends AppCompatDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.layout_dialog2, null);
         builder.setView(view);
-        builder.setTitle("Change code");
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setTitle(R.string.ChangeCode);
+        builder.setNegativeButton(R.string.Cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 

@@ -16,4 +16,15 @@
     <string name="Tasks">Tareas:   </string>
     <string name="Loading">Cargando...</string>
     <string name="WasPlayed">fue ejecutada</string>
+    <string name="Status">Estado</string>
+    <string name="ChangeCode">Cambiar Código</string>
+    <string name="Disarm">Desarmar</string>
+    <string name="Code">Código</string>
+    <string name="NewCode">Nuevo Código</string>
+    <string name="OldCode">Viejo Código</string>
+    <string name="Cancel">Cancelar</string>
+    <string name="EnterCode">Ingresar Código</string>
+    <string name="AlreadyDisarmed">Alarma ya está desarmada</string>
+    <string name="AlreadyAway">Alarm ya está en modo armAway</string>
+    <string name="AlreadyStay">Alarma ya está en modo armStay</string>
 </resources>
