@@ -46,7 +46,7 @@ public class AlarmActivity extends AppCompatActivity implements  CodeDialog.Code
     }
 
     private void executeAction(final String id, String code, String s) {
-        String url = "http://10.0.2.2:8080/api/devices/" + id + s;
+        String url = API.getDevices() + id + s;
         JSONArray jarray = new JSONArray();
         jarray.put(code);
         final JsonArrayRequest request = new JsonArrayRequest(Request.Method.PUT, url, jarray, new Response.Listener<JSONArray>() {
@@ -70,7 +70,7 @@ public class AlarmActivity extends AppCompatActivity implements  CodeDialog.Code
     }
 
     private void changeCode(final String id, String oldCode, String newCode) {
-        String url = "http://10.0.2.2:8080/api/devices/" + id + "/changeSecurityCode";
+        String url = API.getDevices() + id + "/changeSecurityCode";
         JSONArray jarray = new JSONArray();
         jarray.put(oldCode);
         jarray.put(newCode);

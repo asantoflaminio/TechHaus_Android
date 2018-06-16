@@ -36,7 +36,7 @@ public class ActivityOne extends AppCompatActivity {
     RecyclerView recyclerView;
     List<TitleParent> _titleParents;
     private RequestQueue mQueue;
-    private RequestQueue mQueue2;
+    //private RequestQueue mQueue2;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -56,7 +56,7 @@ public class ActivityOne extends AppCompatActivity {
             String info = getIntent().getStringExtra("info");
             txtInfo.setText(info);
         }
-        String urlTypes = "http://10.0.2.2:8080/api/devicetypes";
+        String urlTypes = API.getDeviceTypes();
         mQueue = Volley.newRequestQueue(this);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, urlTypes, null, new Response.Listener<JSONObject>() {
             @Override
@@ -145,8 +145,8 @@ public class ActivityOne extends AppCompatActivity {
     }
 
     private void getFavedDevices() {
-        String urlDevices = "http://10.0.2.2:8080/api/devices/";
-        mQueue2 = Volley.newRequestQueue(this);
+        String urlDevices = API.getDevices();
+       // mQueue2 = Volley.newRequestQueue(this);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, urlDevices, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -163,13 +163,13 @@ public class ActivityOne extends AppCompatActivity {
                 error.printStackTrace();
             }
         });
-        mQueue2.add(request);
+        mQueue.add(request);
 
     }
 
     private void getDevicesForType(String typeId) {
-        String urlDevicesForType = "http://10.0.2.2:8080/api/devices/devicetypes/" + typeId;
-        mQueue2 = Volley.newRequestQueue(this);
+        String urlDevicesForType = API.getDevices() + "devicetypes/" + typeId;
+        //mQueue2 = Volley.newRequestQueue(this);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, urlDevicesForType, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -186,7 +186,7 @@ public class ActivityOne extends AppCompatActivity {
                 error.printStackTrace();
             }
         });
-        mQueue2.add(request);
+        mQueue.add(request);
 
 
     }

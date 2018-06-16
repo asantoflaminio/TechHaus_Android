@@ -95,9 +95,9 @@ public class BlindActivity extends AppCompatActivity {
         Log.d("mytag","Ok my id es " + id);
         String url = "";
         if(action.equals("down")){
-            url = "http://10.0.2.2:8080/api/devices/" + id + "/down";
+            url = API.getDevices() + id + "/down";
         }else{
-            url = "http://10.0.2.2:8080/api/devices/" + id + "/up";
+            url = API.getDevices() + id + "/up";
         }
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
@@ -117,7 +117,7 @@ public class BlindActivity extends AppCompatActivity {
     }
 
     private void getState(String id) {
-        String url = "http://10.0.2.2:8080/api/devices/" + id + "/getState";
+        String url = API.getDevices() + id + "/getState";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

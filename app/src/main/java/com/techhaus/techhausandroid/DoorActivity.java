@@ -136,7 +136,7 @@ public class DoorActivity extends AppCompatActivity {
 
     private void changeDoorState(String action, String devId) {
 
-        String url = "http://10.0.2.2:8080/api/devices/" + devId + "/" + action;
+        String url = API.getDevices() + devId + "/" + action;
 
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {

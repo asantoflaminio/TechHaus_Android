@@ -32,9 +32,9 @@ import java.util.HashMap;
 public class RoutActivity extends AppCompatActivity {
 
     private RequestQueue mQueue;
-    private RequestQueue mQueue2;
-    private RequestQueue mQueue3;
-    private RequestQueue mQueue4;
+   // private RequestQueue mQueue2;
+   // private RequestQueue mQueue3;
+   // private RequestQueue mQueue4;
     private HashMap<String, String> idConName;
     private HashMap<String, ArrayList<String>> idConActions;
     private String tasks;
@@ -56,11 +56,11 @@ public class RoutActivity extends AppCompatActivity {
             public void onClick(final View v) {
 
 
-                final String url3 = "http://10.0.2.2:8080/api/routines";
+                final String url3 = API.getRoutines();
                 final String rutName = rutNameView.getText().toString();
                 Toast.makeText(v.getContext(), rutNameView.getText().toString()+ " was played",
                         Toast.LENGTH_LONG).show();
-                mQueue3 = Volley.newRequestQueue(v.getContext());
+                //mQueue3 = Volley.newRequestQueue(v.getContext());
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url3, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -87,11 +87,11 @@ public class RoutActivity extends AppCompatActivity {
                     }
                 });
 
-                mQueue3.add(request);
+                mQueue.add(request);
 
             }
         });
-        String url = "http://10.0.2.2:8080/api/routines";
+        String url = API.getRoutines();
         mQueue = Volley.newRequestQueue(this);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -143,8 +143,8 @@ public class RoutActivity extends AppCompatActivity {
         return true;
     }
     private void executeRoutine(View v, String routID) {
-        mQueue4 = Volley.newRequestQueue(v.getContext());
-        String url = "http://10.0.2.2:8080/api/routines/" + routID + "/execute";
+        //mQueue4 = Volley.newRequestQueue(v.getContext());
+        String url = API.getRoutines() + routID + "/execute";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -159,7 +159,7 @@ public class RoutActivity extends AppCompatActivity {
             }
         });
 
-        mQueue4.add(request);
+        mQueue.add(request);
     }
 
     private void processResponse(JSONObject response) {
@@ -167,7 +167,7 @@ public class RoutActivity extends AppCompatActivity {
             String tareas="";
             JSONArray actions;
             JSONArray jsonArray = response.getJSONArray("routines");
-            String urlDevices = "http://10.0.2.2:8080/api/devices";
+            String urlDevices = API.getDevices();
             idConActions = new HashMap<String, ArrayList<String>>();
 
             for(int i = 0; i < jsonArray.length(); i++){
@@ -189,7 +189,7 @@ public class RoutActivity extends AppCompatActivity {
 
 
                     }
-                    mQueue2 = Volley.newRequestQueue(this);
+                   // mQueue2 = Volley.newRequestQueue(this);
                     JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, urlDevices, null, new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
@@ -225,7 +225,7 @@ public class RoutActivity extends AppCompatActivity {
                         }
                     });
 
-                    mQueue2.add(request);
+                    mQueue.add(request);
 
                 }
             }

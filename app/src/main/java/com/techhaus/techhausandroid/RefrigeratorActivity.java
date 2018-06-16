@@ -177,7 +177,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
 
     private void updateFreezerTemp(int temp, String deviceId) {
 
-        String url = "http://10.0.2.2:8080/api/devices/" + deviceId + "/setFreezerTemperature";
+        String url = API.getDevices() + deviceId + "/setFreezerTemperature";
 
         String t = String.valueOf(temp);
         JSONArray jarray = new JSONArray();
@@ -203,7 +203,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
 
 
     private void getTemps(String id) {
-        String url = "http://10.0.2.2:8080/api/devices/" + id + "/getState";
+        String url = API.getDevices() + id + "/getState";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -233,7 +233,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
     }
 
     private void getMode(final String id1) {
-        String url = "http://10.0.2.2:8080/api/devices/" + id1 + "/getState";
+        String url = API.getDevices() + id1 + "/getState";
         final JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -306,7 +306,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
 
     private void changeMode(final String id, String mode) throws JSONException {
         Log.d("mytag", "changeMode a "+ mode.toLowerCase());
-        String url = "http://10.0.2.2:8080/api/devices/" + id + "/setMode";
+        String url = API.getDevices() + id + "/setMode";
         String modeParam = "[\"" + mode.toLowerCase() + "\"]";
         JSONArray jarray = new JSONArray();
         jarray.put(mode.toLowerCase());

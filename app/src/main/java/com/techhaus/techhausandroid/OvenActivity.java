@@ -137,7 +137,7 @@ public class OvenActivity extends AppCompatActivity {
     }
 
     private void changeStatus(String deviceId, String s) {
-        String url = "http://10.0.2.2:8080/api/devices/" + deviceId + s;
+        String url = API.getDevices() + deviceId + s;
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -156,7 +156,7 @@ public class OvenActivity extends AppCompatActivity {
 
     private void updateTemp(int temp, String deviceId) {
 
-        String url = "http://10.0.2.2:8080/api/devices/" + deviceId + "/setTemperature";
+        String url = API.getDevices() + deviceId + "/setTemperature";
 
         String t = String.valueOf(temp);
         JSONArray jarray = new JSONArray();
@@ -179,7 +179,7 @@ public class OvenActivity extends AppCompatActivity {
     }
 
     private void getState(final String devId) {
-        String url = "http://10.0.2.2:8080/api/devices/" + devId + "/getState";
+        String url = API.getDevices() + devId + "/getState";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -324,7 +324,7 @@ public class OvenActivity extends AppCompatActivity {
             }
 
     private void changeMode(String devId, String option, String action) {
-        String url = "http://10.0.2.2:8080/api/devices/" + devId + action;
+        String url = API.getDevices() + devId + action;
         JSONArray jarray = new JSONArray();
         jarray.put(option.toLowerCase());
 

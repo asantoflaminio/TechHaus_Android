@@ -140,7 +140,7 @@ public class LampActivity extends AppCompatActivity implements  ColorPicker.Colo
 
     private void changeBrightness(int progress, String deviceId) {
 
-        String url = "http://10.0.2.2:8080/api/devices/" + deviceId + "/setBrightness";
+        String url = API.getDevices() + deviceId + "/setBrightness";
 
         Log.d("mytag", "Progress es " + progress);
         String t = String.valueOf(progress);
@@ -165,7 +165,7 @@ public class LampActivity extends AppCompatActivity implements  ColorPicker.Colo
     }
 
     private void getState(String devId) {
-        String url = "http://10.0.2.2:8080/api/devices/" + devId + "/getState";
+        String url = API.getDevices() + devId + "/getState";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
             @SuppressLint("ResourceAsColor")
             @Override
@@ -211,7 +211,7 @@ public class LampActivity extends AppCompatActivity implements  ColorPicker.Colo
     }
 
     private void changeStatus(String deviceId, String s) {
-        String url = "http://10.0.2.2:8080/api/devices/" + deviceId + s;
+        String url = API.getDevices() + deviceId + s;
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
