@@ -65,7 +65,7 @@ public class MyAdapterRoutines extends ExpandableRecyclerAdapter<TitleParentView
             public void onClick(final View v) {
                 final String url = API.getRoutines();
                 final String rutName = rutNameView.getText().toString();
-                Toast.makeText(v.getContext(), rutName + " was played",
+                Toast.makeText(v.getContext(), rutName + " " + v.getContext().getString(R.string.WasPlayed),
                         Toast.LENGTH_LONG).show();
                 mQueue = Volley.newRequestQueue(v.getContext());
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {

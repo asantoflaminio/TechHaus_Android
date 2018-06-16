@@ -58,7 +58,7 @@ public class RoutActivity extends AppCompatActivity {
 
                 final String url3 = API.getRoutines();
                 final String rutName = rutNameView.getText().toString();
-                Toast.makeText(v.getContext(), rutNameView.getText().toString()+ " was played",
+                Toast.makeText(v.getContext(), rutNameView.getText().toString()+" " + getString(R.string.WasPlayed),
                         Toast.LENGTH_LONG).show();
                 //mQueue3 = Volley.newRequestQueue(v.getContext());
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url3, null, new Response.Listener<JSONObject>() {
@@ -138,6 +138,7 @@ public class RoutActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected (MenuItem item) {
 
         Intent intent = new Intent(RoutActivity.this, RoutinesActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("info", getString(R.string.Routines));
         startActivity(intent);
 
         return true;
@@ -209,7 +210,7 @@ public class RoutActivity extends AppCompatActivity {
                                         }
                                     }
                                 }
-                                Log.d("mytag", "quedaria " + tasks);
+
                                 TextView taskList = (TextView) findViewById(R.id.TasksList);
                                 taskList.setText(tasks);
 
@@ -253,7 +254,7 @@ public class RoutActivity extends AppCompatActivity {
                     break;
                 case R.id.nav_routines:
                     Intent intent3 = new Intent(RoutActivity.this, RoutinesActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent3.putExtra("info", "Routines");
+                    intent3.putExtra("info", getString(R.string.Routines));
                     startActivity(intent3);
                     break;
             }

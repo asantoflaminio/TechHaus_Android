@@ -2,4 +2,18 @@
 <resources>
     <string name="app_name">TechHausAndroid</string>
     <string name="icon_to_be_displayed">Icon To Be Displayed</string>
+    <string name="Favorites">Favoritos</string>
+    <string name="Alarms">Alarmas</string>
+    <string name="Lamps">Lámparas</string>
+    <string name="Blinds">Persianas</string>
+    <string name="Doors">Puertas</string>
+    <string name="ACs">ACs</string>
+    <string name="Refrigerators">Refrigeradores</string>
+    <string name="Ovens">Hornos</string>
+    <string name="Devices">Dispositivos</string>
+    <string name="Notifications">Notificaciones</string>
+    <string name="Routines">Rutinas</string>
+    <string name="Tasks">Tareas:   </string>
+    <string name="Loading">Cargando...</string>
+    <string name="WasPlayed">fue ejecutada</string>
 </resources>

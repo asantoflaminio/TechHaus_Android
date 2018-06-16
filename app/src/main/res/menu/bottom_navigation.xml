@@ -4,19 +4,19 @@
         android:id="@+id/nav_devices"
         android:icon="@drawable/ic_device_hub_black_24dp"
         android:enabled="true"
-        android:title="Devices"/>
+        android:title="@string/Devices"/>
 
     <item
         android:id="@+id/nav_notifications"
         android:icon="@drawable/notifications"
         android:enabled="true"
-        android:title="Notifications"/>
+        android:title="@string/Notifications"/>
 
     <item
         android:id="@+id/nav_routines"
         android:icon="@drawable/routines"
         android:enabled="true"
-        android:title="Routines"/>
+        android:title="@string/Routines"/>
 
 </menu>
 

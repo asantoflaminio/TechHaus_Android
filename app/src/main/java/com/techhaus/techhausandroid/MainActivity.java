@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.nav_routines:
                     Intent intent3 = new Intent(MainActivity.this, RoutinesActivity.class);
-                    intent3.putExtra("info", "Routines");
+                    intent3.putExtra("info", getString(R.string.Routines));
                     startActivity(intent3);
                     break;
             }

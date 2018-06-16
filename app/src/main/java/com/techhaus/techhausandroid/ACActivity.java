@@ -482,7 +482,7 @@ public class ACActivity extends AppCompatActivity {
                     break;
                 case R.id.nav_routines:
                     Intent intent3 = new Intent(ACActivity.this, RoutinesActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent3.putExtra("info", "Routines");
+                    intent3.putExtra("info", getString(R.string.Routines));
                     startActivity(intent3);
                     break;
             }
