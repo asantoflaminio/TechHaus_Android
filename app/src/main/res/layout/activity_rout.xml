@@ -7,73 +7,70 @@
     android:layout_height="match_parent"
     tools:context=".RoutActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="61dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar12"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="#324a5e"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/myToolbarTheme" />
+
+        <TextView
+            android:id="@+id/RutinaName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="16dp"
+            android:text="Nombre de la routina"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:id="@+id/playRut"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="300dp"
+            android:layout_marginTop="7dp"
+            android:contentDescription="@string/Play"
+            android:scaleType="fitXY"
+            android:src="@drawable/play_barra" />
+
+    </RelativeLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="61dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg"
-            android:orientation="vertical"
-            android:weightSum="10">
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:layout_weight="0.4">
-
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/toolbar12"
-                    android:layout_width="match_parent"
-                    android:layout_height="61dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:background="#324a5e"
-                    android:minHeight="?attr/actionBarSize"
-                    android:theme="@style/myToolbarTheme" />
-
-                <TextView
-                    android:id="@+id/RutinaName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="45dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Nombre de la routina"
-                    android:textColor="@color/white"
-                    android:textSize="22sp" />
-
-                <ImageView
-                    android:id="@+id/playRut"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="right"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="300dp"
-                    android:layout_marginTop="7dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/play_barra" />
-
-            </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/Tasks"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30sp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="30sp"
+                    android:layout_marginTop="10dp"
                     android:text="@string/Tasks"
                     android:textAlignment="viewStart"
                     android:textSize="35sp"
@@ -81,17 +78,17 @@
 
 
             </LinearLayout>
+
             <TextView
                 android:id="@+id/TasksList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30sp"
+                android:layout_marginStart="30sp"
                 android:layout_marginTop="30sp"
                 android:text="@string/Loading"
                 android:textAlignment="viewStart"
                 android:textSize="25sp"
                 android:textStyle="" />
-
 
 
         </LinearLayout>

@@ -7,53 +7,52 @@
     android:layout_height="match_parent"
     tools:context=".BlindActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="61dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="#324a5e"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/myToolbarTheme" />
+
+        <TextView
+            android:id="@+id/BlindName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="16dp"
+            android:text="Nombre de la blind"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+
+    </RelativeLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="61dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg"
-            android:orientation="vertical"
-            android:weightSum="10">
-
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:layout_weight="0.4">
-
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/toolbar2"
-                    android:layout_width="match_parent"
-                    android:layout_height="61dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:background="#324a5e"
-                    android:minHeight="?attr/actionBarSize"
-                    android:theme="@style/myToolbarTheme" />
-
-                <TextView
-                    android:id="@+id/BlindName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="45dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Nombre de la blind"
-                    android:textColor="@color/white"
-                    android:textSize="22sp" />
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp">
 
                 <ImageView
 
@@ -66,11 +65,9 @@
 
             </RelativeLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:orientation="horizontal">
 
                 <TextView
@@ -96,9 +93,10 @@
 
                 <ImageView
                     android:id="@+id/UpDownIcon"
-                    android:layout_width="60sp"
-                    android:layout_height="60dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="bottom|center|end"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginEnd="15sp"
                     android:layout_marginStart="5sp"
                     android:gravity="right"
@@ -109,8 +107,6 @@
                     android:src="@drawable/loading" />
 
             </LinearLayout>
-
-
         </LinearLayout>
     </ScrollView>
 

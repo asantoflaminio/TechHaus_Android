@@ -16,10 +16,10 @@
             android:id="@+id/faveIcon"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:contentDescription="@string/Fav"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
+            android:contentDescription="@string/Fav"
             android:src="@drawable/heart_unfilled"
             android:visibility="visible" />
 

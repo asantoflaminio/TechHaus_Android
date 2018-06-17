@@ -53,6 +53,7 @@
     <string name="FreezerTemp">Freezer Temperature</string>
     <string name="FTempAtMax">Freezer temperature is at maximum value</string>
     <string name="FTempAtMin">Freezer temperature is at minimum value</string>
+    <string name="Play">Play</string>
 
 
 </resources>

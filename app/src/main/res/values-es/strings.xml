@@ -54,5 +54,6 @@
     <string name="FreezerTemp">Temperatura Congelador</string>
     <string name="FTempAtMax">Temperatura del congelador está al máximo</string>
     <string name="FTempAtMin">Temperatura del congelador está al mínimo</string>
+    <string name="Play">Ejecutar</string>
 
 </resources>

@@ -7,52 +7,51 @@
     android:layout_height="match_parent"
     tools:context=".LampActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="61dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar11"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="#324a5e"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/myToolbarTheme" />
+
+        <TextView
+            android:id="@+id/LampName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="16dp"
+            android:text="Nombre de la lamp"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+    </RelativeLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="61dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg"
-            android:orientation="vertical"
-            android:weightSum="10">
-
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:layout_weight="0.4">
-
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/toolbar11"
-                    android:layout_width="match_parent"
-                    android:layout_height="61dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:background="#324a5e"
-                    android:minHeight="?attr/actionBarSize"
-                    android:theme="@style/myToolbarTheme" />
-
-                <TextView
-                    android:id="@+id/LampName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="45dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Nombre de la lamp"
-                    android:textColor="@color/white"
-                    android:textSize="22sp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp">
 
                 <ImageView
                     android:layout_width="100sp"
@@ -64,11 +63,9 @@
 
             </RelativeLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:orientation="horizontal">
 
                 <Switch
@@ -90,7 +87,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="60sp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -101,8 +98,8 @@
                     android:layout_marginTop="25sp"
                     android:layout_weight="1"
                     android:text="@string/Brightness"
-                    android:textStyle="bold"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <SeekBar
                     android:id="@+id/seekBar"
@@ -114,8 +111,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
+                android:layout_height="60dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -123,7 +119,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30sp"
-                    android:layout_marginTop="35sp"
+                    android:layout_marginTop="15dp"
                     android:text="Color"
                     android:textAlignment="viewStart"
                     android:textSize="20sp"
@@ -134,22 +130,18 @@
                     android:id="@+id/circle"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginBottom="20sp"
-                    android:layout_marginLeft="5sp"
-                    android:layout_marginStart="250sp"
-                    android:layout_marginTop="25sp"
-                    android:src="@drawable/la_shape"
-                    />
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="230dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/la_shape" />
 
 
             </LinearLayout>
-
 
             <Button
                 android:id="@+id/changeColorButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20sp"
                 android:text="@string/ChangeColor"
                 android:theme="@style/PasswordButton" />
 

@@ -4,7 +4,8 @@
     android:layout_height="65dp"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
-    android:layout_marginTop="5dp">
+    android:layout_marginTop="5dp"
+    android:paddingBottom="2dp">
 
     <RelativeLayout
         android:id="@+id/rel_lay"
