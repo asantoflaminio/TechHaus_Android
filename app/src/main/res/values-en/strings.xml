@@ -55,5 +55,15 @@
     <string name="FTempAtMax">Freezer temperature is at maximum value</string>
     <string name="FTempAtMin">Freezer temperature is at minimum value</string>
     <string name="Play">Play</string>
+    <string name="ChooseColor">Choose Color</string>
+    <string name="Green">Green</string>
+    <string name="Red">Red</string>
+    <string name="Yellow">Yellow</string>
+    <string name="Blue">Blue</string>
+    <string name="White">White</string>
+    <string name="Violet">Violet</string>
+    <string name="Pink">Pink</string>
+    <string name="Orange">Orange</string>
+    <string name="MustChoose">"You must choose a color!"</string>
 
 </resources>

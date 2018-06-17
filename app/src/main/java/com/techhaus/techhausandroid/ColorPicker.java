@@ -15,13 +15,20 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ColorPicker extends AppCompatDialogFragment {
     private EditText editTextCode;
     private ColorPickerListener listener;
+    Spinner color_spinner;
+    String selectedColor;
 
     @Override
     public void onAttach(Context context) {
@@ -40,13 +47,13 @@ public class ColorPicker extends AppCompatDialogFragment {
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String code = editTextCode.getText().toString();
-                if(code.length() != 6 || !code.matches("[0-9A-F]+")){
-                    dialog.setTitle("Insert a valid 6 digit hexcode");
+
+                if(selectedColor.length() != 6 || !selectedColor.matches("[0-9A-F]+")){
+                    dialog.setTitle(getString(R.string.MustChoose));
 
 
                 } else{
-                    listener.applyHex(code);
+                    listener.applyHex(selectedColor);
                     dialog.dismiss();
                 }
             }
@@ -55,12 +62,13 @@ public class ColorPicker extends AppCompatDialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        selectedColor = "";
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         final View view = inflater.inflate(R.layout.color_picker, null);
         builder.setView(view);
-        builder.setTitle("Enter HEX code");
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setTitle(R.string.ChooseColor);
+        builder.setNegativeButton(getString(R.string.Cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -70,39 +78,67 @@ public class ColorPicker extends AppCompatDialogFragment {
        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String code = editTextCode.getText().toString();
+               /* String code = editTextCode.getText().toString();
                 if(code.length() != 6 && !code.matches("[0-9A-F]+")){
                     Log.d("mytag", "WRONG LISTENER inside if");
                 }
-                listener.applyHex(code);
-                Log.d("mytag", "WRONG LISTENER ");
+                listener.applyHex(code);*/
             }
         });
 
-        editTextCode = view.findViewById(R.id.edit_color);
-        editTextCode.addTextChangedListener(new TextWatcher() {
+
+        color_spinner = (Spinner) view.findViewById(R.id.edit_color);
+        final List<SpinnerData> customList1 = new ArrayList<>();
+        customList1.add(new SpinnerData(R.drawable.lapiz, getString(R.string.ChooseColor)));
+        customList1.add(new SpinnerData(R.drawable.red, getString(R.string.Red)));
+        customList1.add(new SpinnerData(R.drawable.pink, getString(R.string.Pink)));
+        customList1.add(new SpinnerData(R.drawable.green, getString(R.string.Green)));
+        customList1.add(new SpinnerData(R.drawable.blue, getString(R.string.Blue)));
+        customList1.add(new SpinnerData(R.drawable.violet, getString(R.string.Violet)));
+        customList1.add(new SpinnerData(R.drawable.yellow, getString(R.string.Yellow)));
+        customList1.add(new SpinnerData(R.drawable.orange, getString(R.string.Orange)));
+        customList1.add(new SpinnerData(R.drawable.white, getString(R.string.White)));
+
+        CustomSpinnerAdapter customSpinnerAdapter = new CustomSpinnerAdapter(view.getContext(), R.layout.spinner_layout, customList1);
+        color_spinner.setAdapter(customSpinnerAdapter);
+
+        color_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                String code = s.toString().toUpperCase();
-                if(code.length() == 6 && code.matches("[0-9A-F]+")) {
-                    ImageView circ = (ImageView) view.findViewById(R.id.circle);
-                    GradientDrawable drawable = (GradientDrawable) circ.getDrawable();
-                    // drawable.setColor(Integer.parseInt("F0"+color,16));
-                    drawable.setColor(Color.parseColor("#F0" + code));
+            public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
+                String code = "";
+                Log.d("mytag", "bueno el icon name es " + customList1.get(i).getIconName());
+                if(customList1.get(i).getIconName().equals(getString(R.string.Red))){
+                    code = "FF0000";
+                }else if(customList1.get(i).getIconName().equals(getString(R.string.Pink))){
+                    Log.d("mytag", "Ok flaco estoy aca");
+                    code = "FF69B4";
+                }else if(customList1.get(i).getIconName().equals(getString(R.string.Green))){
+                    code = "00FF00";
+                }else if(customList1.get(i).getIconName().equals(getString(R.string.Blue))){
+                    code = "0000FF";
+                }else if(customList1.get(i).getIconName().equals(getString(R.string.Violet))){
+                    code = "8A2BE2";
+                }else if(customList1.get(i).getIconName().equals(getString(R.string.Yellow))){
+                    code = "FFFF00";
+                }else if(customList1.get(i).getIconName().equals(getString(R.string.Orange))){
+                    code = "FF8C00";
+                }else if (customList1.get(i).getIconName().equals(getString(R.string.White))){
+                    //white
+                    code = "FFFFFF";
                 }
+                selectedColor = code;
+                 //   ImageView circ = (ImageView) view.getRootView().findViewById(R.id.circle);
+                   // GradientDrawable drawable = (GradientDrawable) circ.getDrawable();
+                  //  drawable.setColor(Color.parseColor("#F0" + code));
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
+
 
         return builder.create();
     }

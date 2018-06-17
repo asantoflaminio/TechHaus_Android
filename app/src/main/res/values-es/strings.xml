@@ -55,5 +55,15 @@
     <string name="FTempAtMax">Temperatura del congelador está al máximo</string>
     <string name="FTempAtMin">Temperatura del congelador está al mínimo</string>
     <string name="Play">Ejecutar</string>
+    <string name="ChooseColor">Seleccione Color</string>
+    <string name="Green">Verde</string>
+    <string name="Red">Rojo</string>
+    <string name="Yellow">Amarillo</string>
+    <string name="Blue">Azul</string>
+    <string name="White">Blanco</string>
+    <string name="Violet">Violeta</string>
+    <string name="Pink">Rosa</string>
+    <string name="Orange">Naranja</string>
+    <string name="MustChoose">"¡Debe elegir un color!"</string>
 
 </resources>

@@ -106,7 +106,7 @@ public class LampActivity extends AppCompatActivity implements  ColorPicker.Colo
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
-                Toast.makeText(LampActivity.this, "Brightness: " + seekBar.getProgress(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LampActivity.this, getString(R.string.Brightness)+ ": " + seekBar.getProgress(), Toast.LENGTH_SHORT).show();
                 changeBrightness(seekBar.getProgress(), deviceId);
             }
         });
@@ -292,7 +292,7 @@ public class LampActivity extends AppCompatActivity implements  ColorPicker.Colo
         drawable.setColor(Color.parseColor("#F0" + hexcode));
         //falta cambiar en API
 
-        String url = "http://10.0.2.2:8080/api/devices/" + getIntent().getStringExtra("devId") + "/setColor";
+        String url = API.getDevices() + getIntent().getStringExtra("devId") + "/setColor";
 
         JSONArray jarray = new JSONArray();
         jarray.put(hexcode);
