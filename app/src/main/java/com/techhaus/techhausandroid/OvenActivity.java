@@ -104,13 +104,13 @@ public class OvenActivity extends AppCompatActivity {
                 // true if the switch is in the On position
                 if(isChecked){
                     if(++check4 > 1) {
-                        Toast.makeText(OvenActivity.this, "Turned on", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(OvenActivity.this, getString(R.string.TurnedOn), Toast.LENGTH_SHORT).show();
                         changeStatus(deviceId, "/turnOn");
                     }
 
 
                 }else{
-                    Toast.makeText(OvenActivity.this, "Turned off", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OvenActivity.this, getString(R.string.TurnedOff), Toast.LENGTH_SHORT).show();
                     changeStatus(deviceId, "/turnOff");
                 }
             }
@@ -134,10 +134,10 @@ public class OvenActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected (MenuItem item) {
         String from = getIntent().getStringExtra("from");
         Intent intent = new Intent(OvenActivity.this, ActivityOne.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        if(from.equals("Favorites")){
-            intent.putExtra("info", "Favorites");
+        if(from.equals(getString(R.string.Favorites))){
+            intent.putExtra("info", getString(R.string.Favorites));
         }else{
-            intent.putExtra("info", "Ovens");
+            intent.putExtra("info", getString(R.string.Ovens));
         }
 
         startActivity(intent);

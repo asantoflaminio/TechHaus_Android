@@ -47,6 +47,12 @@
     <string name="DoorUnlockedFirst">Door must be unlocked first</string>
     <string name="Brightness">Brightness</string>
     <string name="ChangeColor">Change Color</string>
+    <string name="Heat">Heat</string>
+    <string name="Grill">Grill</string>
+    <string name="Convection">Convection</string>
+    <string name="FreezerTemp">Freezer Temperature</string>
+    <string name="FTempAtMax">Freezer temperature is at maximum value</string>
+    <string name="FTempAtMin">Freezer temperature is at minimum value</string>
 
 
 </resources>

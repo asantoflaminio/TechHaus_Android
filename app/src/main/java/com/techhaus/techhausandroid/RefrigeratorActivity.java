@@ -63,7 +63,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
                 TextView tmp = (TextView) findViewById(R.id.TempNumb);
                 int temp = Integer.valueOf(tmp.getText().toString().replace("°", "").replace("C", ""));
                 if(temp == 2){
-                    Toast.makeText(RefrigeratorActivity.this, "Temperature is at minimum value", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RefrigeratorActivity.this, getString(R.string.TempAtMin), Toast.LENGTH_SHORT).show();
 
                 }else{
                     temp = temp-1;
@@ -81,7 +81,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
                 TextView tmp = (TextView) findViewById(R.id.TempNumb);
                 int temp = Integer.valueOf(tmp.getText().toString().replace("°", "").replace("C", ""));
                 if(temp == 8){
-                    Toast.makeText(RefrigeratorActivity.this, "Temperature is at maximum value", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RefrigeratorActivity.this, getString(R.string.TempAtMax), Toast.LENGTH_SHORT).show();
 
                 }else{
                     temp = temp+1;
@@ -99,7 +99,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
                 TextView tmp = (TextView) findViewById(R.id.FreezerTempNumb);
                 int temp = Integer.valueOf(tmp.getText().toString().replace("°", "").replace("C", ""));
                 if(temp == -20){
-                    Toast.makeText(RefrigeratorActivity.this, "Freezer temperature is at minimum value", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RefrigeratorActivity.this, getString(R.string.FTempAtMin), Toast.LENGTH_SHORT).show();
 
                 }else{
                     temp = temp-1;
@@ -117,7 +117,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
                 TextView tmp = (TextView) findViewById(R.id.FreezerTempNumb);
                 int temp = Integer.valueOf(tmp.getText().toString().replace("°", "").replace("C", ""));
                 if(temp == -8){
-                    Toast.makeText(RefrigeratorActivity.this, "Freezer temperature is at maximum value", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RefrigeratorActivity.this, getString(R.string.FTempAtMax), Toast.LENGTH_SHORT).show();
 
                 }else{
                     temp = temp+1;
@@ -145,10 +145,10 @@ public class RefrigeratorActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected (MenuItem item) {
         String from = getIntent().getStringExtra("from");
         Intent intent = new Intent(RefrigeratorActivity.this, ActivityOne.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        if(from.equals("Favorites")){
-            intent.putExtra("info", "Favorites");
+        if(from.equals(getString(R.string.Favorites))){
+            intent.putExtra("info", getString(R.string.Favorites));
         }else{
-            intent.putExtra("info", "Refrigerators");
+            intent.putExtra("info", getString(R.string.Refrigerators));
         }
 
         startActivity(intent);
@@ -158,7 +158,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
 
     private void updateTemp(int temp, String deviceId) {
 
-        String url = "http://10.0.2.2:8080/api/devices/" + deviceId + "/setTemperature";
+        String url = API.getDevices() + deviceId + "/setTemperature";
 
         String t = String.valueOf(temp);
         JSONArray jarray = new JSONArray();
@@ -251,12 +251,11 @@ public class RefrigeratorActivity extends AppCompatActivity {
                     //custom spinner
                     fridge_mode_spinner = (Spinner) findViewById(R.id.spinner_fridge_mode);
                     final List<SpinnerData> customList1 = new ArrayList<>();
-                    Log.d("mytag", "mode isssss " +mode);
+
 
 
 
                     if(mode.equals("vacation")){
-                        Log.d("mytag", "it's vacation");
                         customList1.add(new SpinnerData(R.drawable.vacation, "Vacation"));
                         customList1.add(new SpinnerData(R.drawable.party, "Party"));
                         customList1.add(new SpinnerData(R.drawable.fridge_default, "Default"));
@@ -310,7 +309,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
     }
 
     private void changeMode(final String id, String mode) throws JSONException {
-        Log.d("mytag", "changeMode a "+ mode.toLowerCase());
+
         String url = API.getDevices() + id + "/setMode";
         String modeParam = "[\"" + mode.toLowerCase() + "\"]";
         JSONArray jarray = new JSONArray();

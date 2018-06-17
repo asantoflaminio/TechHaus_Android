@@ -48,5 +48,11 @@
     <string name="Brightness">Brillo</string>
     <string name="ChangeColor">Cambiar Color</string>
     <string name="Fav">Agregar a favoritos</string>
+    <string name="Heat">Calor</string>
+    <string name="Grill">Grill</string>
+    <string name="Convection">Convección</string>
+    <string name="FreezerTemp">Temperatura Congelador</string>
+    <string name="FTempAtMax">Temperatura del congelador está al máximo</string>
+    <string name="FTempAtMin">Temperatura del congelador está al mínimo</string>
 
 </resources>
