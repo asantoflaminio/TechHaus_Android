@@ -13,7 +13,7 @@
     <string name="Devices">Dispositivos</string>
     <string name="Notifications">Notificaciones</string>
     <string name="Routines">Rutinas</string>
-    <string name="Tasks">Tareas:   </string>
+    <string name="Tasks">Tareas   </string>
     <string name="Loading">Cargando...</string>
     <string name="WasPlayed">fue ejecutada</string>
     <string name="Status">Estado</string>
@@ -47,5 +47,6 @@
     <string name="DoorUnlockedFirst">La puerta debe estar destrabada</string>
     <string name="Brightness">Brillo</string>
     <string name="ChangeColor">Cambiar Color</string>
+    <string name="Fav">Agregar a favoritos</string>
 
 </resources>

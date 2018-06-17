@@ -51,10 +51,10 @@ public class ACActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        TextView txtInfo = (TextView) findViewById(R.id.ACName);
+        TextView txtTitleInfo = (TextView) findViewById(R.id.ACName);
         if(getIntent() != null){
             String info = getIntent().getStringExtra("devName");
-            txtInfo.setText(info);
+            txtTitleInfo.setText(info);
         }
         mQueue = Volley.newRequestQueue(this);
         getState(getIntent().getStringExtra("devId"));

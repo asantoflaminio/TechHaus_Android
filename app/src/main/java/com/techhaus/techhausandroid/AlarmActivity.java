@@ -101,10 +101,10 @@ public class AlarmActivity extends AppCompatActivity implements  CodeDialog.Code
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
 
-        TextView txtInfo = (TextView) findViewById(R.id.AlarmName);
+        TextView txtTitleInfo = (TextView) findViewById(R.id.AlarmName);
         if(getIntent() != null){
             String info = getIntent().getStringExtra("devName");
-            txtInfo.setText(info);
+            txtTitleInfo.setText(info);
         }
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);

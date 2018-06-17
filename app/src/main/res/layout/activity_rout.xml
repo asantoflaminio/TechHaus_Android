@@ -36,40 +36,28 @@
                     android:minHeight="?attr/actionBarSize"
                     android:theme="@style/myToolbarTheme" />
 
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="228dp"
-                    android:layout_height="54dp"
-                    android:layout_centerInParent="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="3dp"
-                    app:srcCompat="@drawable/barra" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
                 <TextView
                     android:id="@+id/RutinaName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="61dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="16dp"
                     android:text="Nombre de la routina"
-                    android:textAlignment="viewStart"
-                    android:textSize="30sp"
-                    android:textStyle="italic" />
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
 
                 <ImageView
                     android:id="@+id/playRut"
-                    android:layout_width="100sp"
-                    android:layout_height="100sp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:layout_gravity="right"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="300dp"
+                    android:layout_marginTop="7dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/play_gris" />
+                    android:src="@drawable/play_barra" />
 
             </RelativeLayout>
 
@@ -85,13 +73,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30sp"
-                    android:layout_marginTop="30sp"
+                    android:layout_marginTop="5dp"
                     android:text="@string/Tasks"
                     android:textAlignment="viewStart"
                     android:textSize="35sp"
                     android:textStyle="bold" />
-
-
 
 
             </LinearLayout>

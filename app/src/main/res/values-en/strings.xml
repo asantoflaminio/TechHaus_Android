@@ -13,7 +13,7 @@
     <string name="Devices">Devices</string>
     <string name="Notifications">Notifications</string>
     <string name="Routines">Routines</string>
-    <string name="Tasks">Tasks:   </string>
+    <string name="Tasks">Tasks   </string>
     <string name="Loading">Loading...</string>
     <string name="WasPlayed">was played</string>
     <string name="Status">Status</string>
@@ -47,5 +47,6 @@
     <string name="DoorUnlockedFirst">Door must be unlocked first</string>
     <string name="Brightness">Brightness</string>
     <string name="ChangeColor">Change Color</string>
+    <string name="Fav">Fave</string>
 
 </resources>

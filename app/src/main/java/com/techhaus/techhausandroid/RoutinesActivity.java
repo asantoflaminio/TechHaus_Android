@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -65,14 +64,12 @@ public class RoutinesActivity extends AppCompatActivity {
 
         mQueue.add(request);
 
-        TextView txtInfo = (TextView) findViewById(R.id.txtInfo);
+    //    TextView txtInfo = (TextView) findViewById(R.id.txtInfo);
 
-
-
-        if(getIntent() != null){
-            String info = getIntent().getStringExtra("info");
-            txtInfo.setText(info);
-        }
+    //    if(getIntent() != null){
+    //        String info = getIntent().getStringExtra("info");
+    //        txtInfo.setText(info);
+    //    }
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);

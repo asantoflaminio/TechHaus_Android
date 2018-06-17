@@ -51,7 +51,6 @@ public class ActivityOne extends AppCompatActivity {
 
         TextView txtInfo = (TextView) findViewById(R.id.txtInfo);
 
-
         if(getIntent() != null){
             String info = getIntent().getStringExtra("info");
             txtInfo.setText(info);
@@ -123,7 +122,6 @@ public class ActivityOne extends AppCompatActivity {
             searchId = "oven";
         }else{
             searchId = "faves";
-
         }
         if(searchId.equals("faves")){
             getFavedDevices();

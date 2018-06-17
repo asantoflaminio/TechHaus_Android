@@ -12,7 +12,7 @@
     <string name="Devices">Devices</string>
     <string name="Notifications">Notifications</string>
     <string name="Routines">Routines</string>
-    <string name="Tasks">Tasks:   </string>
+    <string name="Tasks">Tasks   </string>
     <string name="Loading">Loading...</string>
     <string name="WasPlayed"> was played</string>
     <string name="Status">Status</string>
@@ -35,6 +35,7 @@
     <string name="HSwing">Horizontal Swing</string>
     <string name="TurnedOn">Turned on</string>
     <string name="TurnedOff">Turned off</string>
+    <string name="Fav">Fave</string>
     <string name="Down">Down</string>
     <string name="Up">Up</string>
     <string name="Closed">Closed</string>
