@@ -83,5 +83,7 @@
     <string name="OrangeN">"Orange"</string>
     <string name="WhiteN">"White"</string>
     <string name="NewStatus">"New status:"</string>
+    <string name="ClearAll">"Clear all"</string>
+    <string name="no_data">"No notifications"</string>
 
 </resources>

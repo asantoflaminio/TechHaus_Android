@@ -151,6 +151,9 @@ public class MyService extends Service {
     private void processEvent(String response, String name, String id) throws JSONException {
         //Log.d("mytag", "Response es: " + response);
         String[] events = response.split(",");
+        SharedPreferences sharedPreferences = this.getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+       // editor.clear().commit();
         if(events.length > 1){
             String[] eventAux = events[2].split(":");
             String[] argsAux = events[3].split(":");
@@ -176,13 +179,14 @@ public class MyService extends Service {
 
             //agrego a listado
 
-            SharedPreferences sharedPreferences = this.getSharedPreferences("shared preferences", MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
+           // SharedPreferences sharedPreferences = this.getSharedPreferences("shared preferences", MODE_PRIVATE);
+           // SharedPreferences.Editor editor = sharedPreferences.edit();
+            //editor.clear().commit();
             myNotif = sharedPreferences.getStringSet("notifications", null);
             if(myNotif == null){
                 myNotif = new HashSet<String>();
             }
-            String addS = "Alerta: " + name + " " +  arg;
+            String addS = "Alarm: "+ name + " " + event + ";"+  arg;
             myNotif.add(addS);
             Log.d("mytag", "En myNotif puse " + addS);
             editor.putStringSet("notifications", myNotif);

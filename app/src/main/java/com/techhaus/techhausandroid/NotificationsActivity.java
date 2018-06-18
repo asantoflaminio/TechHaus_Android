@@ -11,15 +11,24 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
+import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.techhaus.techhausandroid.Adapter.MyAdapterNotif;
+import com.techhaus.techhausandroid.Adapter.MyAdapterRoutines;
+import com.techhaus.techhausandroid.Models.TitleChild;
+import com.techhaus.techhausandroid.Models.TitleCreator;
+import com.techhaus.techhausandroid.Models.TitleParent;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -30,23 +39,19 @@ import java.util.Set;
 public class NotificationsActivity extends AppCompatActivity {
 
     Set<String> myNotif;
+    private TextView emptyView;
+    List<TitleParent> _titleParents;
+    RecyclerView recyclerView;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        myNotif = sharedPreferences.getStringSet("notifications", null);
+        listado();
 
-        if(myNotif == null){
-            myNotif = new HashSet<String>();
-            Log.d("mytag", "it was null");
-        }
-        for(String s: myNotif){
-            Log.d("mytag", "String " + s);
-        }
+
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
@@ -54,6 +59,51 @@ public class NotificationsActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_notif);
         setSupportActionBar(myToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
+
+    private void listado() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        myNotif = sharedPreferences.getStringSet("notifications", null);
+
+        if(myNotif == null){
+            //myNotif = new HashSet<String>();
+            Log.d("mytag", "it was null");
+            emptyView = (TextView) findViewById(R.id.empty_view);
+            emptyView.setVisibility(View.VISIBLE);
+        }else{
+            emptyView = (TextView) findViewById(R.id.empty_view);
+            emptyView.setVisibility(View.GONE);
+            _titleParents = new ArrayList<>();
+            for(String s: myNotif){
+                Log.d("mytag", "String " + s);
+                String[] cosas = s.split(";");
+                TitleParent title = new TitleParent(cosas[0]);
+                List<Object> childList = new ArrayList<>();
+                childList.add(new TitleChild("Update:", cosas[1]));
+                title.setChildObjectList(childList);
+                _titleParents.add(title);
+
+
+            }
+            recyclerView = (RecyclerView) findViewById(R.id.myRecyclerView);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            MyAdapterNotif adapter = new MyAdapterNotif(this, initData());
+            adapter.setParentClickableViewAnimationDefaultDuration();
+            adapter.setParentAndIconExpandOnClick(true);
+            recyclerView.setAdapter(adapter);
+        }
+    }
+
+    private List<ParentObject> initData() {
+        TitleCreator titleCreator = TitleCreator.get(this);
+        List<TitleParent> titles = _titleParents;
+        List<ParentObject> parentObject = new ArrayList<>();
+        for(TitleParent title: titles){
+
+            parentObject.add(title);
+        }
+        return parentObject;
     }
 
     @Override
@@ -119,28 +169,15 @@ public class NotificationsActivity extends AppCompatActivity {
 
     public void showNotification(View v) {
 
-        switch(v.getId()) {
-            case R.id.normal_notif:
-                showNormalNotif();
-                break;
-        }
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        myNotif = new HashSet<String>();
+        editor.putStringSet("notifications", myNotif);
+        editor.commit();
+        listado();
 
     }
 
-    public void showNormalNotif(){
 
-        //content
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(NotificationsActivity.this);
-        builder.setContentTitle("Security Alert");
-        builder.setContentText("Alarm was turned off");
-        builder.setSmallIcon(R.drawable.alert_icon);
-        builder.setAutoCancel(true);
-        builder.setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 });
-        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.notif_red));
-
-        //notification manager
-        Notification notification = builder.build();
-        NotificationManager manager = (NotificationManager) this.getSystemService(NOTIFICATION_SERVICE);
-        manager.notify(1234, notification);
-    }
 }

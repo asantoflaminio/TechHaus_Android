@@ -51,9 +51,23 @@
             <Button
                 android:id="@+id/normal_notif"
                 android:layout_width="match_parent"
-                android:layout_height="81dp"
+                android:layout_height="60dp"
                 android:onClick="showNotification"
-                android:text="show notif" />
+                android:text="@string/ClearAll" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/myRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:id="@+id/empty_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:visibility="gone"
+                android:text="@string/no_data" />
         </LinearLayout>
     </ScrollView>
 
@@ -78,6 +92,9 @@
                 app:itemIconTint="@drawable/bottom_nav_colors"
                 app:itemTextColor="@drawable/bottom_nav_colors"
                 app:menu="@menu/bottom_navigation" />
+
+
+
 
         </RelativeLayout>
     </android.support.constraint.ConstraintLayout>

@@ -67,6 +67,8 @@
     <string name="Help">"Help"</string>
     <string name="Settings">"Settings"</string>
     <string name="NewStatus">"New status:"</string>
+    <string name="ClearAll">"Clear all"</string>
+    <string name="no_data">"No notifications"</string>
     <string name="SelectVerticalSwing">"Select Vertical Swing"</string>
     <string name="SelectHorizontalSwing">"Select Horizontal Swing"</string>
     <string name="SelectFanSpeed">"Select Fan Speed"</string>
