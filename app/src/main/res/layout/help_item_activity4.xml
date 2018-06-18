@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NotificationsActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="61dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_help_item"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="#324a5e"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/myToolbarTheme" />
+
+        <TextView
+            android:id="@+id/help_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="13dp"
+            android:text="Help"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="61dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/help_image_21"
+                    android:layout_width="66dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/help_image_12" />
+
+                <TextView
+                    android:id="@+id/help_text_21"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="7dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_weight="1"
+                    android:text='To see your recent notifications, go to the "Notifications" category' />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/help_image_22"
+                    android:layout_width="66dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/help_image_12" />
+
+                <TextView
+                    android:id="@+id/help_text_22"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="7dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1"
+                    android:text="There, you will see a list of your notifications. Each notification represents a change on the status of one of your devices. Notifications are sent to you automatically" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/help_image_23"
+                    android:layout_width="66dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/help_image_12" />
+
+                <TextView
+                    android:id="@+id/help_text_23"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="7dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="23dp"
+                    android:layout_weight="1"
+                    android:text='To delete one of your notifications, click on the "Trash" icon on the right of the notification' />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/help_image_24"
+                    android:layout_width="66dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/help_image_12" />
+
+                <TextView
+                    android:id="@+id/help_text_24"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="7dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_weight="1"
+                    android:text='To delete all of your notifications, click on the button "Clean All" at the top of the list' />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

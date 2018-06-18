@@ -4,10 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
+import com.techhaus.techhausandroid.Adapter.MyAdapterHelp;
+import com.techhaus.techhausandroid.Models.TitleCreator;
+import com.techhaus.techhausandroid.Models.TitleParent;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class HelpActivity extends AppCompatActivity {
+
+    RecyclerView recyclerView;
+    List<TitleParent> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +37,39 @@ public class HelpActivity extends AppCompatActivity {
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
 
+        list = new ArrayList<>();
+        TitleParent title5 = new TitleParent("Getting to know the app");
+        TitleParent title1 = new TitleParent("Performing actions on a device");
+        TitleParent title2 = new TitleParent("Faving a device");
+        TitleParent title3 = new TitleParent("Playing a routine");
+        TitleParent title4 = new TitleParent("Managing your notifications");
 
+
+        list.add(title5);
+        list.add(title1);
+        list.add(title2);
+        list.add(title3);
+        list.add(title4);
+
+        recyclerView = (RecyclerView) findViewById(R.id.myRecyclerViewH);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        MyAdapterHelp adapter = new MyAdapterHelp(this, initData());
+        adapter.setParentClickableViewAnimationDefaultDuration();
+        adapter.setParentAndIconExpandOnClick(true);
+        recyclerView.setAdapter(adapter);
+
+    }
+
+    private List<ParentObject> initData() {
+        TitleCreator titleCreator = TitleCreator.get(this);
+        List<TitleParent> titles = list;
+        List<ParentObject> parentObject = new ArrayList<>();
+        for(TitleParent title: titles){
+            List<Object> childList = new ArrayList<>();
+            title.setChildObjectList(childList);
+            parentObject.add(title);
+        }
+        return parentObject;
     }
 
     @Override
