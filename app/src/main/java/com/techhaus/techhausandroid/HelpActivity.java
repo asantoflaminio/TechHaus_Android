@@ -38,11 +38,11 @@ public class HelpActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
 
         list = new ArrayList<>();
-        TitleParent title5 = new TitleParent("Getting to know the app");
-        TitleParent title1 = new TitleParent("Performing actions on a device");
-        TitleParent title2 = new TitleParent("Faving a device");
-        TitleParent title3 = new TitleParent("Playing a routine");
-        TitleParent title4 = new TitleParent("Managing your notifications");
+        TitleParent title5 = new TitleParent(getString(R.string.GetKnow));
+        TitleParent title1 = new TitleParent(getString(R.string.PerAct));
+        TitleParent title2 = new TitleParent(getString(R.string.FavDev));
+        TitleParent title3 = new TitleParent(getString(R.string.PlayRout));
+        TitleParent title4 = new TitleParent(getString(R.string.Managing));
 
 
         list.add(title5);

@@ -118,4 +118,10 @@
     <string name="Help22">"Allí verás una lista con tus notificaciones. Cada notificación representa un cambio en el estado de un dispositivo. Las notificaciones te son enviadas automáticamente"</string>
     <string name="Help23">"Para eliminar una notificación, haz click en el tacho a la derecha de la notificación"</string>
     <string name="Help24">"Para eliminar todas las notificaciones, haz click en el botón "Borrar todo" en la parte superior de la pantalla"</string>
+    <string name="GetKnow">Introducción a la app</string>
+    <string name="PerAct">Ejecutar acciones en un dispositivo</string>
+    <string name="FavDev">Marcar un dispositivo como favorito</string>
+    <string name="PlayRout">Ejecutar una rutina</string>
+    <string name="Managing">Gestionar notificaciones</string>
+
 </resources>

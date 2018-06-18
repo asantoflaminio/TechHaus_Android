@@ -53,7 +53,7 @@ public class MyAdapterNotif  extends ExpandableRecyclerAdapter<TitleParentViewHo
 
 
 
-        View view = inflater.inflate(R.layout.list_notifications, viewGroup, false);
+        final View view = inflater.inflate(R.layout.list_notifications, viewGroup, false);
 
         SharedPreferences sharedPreferences = view.getContext().getSharedPreferences("shared preferences", MODE_PRIVATE);
         final SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -73,7 +73,7 @@ public class MyAdapterNotif  extends ExpandableRecyclerAdapter<TitleParentViewHo
                         myNotif.remove(s);
                         editor.putStringSet("notifications", myNotif);
                         editor.commit();
-                        //MyAdapterNotif.this.mItemList.remove(this);
+                        MyAdapterNotif.this.mItemList.remove(view);
 
                     }
 

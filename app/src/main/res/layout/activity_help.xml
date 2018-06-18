@@ -29,7 +29,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="45dp"
             android:layout_marginTop="13dp"
-            android:text="Help"
+            android:text="@string/Help"
             android:textColor="@color/white"
             android:textSize="22sp" />
 

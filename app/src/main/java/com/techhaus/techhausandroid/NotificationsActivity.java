@@ -36,7 +36,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class NotificationsActivity extends AppCompatActivity {
+ public class NotificationsActivity extends AppCompatActivity {
 
     Set<String> myNotif;
     private TextView emptyView;
