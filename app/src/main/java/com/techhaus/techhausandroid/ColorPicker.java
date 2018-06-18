@@ -104,7 +104,6 @@ public class ColorPicker extends AppCompatDialogFragment {
                 if(customList1.get(i).getIconName().equals(getString(R.string.Red))){
                     code = "FF0000";
                 }else if(customList1.get(i).getIconName().equals(getString(R.string.Pink))){
-                    Log.d("mytag", "Ok flaco estoy aca");
                     code = "FF69B4";
                 }else if(customList1.get(i).getIconName().equals(getString(R.string.Green))){
                     code = "00FF00";

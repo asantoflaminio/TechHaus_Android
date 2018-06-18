@@ -73,7 +73,10 @@ public class NotificationsActivity extends AppCompatActivity {
             emptyView.setVisibility(View.VISIBLE);
         }else{
             emptyView = (TextView) findViewById(R.id.empty_view);
-            emptyView.setVisibility(View.GONE);
+            if(myNotif.size() > 0){
+                emptyView.setVisibility(View.GONE);
+            }
+
             _titleParents = new ArrayList<>();
             for(String s: myNotif){
                 Log.d("mytag", "String " + s);

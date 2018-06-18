@@ -285,7 +285,7 @@ public class LampActivity extends AppCompatActivity implements  ColorPicker.Colo
         //ColorPicker colorPicker = new ColorPicker();
         //colorPicker.show(getSupportFragmentManager(), "code dialog");
 
-        final String [] items = new String[] {"Blue", "Green", "Violet", "Pink", "Red", "Orange", "Yellow", "White"};
+        final String [] items = new String[] {getString(R.string.BlueN), getString(R.string.GreenN), getString(R.string.VioletN), getString(R.string.PinkN), getString(R.string.RedN), getString(R.string.OrangeN), getString(R.string.YellowN), getString(R.string.WhiteN)};
         final Integer[] icons = new Integer[] {R.drawable.blue, R.drawable.green, R.drawable.violet, R.drawable.pink, R.drawable.red, R.drawable.orange, R.drawable.yellow, R.drawable.white};
         ListAdapter adapter = new ArrayAdapterWithIcon(this, items, icons);
 
@@ -295,33 +295,33 @@ public class LampActivity extends AppCompatActivity implements  ColorPicker.Colo
                         String code = "";
                         if(item == 4){
                             code = "FF0000"; //Red
-                            Toast.makeText(LampActivity.this, "Red", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LampActivity.this, getString(R.string.RedN), Toast.LENGTH_SHORT).show();
                         }else if(item == 3){
                             code = "FF69B4"; //Pink
-                            Toast.makeText(LampActivity.this, "Pink", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LampActivity.this, getString(R.string.PinkN), Toast.LENGTH_SHORT).show();
                         }else if(item == 1){
                             code = "00FF00"; //Green
-                            Toast.makeText(LampActivity.this, "Green", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LampActivity.this, getString(R.string.GreenN), Toast.LENGTH_SHORT).show();
 
                         }else if(item == 0){
                             code = "0000FF"; //Blue
-                            Toast.makeText(LampActivity.this, "Blue", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LampActivity.this, getString(R.string.BlueN), Toast.LENGTH_SHORT).show();
 
                         }else if(item == 2){
                             code = "8A2BE2"; //Violet
-                            Toast.makeText(LampActivity.this, "Violet", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LampActivity.this, getString(R.string.VioletN), Toast.LENGTH_SHORT).show();
 
                         }else if(item == 6){
                             code = "FFFF00"; //Yellow
-                            Toast.makeText(LampActivity.this, "Yellow", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LampActivity.this, getString(R.string.YellowN), Toast.LENGTH_SHORT).show();
 
                         }else if(item == 5){
                             code = "FF8C00"; //Orange
-                            Toast.makeText(LampActivity.this, "Orange", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LampActivity.this,  getString(R.string.OrangeN), Toast.LENGTH_SHORT).show();
                         }else if (item == 7){
                             //White
                             code = "FFFFFF";
-                            Toast.makeText(LampActivity.this, "White", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LampActivity.this, getString(R.string.WhiteN), Toast.LENGTH_SHORT).show();
 
                         }
                         applyHex(code);
