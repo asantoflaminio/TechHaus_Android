@@ -33,7 +33,6 @@ import java.util.ArrayList;
 public class RefrigeratorActivity extends AppCompatActivity {
 
     private String[] grpname = {"Default", "Party", "Vacation"};
-    private String current_mode = null;
 
     private RequestQueue mQueue;
     int check = 0;
@@ -253,7 +252,6 @@ public class RefrigeratorActivity extends AppCompatActivity {
                     TextView tv = (TextView) findViewById(R.id.fridgemode);
                     mode = mode.replace(mode.charAt(0), mode.toUpperCase().charAt(0));
                     tv.setText(mode);
-                    current_mode = mode;
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -297,25 +295,23 @@ public class RefrigeratorActivity extends AppCompatActivity {
 
     }
 
-
-
     public void dialog(View v){
 
         final ArrayList<String> selection = new ArrayList<>();
 
         AlertDialog.Builder alt_bld = new AlertDialog.Builder(this);
         //alt_bld.setIcon(R.drawable.icon);
-        alt_bld.setTitle("Select Fridge Mode");
+        alt_bld.setTitle(R.string.SelectMode);
         alt_bld.setNegativeButton(R.string.Cancel, null);
         alt_bld.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 if(!selection.isEmpty()) {
-                    current_mode = selection.get(0);
                     try {
                         changeMode(getIntent().getStringExtra("devId"),selection.get(0));
                         TextView new_mode = (TextView)findViewById(R.id.fridgemode);
                         new_mode.setText(selection.get(0));
+                        Toast.makeText(RefrigeratorActivity.this, selection.get(0), Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -325,7 +321,6 @@ public class RefrigeratorActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int item) {
                 selection.clear();
                 selection.add(grpname[item]);
-                Toast.makeText(RefrigeratorActivity.this, selection.get(0), Toast.LENGTH_SHORT).show();
             }
         });
         AlertDialog alert = alt_bld.create();

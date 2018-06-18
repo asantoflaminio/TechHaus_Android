@@ -1,20 +1,19 @@
 package com.techhaus.techhausandroid;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,11 +31,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class OvenActivity extends AppCompatActivity {
 
-    Spinner heat_spinner, grill_spinner, convection_spinner;
+    private String[] heat_select = {"Conventional", "Bottom", "Top"};
+    private String[] grill_select = {"Large", "Eco", "Off"};
+    private String[] convection_select = {"Normal", "Eco", "Off"};
+
     private RequestQueue mQueue;
     int check = 0;
     int check2 = 0;
@@ -213,111 +214,20 @@ public class OvenActivity extends AppCompatActivity {
                         s.setChecked(false);
                     }
                     Log.d("mytag", "heat es" + heat);
-                    heat_spinner = findViewById(R.id.spinner5);
-                    final List<String> heat_spinner_list = new ArrayList<>();
-                    if(heat.equals("conventional")){
-                        heat_spinner_list.add("Conventional");
-                        heat_spinner_list.add("Bottom");
-                        heat_spinner_list.add("Top");
-                    }else if(heat.equals("top")){
-                        heat_spinner_list.add("Top");
-                        heat_spinner_list.add("Conventional");
-                        heat_spinner_list.add("Bottom");
+                    heat = heat.replace(heat.charAt(0), heat.toUpperCase().charAt(0));
+                    TextView heat_text = findViewById(R.id.current_heat);
+                    heat_text.setText(heat);
 
-                    }else{
-                        //bottom
-                        heat_spinner_list.add("Bottom");
-                        heat_spinner_list.add("Conventional");
-                        heat_spinner_list.add("Top");
-                    }
-
-                    ArrayAdapter<String> heat_spinner_adapter = new ArrayAdapter<>(OvenActivity.this, R.layout.support_simple_spinner_dropdown_item, heat_spinner_list);
-                    heat_spinner.setAdapter(heat_spinner_adapter);
-                    heat_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
-                            if(++check > 1) {
-                                Toast.makeText(OvenActivity.this, heat_spinner_list.get(i), Toast.LENGTH_SHORT).show();
-                                changeMode(devId, heat_spinner_list.get(i), "/setHeat");
-                            }
-                           }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
 
                     Log.d("mytag", "grill es" + grill);
-                    grill_spinner = findViewById(R.id.spinner6);
-                    final List<String> grill_spinner_list = new ArrayList<>();
-                    if(grill.equals("off")){
-                        grill_spinner_list.add("Off");
-                        grill_spinner_list.add("Large");
-                        grill_spinner_list.add("Eco");
+                    grill = grill.replace(grill.charAt(0), grill.toUpperCase().charAt(0));
+                    TextView grill_text = findViewById(R.id.current_grill);
+                    grill_text.setText(grill);
 
-                    }else if(grill.equals("large")){
-                        grill_spinner_list.add("Large");
-                        grill_spinner_list.add("Off");
-                        grill_spinner_list.add("Eco");
-                    }else{
-                        //eco
-                        grill_spinner_list.add("Eco");
-                        grill_spinner_list.add("Off");
-                        grill_spinner_list.add("Large");
+                    conv = conv.replace(conv.charAt(0), conv.toUpperCase().charAt(0));
+                    TextView conv_text = findViewById(R.id.current_convection);
+                    conv_text.setText(conv);
 
-                    }
-                    ArrayAdapter<String> grill_spinner_adapter = new ArrayAdapter<>(OvenActivity.this, R.layout.support_simple_spinner_dropdown_item, grill_spinner_list);
-                    grill_spinner.setAdapter(grill_spinner_adapter);
-
-                    grill_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
-                            if(++check2 > 1) {
-                                Toast.makeText(OvenActivity.this, grill_spinner_list.get(i), Toast.LENGTH_SHORT).show();
-                                changeMode(devId, grill_spinner_list.get(i), "/setGrill");
-                            }
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
-
-                    convection_spinner = findViewById(R.id.spinner7);
-                    final List<String> convection_spinner_list = new ArrayList<>();
-                    if(conv.equals("eco")){
-                        convection_spinner_list.add("Eco");
-                        convection_spinner_list.add("Off");
-                        convection_spinner_list.add("Normal");
-                    }else if(conv.equals("normal")){
-                        convection_spinner_list.add("Normal");
-                        convection_spinner_list.add("Eco");
-                        convection_spinner_list.add("Off");
-                    }else{
-                        //off
-                        convection_spinner_list.add("Off");
-                        convection_spinner_list.add("Normal");
-                        convection_spinner_list.add("Eco");
-                    }
-                    ArrayAdapter<String> convection_spinner_adapter = new ArrayAdapter<>(OvenActivity.this, R.layout.support_simple_spinner_dropdown_item, convection_spinner_list);
-                    convection_spinner.setAdapter(convection_spinner_adapter);
-
-                    convection_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
-                            if(++check3 > 1) {
-                                Toast.makeText(OvenActivity.this, convection_spinner_list.get(i), Toast.LENGTH_SHORT).show();
-                                changeMode(devId, convection_spinner_list.get(i), "/setConvection");
-                            }
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -344,9 +254,6 @@ public class OvenActivity extends AppCompatActivity {
 
             }
 
-
-
-
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -355,6 +262,90 @@ public class OvenActivity extends AppCompatActivity {
             }
         });
         mQueue.add(request);
+    }
+
+    public void dialog_heat(View v){
+
+        final ArrayList<String> selection = new ArrayList<>();
+
+        AlertDialog.Builder alt_bld = new AlertDialog.Builder(this);
+        //alt_bld.setIcon(R.drawable.icon);
+        alt_bld.setTitle(R.string.SelectHeatMode);
+        alt_bld.setNegativeButton(R.string.Cancel, null);
+        alt_bld.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                if(!selection.isEmpty()) {
+                    changeMode(getIntent().getStringExtra("devId"), selection.get(0), "/setHeat");
+                    TextView new_mode = (TextView)findViewById(R.id.current_heat);
+                    new_mode.setText(selection.get(0));
+                    Toast.makeText(OvenActivity.this, selection.get(0), Toast.LENGTH_SHORT).show();
+                }
+            }});
+        alt_bld.setSingleChoiceItems(heat_select, -1, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                selection.clear();
+                selection.add(heat_select[item]);
+            }
+        });
+        AlertDialog alert = alt_bld.create();
+        alert.show();
+    }
+
+    public void dialog_grill(View v){
+
+        final ArrayList<String> selection = new ArrayList<>();
+
+        AlertDialog.Builder alt_bld = new AlertDialog.Builder(this);
+        //alt_bld.setIcon(R.drawable.icon);
+        alt_bld.setTitle(R.string.SelectGrillMode);
+        alt_bld.setNegativeButton(R.string.Cancel, null);
+        alt_bld.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                if(!selection.isEmpty()) {
+                    changeMode(getIntent().getStringExtra("devId"), selection.get(0), "/setGrill");
+                    TextView new_mode = (TextView)findViewById(R.id.current_grill);
+                    new_mode.setText(selection.get(0));
+                    Toast.makeText(OvenActivity.this, selection.get(0), Toast.LENGTH_SHORT).show();
+                }
+            }});
+        alt_bld.setSingleChoiceItems(grill_select, -1, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                selection.clear();
+                selection.add(grill_select[item]);
+            }
+        });
+        AlertDialog alert = alt_bld.create();
+        alert.show();
+    }
+
+    public void dialog_convection(View v){
+
+        final ArrayList<String> selection = new ArrayList<>();
+
+        AlertDialog.Builder alt_bld = new AlertDialog.Builder(this);
+        //alt_bld.setIcon(R.drawable.icon);
+        alt_bld.setTitle(R.string.SelectConvectionMode);
+        alt_bld.setNegativeButton(R.string.Cancel, null);
+        alt_bld.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                if(!selection.isEmpty()) {
+                    changeMode(getIntent().getStringExtra("devId"), selection.get(0), "/setConvection");
+                    TextView new_mode = (TextView)findViewById(R.id.current_convection);
+                    new_mode.setText(selection.get(0));
+                    Toast.makeText(OvenActivity.this, selection.get(0), Toast.LENGTH_SHORT).show();
+                }
+            }});
+        alt_bld.setSingleChoiceItems(convection_select, -1, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                selection.clear();
+                selection.add(convection_select[item]);
+            }
+        });
+        AlertDialog alert = alt_bld.create();
+        alert.show();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {

@@ -68,4 +68,19 @@
     <string name="Help">"Ayuda"</string>
     <string name="Settings">"Configuración"</string>
     <string name="NewStatus">"Nuevo estado:"</string>
+    <string name="SelectVerticalSwing">"Seleccione Swing Vertical"</string>
+    <string name="SelectHorizontalSwing">"Seleccione Swing Horizontal"</string>
+    <string name="SelectFanSpeed">"Selecccione Velocidad"</string>
+    <string name="SelectMode">"Seleccione Modo"</string>
+    <string name="SelectHeatMode">"Seleccione Modo De Calor"</string>
+    <string name="SelectGrillMode">"Seleccione Modo De Grill"</string>
+    <string name="SelectConvectionMode">"Seleccione Modo De Convección"</string>
+    <string name="BlueN">"Azul"</string>
+    <string name="GreenN">"Verde"</string>
+    <string name="VioletN">"Violeta"</string>
+    <string name="PinkN">"Rosa"</string>
+    <string name="YellowN">"Amarillo"</string>
+    <string name="RedN">"Rojo"</string>
+    <string name="OrangeN">"Naranja"</string>
+    <string name="WhiteN">"Blanco"</string>
 </resources>

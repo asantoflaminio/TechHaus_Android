@@ -86,9 +86,12 @@
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="135sp"
-                    android:layout_marginTop="15sp"
+                    android:layout_gravity="right"
                     android:layout_weight="1"
+                    android:gravity="right"
+                    android:textStyle="italic"
+                    android:paddingEnd="5dp"
+                    android:paddingTop="25dp"
                     android:text="@string/Loading"
                     android:textSize="20sp" />
 
@@ -128,9 +131,12 @@
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="115sp"
-                    android:layout_marginTop="15sp"
+                    android:layout_gravity="right"
                     android:layout_weight="1"
+                    android:gravity="right"
+                    android:textStyle="italic"
+                    android:paddingEnd="5dp"
+                    android:paddingTop="15dp"
                     android:text="@string/Loading"
                     android:textSize="20sp" />
 

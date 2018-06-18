@@ -4,22 +4,14 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDialogFragment;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.text.method.KeyListener;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +35,7 @@ public class ColorPicker extends AppCompatDialogFragment {
     @Override
     public void onResume() {
         super.onResume();
+
         final AlertDialog dialog = (AlertDialog)getDialog();
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +52,7 @@ public class ColorPicker extends AppCompatDialogFragment {
             }
         });
     }
+
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

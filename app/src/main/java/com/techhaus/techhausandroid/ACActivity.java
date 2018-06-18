@@ -1,17 +1,17 @@
 package com.techhaus.techhausandroid;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
@@ -32,9 +32,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ACActivity extends AppCompatActivity {
+
+    private String[] ac_mode_select = {"Cool", "Heat", "Fan"};
+    private String[] hor_swing_select = {"Auto", "-90", "-45", "0", "45", "90"};
+    private String[] ver_swing_select = {"Auto", "22", "45", "67", "90"};
+    private String[] fan_select = {"Auto", "25", "50", "75", "100"};
 
     Spinner mode_spinner, fan_spinner, vertical_swing_spinner, horizontal_swing_spinner;
     private RequestQueue mQueue;
@@ -174,217 +178,21 @@ public class ACActivity extends AppCompatActivity {
                         s.setChecked(false);
                     }
 
+                    mode = mode.replace(mode.charAt(0), mode.toUpperCase().charAt(0));
+                    TextView mode_text = findViewById(R.id.current_ac_mode);
+                    mode_text.setText(mode);
 
-                    //aca vienen los spinners!
-                    //custom spinner
-                    mode_spinner = findViewById(R.id.spinner);
-                    final List<SpinnerData> customList1 = new ArrayList<>();
-                    if(mode.equals("heat")){
-                        customList1.add(new SpinnerData(R.drawable.heat, "Heat"));
-                        customList1.add(new SpinnerData(R.drawable.cool, "Cool"));
-                        customList1.add(new SpinnerData(R.drawable.fan, "Fan"));
-                    }else if(mode.equals("cool")){
-                        customList1.add(new SpinnerData(R.drawable.cool, "Cool"));
-                        customList1.add(new SpinnerData(R.drawable.heat, "Heat"));
-                        customList1.add(new SpinnerData(R.drawable.fan, "Fan"));
-                    }else{
-                        customList1.add(new SpinnerData(R.drawable.fan, "Fan"));
-                        customList1.add(new SpinnerData(R.drawable.cool, "Cool"));
-                        customList1.add(new SpinnerData(R.drawable.heat, "Heat"));
-                    }
+                    fspeed = fspeed.replace(fspeed.charAt(0), fspeed.toUpperCase().charAt(0));
+                    TextView fspeed_text = findViewById(R.id.current_fan);
+                    fspeed_text.setText(fspeed);
 
+                    vswing = vswing.replace(vswing.charAt(0), vswing.toUpperCase().charAt(0));
+                    TextView vswing_text = findViewById(R.id.current_ver_swing);
+                    vswing_text.setText(vswing);
 
-                    CustomSpinnerAdapter customSpinnerAdapter = new CustomSpinnerAdapter(ACActivity.this, R.layout.spinner_layout, customList1);
-                    mode_spinner.setAdapter(customSpinnerAdapter);
-
-                    mode_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
-                            if(++check > 1) {
-                                Toast.makeText(ACActivity.this, customList1.get(i).getIconName(), Toast.LENGTH_SHORT).show();
-                                changeMode(devId, customList1.get(i).getIconName(), "/setMode");
-                            }
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
-
-
-                    fan_spinner = findViewById(R.id.spinner2);
-                    final List<String> fan_spinner_list = new ArrayList<>();
-                    if(fspeed.equals("auto")){
-                        fan_spinner_list.add("Auto");
-                        fan_spinner_list.add("25");
-                        fan_spinner_list.add("50");
-                        fan_spinner_list.add("75");
-                        fan_spinner_list.add("100");
-                    }else if(fspeed.equals("25")){
-                        fan_spinner_list.add("25");
-                        fan_spinner_list.add("50");
-                        fan_spinner_list.add("75");
-                        fan_spinner_list.add("100");
-                        fan_spinner_list.add("Auto");
-                    }else if(fspeed.equals("50")){
-                        fan_spinner_list.add("50");
-                        fan_spinner_list.add("25");
-                        fan_spinner_list.add("75");
-                        fan_spinner_list.add("100");
-                        fan_spinner_list.add("Auto");
-                    }else if(fspeed.equals("75")){
-                        fan_spinner_list.add("75");
-                        fan_spinner_list.add("100");
-                        fan_spinner_list.add("Auto");
-                        fan_spinner_list.add("50");
-                        fan_spinner_list.add("25");
-                    }else{
-                        fan_spinner_list.add("100");
-                        fan_spinner_list.add("25");
-                        fan_spinner_list.add("50");
-                        fan_spinner_list.add("75");
-                        fan_spinner_list.add("Auto");
-                    }
-
-
-                    ArrayAdapter<String> fan_spinner_adapter = new ArrayAdapter<>(ACActivity.this, R.layout.support_simple_spinner_dropdown_item, fan_spinner_list);
-                    fan_spinner.setAdapter(fan_spinner_adapter);
-
-                    fan_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
-                            if(++check2 > 1) {
-                                Toast.makeText(ACActivity.this, fan_spinner_list.get(i), Toast.LENGTH_SHORT).show();
-                                changeMode(devId, fan_spinner_list.get(i), "/setFanSpeed");
-                            }
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
-
-
-                    vertical_swing_spinner = findViewById(R.id.spinner3);
-                    final List<String> vertical_swing_spinner_list = new ArrayList<>();
-                    if(vswing.equals("auto")){
-                        vertical_swing_spinner_list.add("Auto");
-                        vertical_swing_spinner_list.add("22");
-                        vertical_swing_spinner_list.add("45");
-                        vertical_swing_spinner_list.add("67");
-                        vertical_swing_spinner_list.add("90");
-                    }else if(vswing.equals("22")){
-                        vertical_swing_spinner_list.add("22");
-                        vertical_swing_spinner_list.add("45");
-                        vertical_swing_spinner_list.add("67");
-                        vertical_swing_spinner_list.add("90");
-                        vertical_swing_spinner_list.add("Auto");
-                    }else if(vswing.equals("45")){
-                        vertical_swing_spinner_list.add("45");
-                        vertical_swing_spinner_list.add("22");
-                        vertical_swing_spinner_list.add("67");
-                        vertical_swing_spinner_list.add("90");
-                        vertical_swing_spinner_list.add("Auto");
-                    }else if(vswing.equals("67")){
-                        vertical_swing_spinner_list.add("67");
-                        vertical_swing_spinner_list.add("90");
-                        vertical_swing_spinner_list.add("Auto");
-                        vertical_swing_spinner_list.add("22");
-                        vertical_swing_spinner_list.add("45");
-                    }else{
-                        //90
-                        vertical_swing_spinner_list.add("90");
-                        vertical_swing_spinner_list.add("Auto");
-                        vertical_swing_spinner_list.add("22");
-                        vertical_swing_spinner_list.add("45");
-                        vertical_swing_spinner_list.add("67");
-                    }
-
-
-                    ArrayAdapter<String> vertical_swing_spinner_adapter = new ArrayAdapter<>(ACActivity.this, R.layout.support_simple_spinner_dropdown_item, vertical_swing_spinner_list);
-                    vertical_swing_spinner.setAdapter(vertical_swing_spinner_adapter);
-
-                    vertical_swing_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
-                            if(++check3 > 1) {
-                                Toast.makeText(ACActivity.this, vertical_swing_spinner_list.get(i), Toast.LENGTH_SHORT).show();
-                                changeMode(devId, vertical_swing_spinner_list.get(i), "/setVerticalSwing");
-                            }
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
-
-                    horizontal_swing_spinner = findViewById(R.id.spinner4);
-                    final List<String> horizontal_swing_spinner_list = new ArrayList<>();
-                    if(hswing.equals("auto")){
-                        horizontal_swing_spinner_list.add("Auto");
-                        horizontal_swing_spinner_list.add("-90");
-                        horizontal_swing_spinner_list.add("-45");
-                        horizontal_swing_spinner_list.add("0");
-                        horizontal_swing_spinner_list.add("45");
-                        horizontal_swing_spinner_list.add("90");
-                    }else if(hswing.equals("-90")){
-                        horizontal_swing_spinner_list.add("-90");
-                        horizontal_swing_spinner_list.add("-45");
-                        horizontal_swing_spinner_list.add("0");
-                        horizontal_swing_spinner_list.add("45");
-                        horizontal_swing_spinner_list.add("90");
-                        horizontal_swing_spinner_list.add("Auto");
-                    }else if(hswing.equals("-45")){
-                        horizontal_swing_spinner_list.add("-45");
-                        horizontal_swing_spinner_list.add("-90");
-                        horizontal_swing_spinner_list.add("0");
-                        horizontal_swing_spinner_list.add("45");
-                        horizontal_swing_spinner_list.add("90");
-                        horizontal_swing_spinner_list.add("Auto");
-                    }else if(hswing.equals("0")){
-                        horizontal_swing_spinner_list.add("0");
-                        horizontal_swing_spinner_list.add("Auto");
-                        horizontal_swing_spinner_list.add("-90");
-                        horizontal_swing_spinner_list.add("-45");
-                        horizontal_swing_spinner_list.add("45");
-                        horizontal_swing_spinner_list.add("90");
-                    }else if(hswing.equals("45")){
-                        horizontal_swing_spinner_list.add("45");
-                        horizontal_swing_spinner_list.add("Auto");
-                        horizontal_swing_spinner_list.add("-90");
-                        horizontal_swing_spinner_list.add("-45");
-                        horizontal_swing_spinner_list.add("0");
-                        horizontal_swing_spinner_list.add("90");
-                    }else{//90
-                        horizontal_swing_spinner_list.add("90");
-                        horizontal_swing_spinner_list.add("Auto");
-                        horizontal_swing_spinner_list.add("-90");
-                        horizontal_swing_spinner_list.add("-45");
-                        horizontal_swing_spinner_list.add("0");
-                        horizontal_swing_spinner_list.add("45");
-                    }
-
-
-                    ArrayAdapter<String> horizontal_swing_spinner_adapter = new ArrayAdapter<>(ACActivity.this, R.layout.support_simple_spinner_dropdown_item, horizontal_swing_spinner_list);
-                    horizontal_swing_spinner.setAdapter(horizontal_swing_spinner_adapter);
-
-                    horizontal_swing_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
-                            if(++check4 > 1) {
-                                Toast.makeText(ACActivity.this, horizontal_swing_spinner_list.get(i), Toast.LENGTH_SHORT).show();
-                                changeMode(devId, horizontal_swing_spinner_list.get(i), "/setHorizontalSwing");
-                            }
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
+                    hswing = hswing.replace(hswing.charAt(0), hswing.toUpperCase().charAt(0));
+                    TextView hswing_text = findViewById(R.id.current_hor_swing);
+                    hswing_text.setText(hswing);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -418,6 +226,119 @@ public class ACActivity extends AppCompatActivity {
         });
         mQueue.add(request);
     }
+
+    public void dialog_ac_mode(View v){
+
+        final ArrayList<String> selection = new ArrayList<>();
+
+        AlertDialog.Builder alt_bld = new AlertDialog.Builder(this);
+        //alt_bld.setIcon(R.drawable.icon);
+        alt_bld.setTitle(R.string.SelectMode);
+        alt_bld.setNegativeButton(R.string.Cancel, null);
+        alt_bld.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                if(!selection.isEmpty()) {
+                    changeMode(getIntent().getStringExtra("devId"), selection.get(0), "/setMode");
+                    TextView new_mode = (TextView)findViewById(R.id.current_ac_mode);
+                    new_mode.setText(selection.get(0));
+                    Toast.makeText(ACActivity.this, selection.get(0), Toast.LENGTH_SHORT).show();
+                }
+            }});
+        alt_bld.setSingleChoiceItems(ac_mode_select, -1, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                selection.clear();
+                selection.add(ac_mode_select[item]);
+            }
+        });
+        AlertDialog alert = alt_bld.create();
+        alert.show();
+    }
+
+    public void dialog_hor_swing(View v){
+
+        final ArrayList<String> selection = new ArrayList<>();
+
+        AlertDialog.Builder alt_bld = new AlertDialog.Builder(this);
+        //alt_bld.setIcon(R.drawable.icon);
+        alt_bld.setTitle(R.string.SelectHorizontalSwing);
+        alt_bld.setNegativeButton(R.string.Cancel, null);
+        alt_bld.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                if(!selection.isEmpty()) {
+                    changeMode(getIntent().getStringExtra("devId"), selection.get(0), "/setHorizontalSwing");
+                    TextView new_mode = (TextView)findViewById(R.id.current_hor_swing);
+                    new_mode.setText(selection.get(0));
+                    Toast.makeText(ACActivity.this, selection.get(0), Toast.LENGTH_SHORT).show();
+                }
+            }});
+        alt_bld.setSingleChoiceItems(hor_swing_select, -1, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                selection.clear();
+                selection.add(hor_swing_select[item]);
+            }
+        });
+        AlertDialog alert = alt_bld.create();
+        alert.show();
+    }
+
+    public void dialog_ver_swing(View v){
+
+        final ArrayList<String> selection = new ArrayList<>();
+
+        AlertDialog.Builder alt_bld = new AlertDialog.Builder(this);
+        //alt_bld.setIcon(R.drawable.icon);
+        alt_bld.setTitle(R.string.SelectVerticalSwing);
+        alt_bld.setNegativeButton(R.string.Cancel, null);
+        alt_bld.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                if(!selection.isEmpty()) {
+                    changeMode(getIntent().getStringExtra("devId"), selection.get(0), "/setVerticalSwing");
+                    TextView new_mode = (TextView)findViewById(R.id.current_ver_swing);
+                    new_mode.setText(selection.get(0));
+                    Toast.makeText(ACActivity.this, selection.get(0), Toast.LENGTH_SHORT).show();
+                }
+            }});
+        alt_bld.setSingleChoiceItems(ver_swing_select, -1, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                selection.clear();
+                selection.add(ver_swing_select[item]);
+            }
+        });
+        AlertDialog alert = alt_bld.create();
+        alert.show();
+    }
+
+    public void dialog_fan(View v){
+
+        final ArrayList<String> selection = new ArrayList<>();
+
+        AlertDialog.Builder alt_bld = new AlertDialog.Builder(this);
+        //alt_bld.setIcon(R.drawable.icon);
+        alt_bld.setTitle(R.string.SelectFanSpeed);
+        alt_bld.setNegativeButton(R.string.Cancel, null);
+        alt_bld.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                if(!selection.isEmpty()) {
+                    changeMode(getIntent().getStringExtra("devId"), selection.get(0), "/setFanSpeed");
+                    TextView new_mode = (TextView)findViewById(R.id.current_fan);
+                    new_mode.setText(selection.get(0));
+                    Toast.makeText(ACActivity.this, selection.get(0), Toast.LENGTH_SHORT).show();
+                }
+            }});
+        alt_bld.setSingleChoiceItems(fan_select, -1, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                selection.clear();
+                selection.add(fan_select[item]);
+            }
+        });
+        AlertDialog alert = alt_bld.create();
+        alert.show();
+    }
+
 
     private void updateTemp(int temp, String deviceId) {
 
