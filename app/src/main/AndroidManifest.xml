@@ -3,6 +3,7 @@
     package="com.techhaus.techhausandroid">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -33,21 +34,22 @@
 
 
         <!-- ActivityOne -->
-        <activity android:name=".ActivityOne"
-            android:parentActivityName=".MainActivity" >
+        <activity
+            android:name=".ActivityOne"
+            android:parentActivityName=".MainActivity">
 
-        <!-- Parent activity meta-data to support 4.0 and lower -->
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MainActivity" />
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
-
         <activity android:name=".NotificationsActivity" />
         <activity android:name=".RoutinesActivity" />
 
         <!-- BlindActivity -->
-        <activity android:name=".BlindActivity"
-            android:parentActivityName=".ActivityOne" >
+        <activity
+            android:name=".BlindActivity"
+            android:parentActivityName=".ActivityOne">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
@@ -56,8 +58,9 @@
         </activity>
 
         <!-- DoorActivity -->
-        <activity android:name=".DoorActivity"
-            android:parentActivityName=".ActivityOne" >
+        <activity
+            android:name=".DoorActivity"
+            android:parentActivityName=".ActivityOne">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
@@ -66,8 +69,9 @@
         </activity>
 
         <!-- AlarmActivity -->
-        <activity android:name=".AlarmActivity"
-            android:parentActivityName=".ActivityOne" >
+        <activity
+            android:name=".AlarmActivity"
+            android:parentActivityName=".ActivityOne">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
@@ -76,8 +80,9 @@
         </activity>
 
         <!-- RefrigeratorActivity -->
-        <activity android:name=".RefrigeratorActivity"
-            android:parentActivityName=".ActivityOne" >
+        <activity
+            android:name=".RefrigeratorActivity"
+            android:parentActivityName=".ActivityOne">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
@@ -86,8 +91,9 @@
         </activity>
 
         <!-- OvenActivity -->
-        <activity android:name=".OvenActivity"
-            android:parentActivityName=".ActivityOne" >
+        <activity
+            android:name=".OvenActivity"
+            android:parentActivityName=".ActivityOne">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
@@ -96,8 +102,9 @@
         </activity>
 
         <!-- ACActivity -->
-        <activity android:name=".ACActivity"
-            android:parentActivityName=".ActivityOne" >
+        <activity
+            android:name=".ACActivity"
+            android:parentActivityName=".ActivityOne">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
@@ -106,25 +113,36 @@
         </activity>
 
         <!-- LampActivity -->
-        <activity android:name=".LampActivity"
-            android:parentActivityName=".ActivityOne" >
+        <activity
+            android:name=".LampActivity"
+            android:parentActivityName=".ActivityOne">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ActivityOne" />
         </activity>
-
-        <activity android:name=".RoutActivity"
-            android:parentActivityName=".RoutinesActivity" >
+        <activity
+            android:name=".RoutActivity"
+            android:parentActivityName=".RoutinesActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".RoutinesActivity" />
         </activity>
+
+        <receiver android:name=".AlarmNotificationReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
-
-
 
 </manifest>
