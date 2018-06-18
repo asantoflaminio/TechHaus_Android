@@ -15,10 +15,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
@@ -30,6 +32,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.content.Context.MODE_PRIVATE;
 import static android.content.Context.NOTIFICATION_SERVICE;
@@ -174,6 +178,7 @@ public class AlarmNotificationReceiver extends BroadcastReceiver{
                 @Override
                 public void onResponse(JSONObject response) {
                     try {
+                        Log.d("mytag", "Ok genialll");
                         processEvent(response, name, id);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -185,18 +190,25 @@ public class AlarmNotificationReceiver extends BroadcastReceiver{
                     Log.d("mytag", "Error de response");
                     error.printStackTrace();
                 }
-            });
+            }) { //no semicolon or coma
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("Content-Type", "application/json");
+                    return params;
+                }
+            };
             mQueue.add(request);
         }
 
     }
 
     private void processEvent(JSONObject response, String name, String id) throws JSONException {
-        String event = response.getString("event");
-        String args = response.getString("event");
-        Log.d("mytag", "Name es: " + name);
-        Log.d("mytag", "Id es: " + id);
-        Log.d("mytag", "Event es: " + event);
-        Log.d("mytag", "Args es: " + args);
+       // String event = response.getString("event");
+       // String args = response.getString("event");
+       // Log.d("mytag", "Name es: " + name);
+       // Log.d("mytag", "Id es: " + id);
+       // Log.d("mytag", "Event es: " + event);
+       // Log.d("mytag", "Args es: " + args);
     }
 }

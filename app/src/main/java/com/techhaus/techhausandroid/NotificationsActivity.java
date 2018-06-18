@@ -23,11 +23,13 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class NotificationsActivity extends AppCompatActivity {
 
-    ArrayList<String> myNotif;
+    Set<String> myNotif;
 
 
     @Override
@@ -36,14 +38,11 @@ public class NotificationsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notifications);
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString("notifList", null);
-        Type type = new TypeToken<ArrayList<String>>(){}.getType();
-        myNotif = gson.fromJson(json, type);
+        myNotif = sharedPreferences.getStringSet("notifications", null);
 
         if(myNotif == null){
-            myNotif = new ArrayList<String>();
+            myNotif = new HashSet<String>();
+            Log.d("mytag", "it was null");
         }
         for(String s: myNotif){
             Log.d("mytag", "String " + s);

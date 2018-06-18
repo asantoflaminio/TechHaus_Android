@@ -67,4 +67,5 @@
     <string name="MustChoose">"¡Debe elegir un color!"</string>
     <string name="Help">"Ayuda"</string>
     <string name="Settings">"Configuración"</string>
+    <string name="NewStatus">"Nuevo estado:"</string>
 </resources>
