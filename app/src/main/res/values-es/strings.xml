@@ -88,4 +88,5 @@
     <string name="ClearAll">"Borrar todo"</string>
     <string name="no_data">"No hay notificaciones"</string>
     <string name="Update">"Actualización"</string>
+    <string name="Refresh">"Refrescar"</string>
 </resources>

@@ -49,6 +49,13 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/refresh"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:onClick="showRefresh"
+                android:text="@string/Refresh" />
+
+            <Button
                 android:id="@+id/normal_notif"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"

@@ -61,7 +61,7 @@ public class NotificationsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
-    private void listado() {
+    public void listado() {
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         myNotif = sharedPreferences.getStringSet("notifications", null);
@@ -78,9 +78,9 @@ public class NotificationsActivity extends AppCompatActivity {
             for(String s: myNotif){
                 Log.d("mytag", "String " + s);
                 String[] cosas = s.split(";");
-                TitleParent title = new TitleParent(cosas[0]);
+                TitleParent title = new TitleParent(cosas[0] + "\n" + getString(R.string.Update)+ ":" + cosas[1] + ": " + cosas[2]);
                 List<Object> childList = new ArrayList<>();
-                childList.add(new TitleChild( getString(R.string.Update)+ ":", cosas[1] + ": " + cosas[2]));
+                //childList.add(new TitleChild( getString(R.string.Update)+ ":", cosas[1] + ": " + cosas[2]));
                 title.setChildObjectList(childList);
                 _titleParents.add(title);
 
@@ -175,6 +175,14 @@ public class NotificationsActivity extends AppCompatActivity {
         myNotif = new HashSet<String>();
         editor.putStringSet("notifications", myNotif);
         editor.commit();
+        emptyView = (TextView) findViewById(R.id.empty_view);
+        emptyView.setVisibility(View.VISIBLE);
+        listado();
+
+    }
+
+    public void showRefresh(View v) {
+
         listado();
 
     }

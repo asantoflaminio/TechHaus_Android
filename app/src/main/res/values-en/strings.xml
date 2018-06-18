@@ -88,5 +88,5 @@
     <string name="ClearAll">"Clear all"</string>
     <string name="no_data">"No notifications"</string>
     <string name="Update">"Update"</string>
-
+    <string name="Refresh">"Refresh"</string>
 </resources>
