@@ -1,18 +1,18 @@
 package com.techhaus.techhausandroid;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,11 +29,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RefrigeratorActivity extends AppCompatActivity {
 
-    Spinner fridge_mode_spinner;
+    private String[] grpname = {"Default", "Party", "Vacation"};
+    private String current_mode = null;
+
     private RequestQueue mQueue;
     int check = 0;
     @Override
@@ -248,52 +249,12 @@ public class RefrigeratorActivity extends AppCompatActivity {
                 try {
                     JSONObject result = response.getJSONObject("result");
                     String mode = result.getString("mode").replace("[", "").replace("]", "").replace("\"", "");
-                    //custom spinner
-                    fridge_mode_spinner = (Spinner) findViewById(R.id.spinner_fridge_mode);
-                    final List<SpinnerData> customList1 = new ArrayList<>();
 
+                    TextView tv = (TextView) findViewById(R.id.fridgemode);
+                    mode = mode.replace(mode.charAt(0), mode.toUpperCase().charAt(0));
+                    tv.setText(mode);
+                    current_mode = mode;
 
-
-
-                    if(mode.equals("vacation")){
-                        customList1.add(new SpinnerData(R.drawable.vacation, "Vacation"));
-                        customList1.add(new SpinnerData(R.drawable.party, "Party"));
-                        customList1.add(new SpinnerData(R.drawable.fridge_default, "Default"));
-
-                    }else if(mode.equals("default")){
-                        customList1.add(new SpinnerData(R.drawable.fridge_default, "Default"));
-                        customList1.add(new SpinnerData(R.drawable.vacation, "Vacation"));
-                        customList1.add(new SpinnerData(R.drawable.party, "Party"));
-
-                    }else{
-                        //party
-                        customList1.add(new SpinnerData(R.drawable.party, "Party"));
-                        customList1.add(new SpinnerData(R.drawable.fridge_default, "Default"));
-                        customList1.add(new SpinnerData(R.drawable.vacation, "Vacation"));
-
-                    }
-
-                    CustomSpinnerAdapter customSpinnerAdapter = new CustomSpinnerAdapter(RefrigeratorActivity.this, R.layout.spinner_layout, customList1);
-                    fridge_mode_spinner.setAdapter(customSpinnerAdapter);
-
-                    fridge_mode_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
-                            if(++check > 1) {
-                                Toast.makeText(RefrigeratorActivity.this, customList1.get(i).getIconName(), Toast.LENGTH_SHORT).show();
-                                try {
-                                    changeMode(id1, customList1.get(i).getIconName());
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                           }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -334,6 +295,41 @@ public class RefrigeratorActivity extends AppCompatActivity {
         });
         mQueue.add(request);
 
+    }
+
+
+
+    public void dialog(View v){
+
+        final ArrayList<String> selection = new ArrayList<>();
+
+        AlertDialog.Builder alt_bld = new AlertDialog.Builder(this);
+        //alt_bld.setIcon(R.drawable.icon);
+        alt_bld.setTitle("Select Fridge Mode");
+        alt_bld.setNegativeButton(R.string.Cancel, null);
+        alt_bld.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                if(!selection.isEmpty()) {
+                    current_mode = selection.get(0);
+                    try {
+                        changeMode(getIntent().getStringExtra("devId"),selection.get(0));
+                        TextView new_mode = (TextView)findViewById(R.id.fridgemode);
+                        new_mode.setText(selection.get(0));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+        }});
+        alt_bld.setSingleChoiceItems(grpname, -1, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                selection.clear();
+                selection.add(grpname[item]);
+                Toast.makeText(RefrigeratorActivity.this, selection.get(0), Toast.LENGTH_SHORT).show();
+            }
+        });
+        AlertDialog alert = alt_bld.create();
+        alert.show();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {

@@ -203,14 +203,18 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <Spinner
-                    android:id="@+id/spinner_fridge_mode"
-                    android:layout_width="224dp"
+                <TextView
+                    android:id="@+id/fridgemode"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10sp"
-                    android:layout_marginStart="75sp"
-                    android:layout_marginTop="15sp"
-                    android:layout_weight="1" />
+                    android:layout_gravity="right"
+                    android:layout_marginEnd="17dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:onClick="dialog"
+                    android:paddingTop="15dp"
+                    android:textSize="20sp"
+                    android:textStyle="italic"/>
 
             </LinearLayout>
 
