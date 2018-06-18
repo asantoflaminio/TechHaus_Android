@@ -90,6 +90,8 @@
     <string name="NewStatus">"New status:"</string>
     <string name="ClearAll">"Clear all"</string>
     <string name="no_data">"No notifications"</string>
+    <string name="no_routines">"No routines"</string>
+    <string name="no_devices">"No devices for this category"</string>
     <string name="Update">"Update"</string>
     <string name="Refresh">"Refresh"</string>
     <string name="Help1">"When you first open the app, you will be in the "Devices" category"</string>

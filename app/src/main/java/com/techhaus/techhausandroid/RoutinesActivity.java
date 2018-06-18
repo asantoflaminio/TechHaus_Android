@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -36,6 +38,7 @@ public class RoutinesActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     private RequestQueue mQueue;
     List<TitleParent> _titleParents;
+    private TextView emptyView;
 
 
     @Override
@@ -125,6 +128,10 @@ public class RoutinesActivity extends AppCompatActivity {
         try {
             _titleParents = new ArrayList<>();
             JSONArray jsonArray = response.getJSONArray("routines");
+            if(jsonArray.length() <= 0){
+                emptyView = (TextView) findViewById(R.id.empty_view);
+                emptyView.setVisibility(View.VISIBLE);
+            }
             for(int i = 0; i < jsonArray.length(); i++){
                 JSONObject routine = jsonArray.getJSONObject(i);
                 String routineName = routine.getString("name");

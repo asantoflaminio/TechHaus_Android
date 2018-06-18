@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -36,7 +37,7 @@ public class ActivityOne extends AppCompatActivity {
     RecyclerView recyclerView;
     List<TitleParent> _titleParents;
     private RequestQueue mQueue;
-    private RequestQueue mQueue2;
+    private TextView emptyView;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -191,7 +192,7 @@ public class ActivityOne extends AppCompatActivity {
 
     private void processDevicesFaved(JSONObject response) throws JSONException {
         JSONArray jsonArray = response.getJSONArray("devices");
-        _titleParents = new ArrayList<>();
+
         for(int i = 0; i < jsonArray.length(); i++){
             JSONObject device = jsonArray.getJSONObject(i);
             String meta = device.getString("meta");
@@ -256,6 +257,13 @@ public class ActivityOne extends AppCompatActivity {
     private List<ParentObject> initData() {
         TitleCreator titleCreator = TitleCreator.get(this);
         List<TitleParent> titles = _titleParents;
+
+
+        if(titles.size() <= 0){
+            emptyView = (TextView) findViewById(R.id.empty_view);
+            emptyView.setVisibility(View.VISIBLE);
+        }
+
         List<ParentObject> parentObject = new ArrayList<>();
         for(TitleParent title: titles){
             List<Object> childList = new ArrayList<>();

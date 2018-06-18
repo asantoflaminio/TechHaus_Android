@@ -73,6 +73,7 @@ public class MyAdapterNotif  extends ExpandableRecyclerAdapter<TitleParentViewHo
                         myNotif.remove(s);
                         editor.putStringSet("notifications", myNotif);
                         editor.commit();
+                        //MyAdapterNotif.this.mItemList.remove(this);
 
                     }
 

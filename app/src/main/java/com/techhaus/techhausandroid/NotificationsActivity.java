@@ -65,7 +65,8 @@ public class NotificationsActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         myNotif = sharedPreferences.getStringSet("notifications", null);
-
+        emptyView = (TextView) findViewById(R.id.empty_view);
+        emptyView.setVisibility(View.VISIBLE);
         if(myNotif == null){
             //myNotif = new HashSet<String>();
             Log.d("mytag", "it was null");

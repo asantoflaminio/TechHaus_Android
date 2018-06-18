@@ -90,6 +90,8 @@
     <string name="WhiteN">"Blanco"</string>
     <string name="ClearAll">"Borrar todo"</string>
     <string name="no_data">"No hay notificaciones"</string>
+    <string name="no_routines">"No hay rutinas"</string>
+    <string name="no_devices">"No hay dispositivos para esta categoría"</string>
     <string name="Update">"Actualización"</string>
     <string name="Refresh">"Refrescar"</string>
     <string name="Help1">"Al abrir la aplicación, te encuentras en la categoría "Dispositivos""</string>
