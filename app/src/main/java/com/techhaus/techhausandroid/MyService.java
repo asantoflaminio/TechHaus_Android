@@ -45,6 +45,13 @@ public class MyService extends Service {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacks(runnable);
+        handler.removeMessages(0);
+    }
+
+    @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         handler = new Handler();
