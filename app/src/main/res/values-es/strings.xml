@@ -65,5 +65,6 @@
     <string name="Pink">Rosa</string>
     <string name="Orange">Naranja</string>
     <string name="MustChoose">"¡Debe elegir un color!"</string>
-
+    <string name="Help">"Ayuda"</string>
+    <string name="Settings">"Configuración"</string>
 </resources>

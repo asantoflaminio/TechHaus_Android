@@ -64,6 +64,6 @@
     <string name="Pink">Pink</string>
     <string name="Orange">Orange</string>
     <string name="MustChoose">"You must choose a color!"</string>
-
-
+    <string name="Help">"Help"</string>
+    <string name="Settings">"Settings"</string>
 </resources>
