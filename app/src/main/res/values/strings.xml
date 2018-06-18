@@ -88,4 +88,29 @@
     <string name="WhiteN">"White"</string>
     <string name="Update">"Update"</string>
     <string name="Refresh">"Refresh"</string>
+    <string name="Help1">"When you first open the app, you will be in the "Devices" category"</string>
+    <string name="Help2">"On the bottom of the screen you can permanently find the three main categories of the app: "Devices", "Notifications" and "Routines""</string>
+    <string name="Help3">"The category you are currently in is highlighted in blue, while the inactive ones are in grey"</string>
+    <string name="Help4">"In "Devices" you will find the different device categories. To find a specific device, enter the device's category and it will appear in the category's list of devices"</string>
+    <string name="Help5">"In "Notifications" you will find a list of your recent notifications. Every time a device changes its state, you will get notified. You can change your notification preferences on the "Settings" section"</string>
+    <string name="Help6">"In "Routines" you will find a list of your saved routines. You can play a routine from the list or access its tasks by clicking on the routine"</string>
+    <string name="Help7">"To access the "Help" or "Settings" sections, click on the three dots on the top right corner of the "Devices", "Notifications" or "Routines" categories"</string>
+    <string name="Help8">"To perform an action on a device, first go to the "Devices" section"</string>
+    <string name="Help9">"Select the category of the device you want to perform an action on"</string>
+    <string name="Help10">"Find the device on the category's device list and click on it"</string>
+    <string name="Help11">"All the device's functionalities will be displayed. To change a functionality click on the icon or word on the right side of the screen"</string>
+    <string name="Help12">"To fave a device, go to the "Devices" category"</string>
+    <string name="Help13">"Select the category of the device you want to fave"</string>
+    <string name="Help14">"Find the device you want to fave in the category's list, and click on the heart button on the right of the device's name. You can unfave the device likewise"</string>
+    <string name="Help15">"You can also access your favorite devices through the "Favorites" category in "Devices""</string>
+    <string name="Help16">"To play a routine, first go to the "Routines" section"</string>
+    <string name="Help17">"Find the routine you want to play and click the "Play" icon on the right of the routine's name"</string>
+    <string name="Help18">"A message will be displayed notifying that the routine was played"</string>
+    <string name="Help19">"If you want to see the routine's details, click on the desired routine from the list"</string>
+    <string name="Help20">"You can also play a routine from the routine details screen by clicking on the "Play" icon at the top right corner of the screen"</string>
+    <string name="Help21">"To see your recent notifications, go to the "Notifications" category"</string>
+    <string name="Help22">"There, you will see a list of your notifications. Each notification represents a change on the status of one of your devices. Notifications are sent to you automatically"</string>
+    <string name="Help23">"To delete one of your notifications, click on the "Trash" icon on the right of the notification"</string>
+    <string name="Help24">"To delete all of your notifications, click on the button "Clean All" at the top of the list"</string>
+
 </resources>

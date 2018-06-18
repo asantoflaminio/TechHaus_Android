@@ -69,7 +69,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="32dp"
                     android:layout_weight="1"
-                    android:text='To see your recent notifications, go to the "Notifications" category' />
+                    android:text="@string/Help21" />
 
             </LinearLayout>
 
@@ -95,7 +95,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="7dp"
                     android:layout_weight="1"
-                    android:text="There, you will see a list of your notifications. Each notification represents a change on the status of one of your devices. Notifications are sent to you automatically" />
+                    android:text="@string/Help22" />
 
             </LinearLayout>
 
@@ -123,7 +123,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="23dp"
                     android:layout_weight="1"
-                    android:text='To delete one of your notifications, click on the "Trash" icon on the right of the notification' />
+                    android:text="@string/Help23" />
 
             </LinearLayout>
 
@@ -149,7 +149,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="30dp"
                     android:layout_weight="1"
-                    android:text='To delete all of your notifications, click on the button "Clean All" at the top of the list' />
+                    android:text="@string/Help24" />
 
             </LinearLayout>
 

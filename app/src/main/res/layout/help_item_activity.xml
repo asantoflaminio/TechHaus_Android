@@ -69,7 +69,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="32dp"
                     android:layout_weight="1"
-                    android:text='When you first open the app, you will be in the "Devices" category' />
+                    android:text= "@string/Help1" />
 
             </LinearLayout>
 
@@ -95,7 +95,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="15dp"
                     android:layout_weight="1"
-                    android:text='On the bottom of the screen you can permanently find the three main categories of the app: "Devices", "Notifications" and "Routines"' />
+                    android:text= "@string/Help2" />
 
             </LinearLayout>
 
@@ -123,7 +123,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="23dp"
                     android:layout_weight="1"
-                    android:text="The category you are currently in is highlghted in blue, while the inactive ones are in grey" />
+                    android:text="@string/Help3" />
 
             </LinearLayout>
 
@@ -149,7 +149,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="15dp"
                     android:layout_weight="1"
-                    android:text="In &quot;Devices&quot; you will find the different device categories. To find a specific device, enter the device's category and it will appear in the category's list of devices" />
+                    android:text="@string/Help4" />
 
             </LinearLayout>
 
@@ -175,7 +175,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="6dp"
                     android:layout_weight="1"
-                    android:text='In "Notifications" you will find a list of your recent notifications. Every time a device changes its state, you will get notified. You can change your notification preferences on the "Settings" section'
+                    android:text="@string/Help5"
                     android:textAlignment="textStart" />
 
             </LinearLayout>
@@ -202,7 +202,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="15dp"
                     android:layout_weight="1"
-                    android:text='In "Routines" you will find a list of your saved routines. You can play a routine from the list or access its tasks by clicking on the routine' />
+                    android:text="@string/Help6" />
 
             </LinearLayout>
 
@@ -228,7 +228,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="15dp"
                     android:layout_weight="1"
-                    android:text='To access the "Help" or "Settings" sections, click on the three dots on the top right corner of the "Devices", "Notifications" or "Routines" categories' />
+                    android:text= "@string/Help7" />
 
             </LinearLayout>
         </LinearLayout>
