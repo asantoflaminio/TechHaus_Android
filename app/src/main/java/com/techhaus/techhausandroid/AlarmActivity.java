@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -26,6 +27,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class AlarmActivity extends AppCompatActivity implements  CodeDialog.CodeDialogListener, OldNewCodeDialog.OldNewCodeDialogListener{
     private RequestQueue mQueue;
@@ -77,6 +81,7 @@ public class AlarmActivity extends AppCompatActivity implements  CodeDialog.Code
         final JsonArrayRequest request = new JsonArrayRequest(Request.Method.PUT, url, jarray, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
+
                 TextView txtInfo = (TextView) findViewById(R.id.AlarmName);
                 Toast.makeText(txtInfo.getContext(), "Code updated", Toast.LENGTH_LONG).show();
                 //ACA NUNCA ENTRA!!
@@ -87,9 +92,17 @@ public class AlarmActivity extends AppCompatActivity implements  CodeDialog.Code
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("mytag", "Shouldn't be here");
-                TextView txtInfo = (TextView) findViewById(R.id.AlarmName);
-                Toast.makeText(txtInfo.getContext(), "Code updated", Toast.LENGTH_LONG).show();
+
+                String msg = error.toString();
+                if(msg.contains("false")){
+                    TextView txtInfo = (TextView) findViewById(R.id.AlarmName);
+                    Toast.makeText(txtInfo.getContext(), getString(R.string.CodeIncorrect), Toast.LENGTH_LONG).show();
+                }else{
+                    TextView txtInfo = (TextView) findViewById(R.id.AlarmName);
+                    Toast.makeText(txtInfo.getContext(), getString(R.string.CodeUpdated), Toast.LENGTH_LONG).show();
+                }
+
+
                 error.printStackTrace();
             }
         });
@@ -192,7 +205,7 @@ public class AlarmActivity extends AppCompatActivity implements  CodeDialog.Code
 
 
     private void getState(String id) {
-        String url = "http://10.0.2.2:8080/api/devices/" + id + "/getState";
+        String url = API.getDevices() + id + "/getState";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -295,7 +308,7 @@ public class AlarmActivity extends AppCompatActivity implements  CodeDialog.Code
             changeCode(getIntent().getStringExtra("devId"), oldcode, newcode);
             // en changecode quiero chequear q si me devuelve null la oldcode estuve mal
         }else{
-            Toast.makeText(this, "Invalid format for new code", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.CodeInvalid), Toast.LENGTH_LONG).show();
         }
 
     }

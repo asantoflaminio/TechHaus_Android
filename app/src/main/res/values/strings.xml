@@ -25,6 +25,9 @@
     <string name="OldCode">Old Code</string>
     <string name="Cancel">Cancel</string>
     <string name="EnterCode">Enter Code</string>
+    <string name="CodeUpdated">Code updated</string>
+    <string name="CodeIncorrect">Incorrect old code</string>
+    <string name="CodeInvalid">Invalid format for new code</string>
     <string name="AlreadyDisarmed">Alarm already disarmed</string>
     <string name="AlreadyAway">Alarm already in armAway mode</string>
     <string name="AlreadyStay">Alarm already in armStay mode</string>

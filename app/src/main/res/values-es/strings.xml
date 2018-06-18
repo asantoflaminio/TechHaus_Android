@@ -23,9 +23,12 @@
     <string name="Disarm">Desarmar</string>
     <string name="Code">Código</string>
     <string name="NewCode">Nuevo Código</string>
-    <string name="OldCode">Viejo Código</string>
+    <string name="OldCode">Anterior Código</string>
     <string name="Cancel">Cancelar</string>
     <string name="EnterCode">Ingresar Código</string>
+    <string name="CodeUpdated">Código actualizado</string>
+    <string name="CodeIncorrect">Código anterior incorrecto</string>
+    <string name="CodeInvalid">Formato inválido para el nuevo código</string>
     <string name="AlreadyDisarmed">Alarma ya está desarmada</string>
     <string name="AlreadyAway">Alarma ya está en modo armAway</string>
     <string name="AlreadyStay">Alarma ya está en modo armStay</string>
