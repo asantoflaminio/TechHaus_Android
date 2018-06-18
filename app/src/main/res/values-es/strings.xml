@@ -4,12 +4,14 @@
     <string name="icon_to_be_displayed">Icon To Be Displayed</string>
     <string name="Favorites">Favoritos</string>
     <string name="Alarms">Alarmas</string>
+    <string name="Alarm">Alarma</string>
     <string name="Lamps">Lámparas</string>
     <string name="Blinds">Persianas</string>
     <string name="Doors">Puertas</string>
     <string name="ACs">ACs</string>
     <string name="Refrigerators">Refrigeradores</string>
     <string name="Ovens">Hornos</string>
+    <string name="Oven">Horno</string>
     <string name="Devices">Dispositivos</string>
     <string name="Notifications">Notificaciones</string>
     <string name="Routines">Rutinas</string>
@@ -85,4 +87,5 @@
     <string name="WhiteN">"Blanco"</string>
     <string name="ClearAll">"Borrar todo"</string>
     <string name="no_data">"No hay notificaciones"</string>
+    <string name="Update">"Actualización"</string>
 </resources>

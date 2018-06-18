@@ -3,12 +3,14 @@
     <string name="icon_to_be_displayed">Icon To Be Displayed</string>
     <string name="Favorites">Favorites</string>
     <string name="Alarms">Alarms</string>
+    <string name="Alarm">Alarm</string>
     <string name="Lamps">Lamps</string>
     <string name="Blinds">Blinds</string>
     <string name="Doors">Doors</string>
     <string name="ACs">ACs</string>
     <string name="Refrigerators">Refrigerators</string>
     <string name="Ovens">Ovens</string>
+    <string name="Oven">Oven</string>
     <string name="Devices">Devices</string>
     <string name="Notifications">Notifications</string>
     <string name="Routines">Routines</string>
@@ -84,4 +86,5 @@
     <string name="RedN">"Red"</string>
     <string name="OrangeN">"Orange"</string>
     <string name="WhiteN">"White"</string>
+    <string name="Update">"Update"</string>
 </resources>

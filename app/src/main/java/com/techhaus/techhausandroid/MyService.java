@@ -102,9 +102,16 @@ public class MyService extends Service {
     }
 
     private void processResponse(JSONObject response) throws JSONException {
+        ArrayList<String> loQueQuiere = new ArrayList<String>();
+        /*if(quiereAlarmas){
 
+        }*/
+       /* if(quiereHornos){
 
+        } */
         String searchId = "alarm";
+        loQueQuiere.add("alarm");
+        loQueQuiere.add("oven");
         JSONArray jsonArray = response.getJSONArray("devices");
 
 
@@ -114,21 +121,22 @@ public class MyService extends Service {
             JSONObject type = jsonArray.getJSONObject(i);
             typeName = type.getString("name");
             typeId = type.getString("id");
-            if(typeName.equals(searchId)){
-                getDevicesForType(typeId);
+            if(loQueQuiere.contains(typeName)){
+                getDevicesForType(typeId, typeName);
             }
 
         }
+
     }
 
-    private void getDevicesForType(String typeId) {
+    private void getDevicesForType(String typeId, final String typeName) {
         String urlDevicesForType = API.getDevices() + "devicetypes/" + typeId;
         //mQueue2 = Volley.newRequestQueue(this);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, urlDevicesForType, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    processDevices(response);
+                    processDevices(response, typeName);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -143,7 +151,7 @@ public class MyService extends Service {
         mQueue.add(request);
     }
 
-    private void processDevices(JSONObject response) throws JSONException {
+    private void processDevices(JSONObject response, final String typeName) throws JSONException {
         JSONArray jsonArray = response.getJSONArray("devices");
 
         for(int i = 0; i < jsonArray.length(); i++){
@@ -156,7 +164,7 @@ public class MyService extends Service {
                 @Override
                 public void onResponse(String response) {
                     try {
-                        processEvent(response, name, id);
+                        processEvent(response, name, id, typeName);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -173,12 +181,12 @@ public class MyService extends Service {
 
     }
 
-    private void processEvent(String response, String name, String id) throws JSONException {
+    private void processEvent(String response, String name, String id,String typeName) throws JSONException {
         //Log.d("mytag", "Response es: " + response);
         String[] events = response.split(",");
         SharedPreferences sharedPreferences = this.getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-       // editor.clear().commit();
+        //editor.clear().commit();
         if(events.length > 1){
             String[] eventAux = events[2].split(":");
             String[] argsAux = events[3].split(":");
@@ -211,7 +219,14 @@ public class MyService extends Service {
             if(myNotif == null){
                 myNotif = new HashSet<String>();
             }
-            String addS = "Alarm: "+ name + " " + event + ";"+  arg;
+            String addS = "";
+            if(typeName.equals("oven")){
+                addS = getString(R.string.Oven) +  ": "+ name + " ;" + event + ";"+  arg;
+            }else{
+                //seria else if es alarm
+                addS = getString(R.string.Alarm) + ": "+ name + " ;" + event + ";"+  arg;
+            }
+
             myNotif.add(addS);
             Log.d("mytag", "En myNotif puse " + addS);
             editor.putStringSet("notifications", myNotif);

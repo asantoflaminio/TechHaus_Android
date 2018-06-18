@@ -80,7 +80,7 @@ public class NotificationsActivity extends AppCompatActivity {
                 String[] cosas = s.split(";");
                 TitleParent title = new TitleParent(cosas[0]);
                 List<Object> childList = new ArrayList<>();
-                childList.add(new TitleChild("Update:", cosas[1]));
+                childList.add(new TitleChild( getString(R.string.Update)+ ":", cosas[1] + ": " + cosas[2]));
                 title.setChildObjectList(childList);
                 _titleParents.add(title);
 
