@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -33,6 +34,10 @@ import java.util.Set;
 public class MyService extends Service {
     private RequestQueue mQueue;
     Set<String> myNotif;
+    private Handler handler;
+    private Runnable runnable;
+
+
     public MyService() {
        // Log.d("mytag","SERVICIO INICIADO");
         //mQueue = Volley.newRequestQueue(getApplicationContext());
@@ -41,10 +46,15 @@ public class MyService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        mQueue = Volley.newRequestQueue(getApplicationContext());
 
+        handler = new Handler();
+        if (runnable != null) {
+            runnable = null;
+        }
 
-            Log.d("mytag","en el true");
+        runnable = new Runnable() {
+            public void run() {
+                mQueue = Volley.newRequestQueue(getApplicationContext());
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, API.getDeviceTypes(), null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -64,9 +74,17 @@ public class MyService extends Service {
                 });
 
                 mQueue.add(request);
+                handler.postDelayed(this, 30000);
+            }
+        };
 
 
 
+
+
+
+
+        handler.post(runnable);
         return START_STICKY;
     }
 
