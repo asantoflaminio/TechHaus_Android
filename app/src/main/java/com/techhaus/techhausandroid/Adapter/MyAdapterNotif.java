@@ -74,6 +74,7 @@ public class MyAdapterNotif  extends ExpandableRecyclerAdapter<TitleParentViewHo
                         editor.putStringSet("notifications", myNotif);
                         editor.commit();
                         MyAdapterNotif.this.mItemList.remove(view);
+                        Toast.makeText(v.getContext(),"Notificacion deleted, refresh to see changes", Toast.LENGTH_LONG).show();
 
                     }
 
