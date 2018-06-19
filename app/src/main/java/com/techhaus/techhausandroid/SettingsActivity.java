@@ -2,19 +2,25 @@ package com.techhaus.techhausandroid;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-public class SettingsActivity extends AppCompatActivity {
+import java.util.HashSet;
+import java.util.Set;
 
+public class SettingsActivity extends AppCompatActivity {
     private String[] dev_select = {"Alarms","Lamps","Blinds","Doors","ACs","Refrigerators", "Ovens"};
+    //private String[] dev_select = {getString(R.string.Alarms),getString(R.string.Lamps),getString(R.string.Blinds),getString(R.string.Doors),getString(R.string.ACs),getString(R.string.Refrigerators), getString(R.string.Ovens)};
     private boolean[] dev_selected = {true, true, true, true, true, true, true};
+    Set<String> notDev;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,47 @@ public class SettingsActivity extends AppCompatActivity {
         TextView tv = findViewById(R.id.devices_selected);
 
         String devices = "";
+        SharedPreferences sharedPreferences = this.getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        notDev = sharedPreferences.getStringSet("devices", null);
+        if(notDev == null){
+            notDev = new HashSet<String>();
+        }
+        if(notDev.contains("alarm")){
+            dev_selected[0] = true;
+        }else{
+            dev_selected[0] = false;
+        }
+        if(notDev.contains("lamp")){
+            dev_selected[1] = true;
+        }else{
+            dev_selected[1] = false;
+        }
+        if(notDev.contains("blind")){
+            dev_selected[2] = true;
+        }else{
+            dev_selected[2] = false;
+        }
+        if(notDev.contains("door")){
+            dev_selected[3] = true;
+        }else{
+            dev_selected[3] = false;
+        }
+        if(notDev.contains("ac")){
+            dev_selected[4] = true;
+        }else{
+            dev_selected[4] = false;
+        }
+        if(notDev.contains("refrigerator")){
+            dev_selected[5] = true;
+        }else{
+            dev_selected[5] = false;
+        }
+        if(notDev.contains("oven")){
+            dev_selected[6] = true;
+        }else{
+            dev_selected[6] = false;
+        }
 
         for(int i = 0; i < dev_select.length; i++) {
             if (dev_selected[i]) {
@@ -66,11 +113,23 @@ public class SettingsActivity extends AppCompatActivity {
                public void onClick(DialogInterface dialog, int id) {
                    String devi = "";
 
+                   SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+                   SharedPreferences.Editor editor = sharedPreferences.edit();
+                   notDev = sharedPreferences.getStringSet("devices", null);
+
+                   notDev = new HashSet<String>();
+
+
                    for(int i = 0; i < dev_select.length; i++) {
                        if (dev_selected[i]) {
                            if(i != 0)
                                devi += ", ";
                            devi += dev_select[i];
+                           Log.d("mytag","Seleccionaste " + getDevice(i));
+                           String dev = getDevice(i);
+                           notDev.add(dev);
+                           editor.putStringSet("devices", notDev);
+                           editor.commit();
                        }
                    }
 
@@ -81,16 +140,43 @@ public class SettingsActivity extends AppCompatActivity {
         alt_bld.setMultiChoiceItems(dev_select, dev_selected, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
                 if(dev_selected[which] == true)
-                    if(!isChecked)
+                    if(!isChecked){
+
                         dev_selected[which] = false;
+
+                    }
+
                 if(dev_selected[which] == false)
-                    if(isChecked)
+                    if(isChecked){
+
                         dev_selected[which] = true;
+
+                    }
+
             }
         });
         AlertDialog alert = alt_bld.create();
         alert.show();
+    }
+
+    public String getDevice(int num){
+        if(num == 0){
+            return "alarm";
+        }else if(num == 1){
+            return "lamp";
+        }else if(num == 2){
+            return "blind";
+        }else if(num == 3){
+            return "door";
+        }else if(num == 4){
+            return "ac";
+        }else if(num == 5){
+            return "refrigerator";
+        }else{
+            return "oven";
+        }
     }
 
 }

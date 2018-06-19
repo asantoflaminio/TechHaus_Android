@@ -34,6 +34,7 @@ import java.util.Set;
 public class MyService extends Service {
     private RequestQueue mQueue;
     Set<String> myNotif;
+    Set<String> notDev;
     private Handler handler;
     private Runnable runnable;
 
@@ -102,16 +103,20 @@ public class MyService extends Service {
     }
 
     private void processResponse(JSONObject response) throws JSONException {
-        ArrayList<String> loQueQuiere = new ArrayList<String>();
-        /*if(quiereAlarmas){
+        SharedPreferences sharedPreferences = this.getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        notDev = sharedPreferences.getStringSet("devices", null);
+        if(notDev == null){
+            notDev = new HashSet<String>();
+            notDev.add("alarm");
+            //por default un solo dispositivo
 
-        }*/
-       /* if(quiereHornos){
-
-        } */
+            editor.putStringSet("devices", notDev);
+            editor.commit();
+        }
         String searchId = "alarm";
-        loQueQuiere.add("alarm");
-        loQueQuiere.add("oven");
+        //loQueQuiere.add("alarm");
+        //loQueQuiere.add("oven");
         JSONArray jsonArray = response.getJSONArray("devices");
 
 
@@ -121,7 +126,7 @@ public class MyService extends Service {
             JSONObject type = jsonArray.getJSONObject(i);
             typeName = type.getString("name");
             typeId = type.getString("id");
-            if(loQueQuiere.contains(typeName)){
+            if(notDev.contains(typeName)){
                 getDevicesForType(typeId, typeName);
             }
 
@@ -222,9 +227,19 @@ public class MyService extends Service {
             String addS = "";
             if(typeName.equals("oven")){
                 addS = getString(R.string.Oven) +  ": "+ name + " ;" + event + ";"+  arg;
-            }else{
-                //seria else if es alarm
+            }else if(typeName.equals("alarm")){
                 addS = getString(R.string.Alarm) + ": "+ name + " ;" + event + ";"+  arg;
+            }else if(typeName.equals("blind")){
+                addS = getString(R.string.Blind) + ": "+ name + " ;" + event + ";"+  arg;
+            }else if(typeName.equals("refrigerator")){
+                addS = getString(R.string.Refrigerator) + ": "+ name + " ;" + event + ";"+  arg;
+            }else if(typeName.equals("lamp")){
+                addS = getString(R.string.Lamp) + ": "+ name + " ;" + event + ";"+  arg;
+            }else if(typeName.equals("door")){
+                addS = getString(R.string.Door) + ": "+ name + " ;" + event + ";"+  arg;
+            }else{
+                //ac
+                addS = getString(R.string.AC) + ": "+ name + " ;" + event + ";"+  arg;
             }
 
             myNotif.add(addS);

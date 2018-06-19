@@ -5,10 +5,15 @@
     <string name="Alarms">Alarms</string>
     <string name="Alarm">Alarm</string>
     <string name="Lamps">Lamps</string>
+    <string name="Lamp">Lamp</string>
     <string name="Blinds">Blinds</string>
+    <string name="Blind">Blind</string>
     <string name="Doors">Doors</string>
+    <string name="Door">Door</string>
+    <string name="AC">AC</string>
     <string name="ACs">ACs</string>
     <string name="Refrigerators">Refrigerators</string>
+    <string name="Refrigerator">Refrigerator</string>
     <string name="Ovens">Ovens</string>
     <string name="Oven">Oven</string>
     <string name="Devices">Devices</string>

@@ -6,10 +6,15 @@
     <string name="Alarms">Alarmas</string>
     <string name="Alarm">Alarma</string>
     <string name="Lamps">Lámparas</string>
+    <string name="Lamp">Lámpara</string>
     <string name="Blinds">Persianas</string>
+    <string name="Blind">Persiana</string>
+    <string name="Door">Puerta</string>
+    <string name="AC">AC</string>
     <string name="Doors">Puertas</string>
     <string name="ACs">ACs</string>
     <string name="Refrigerators">Refrigeradores</string>
+    <string name="Refrigerator">Refrigerador</string>
     <string name="Ovens">Hornos</string>
     <string name="Oven">Horno</string>
     <string name="Devices">Dispositivos</string>
