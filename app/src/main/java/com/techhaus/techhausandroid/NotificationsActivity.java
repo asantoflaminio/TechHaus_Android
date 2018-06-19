@@ -124,11 +124,13 @@ import java.util.Set;
         switch (item.getItemId()) {
             case R.id.action_help:
                 Intent intent = new Intent(NotificationsActivity.this, HelpActivity.class);
+                intent.putExtra("from", "notif");
                 startActivity(intent);
                 return true;
 
             case R.id.action_settings:
                 Intent intent2 = new Intent(NotificationsActivity.this, SettingsActivity.class);
+                intent2.putExtra("from", "notif");
                 startActivity(intent2);
                 return true;
 

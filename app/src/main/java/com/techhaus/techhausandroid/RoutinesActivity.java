@@ -111,11 +111,13 @@ public class RoutinesActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_help:
                 Intent intent = new Intent(RoutinesActivity.this, HelpActivity.class);
+                intent.putExtra("from", "rout");
                 startActivity(intent);
                 return true;
 
             case R.id.action_settings:
                 Intent intent2 = new Intent(RoutinesActivity.this, SettingsActivity.class);
+                intent2.putExtra("from", "rout");
                 startActivity(intent2);
                 return true;
 

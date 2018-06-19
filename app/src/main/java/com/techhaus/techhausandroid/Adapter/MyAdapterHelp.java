@@ -24,11 +24,12 @@ import java.util.List;
 public class MyAdapterHelp extends ExpandableRecyclerAdapter<TitleParentViewHolder, TitleChildViewHolder> {
 
     LayoutInflater inflater;
+    String str;
 
-
-    public MyAdapterHelp(Context context, List<ParentObject> parentItemList) {
+    public MyAdapterHelp(Context context, List<ParentObject> parentItemList, String str) {
         super(context, parentItemList);
         inflater = LayoutInflater.from(context);
+        this.str = str;
     }
 
     @Override
@@ -44,6 +45,7 @@ public class MyAdapterHelp extends ExpandableRecyclerAdapter<TitleParentViewHold
                 String helpName = elemNameView.getText().toString();
                 Intent intent2 = new Intent(v.getContext(), HelpItemActivity.class);
                 intent2.putExtra("helpName", helpName);
+                intent2.putExtra("from", str);
                 v.getContext().startActivity(intent2);
             }
         });

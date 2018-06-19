@@ -53,7 +53,7 @@ public class HelpActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.myRecyclerViewH);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        MyAdapterHelp adapter = new MyAdapterHelp(this, initData());
+        MyAdapterHelp adapter = new MyAdapterHelp(this, initData(), getIntent().getStringExtra("from"));
         adapter.setParentClickableViewAnimationDefaultDuration();
         adapter.setParentAndIconExpandOnClick(true);
         recyclerView.setAdapter(adapter);
@@ -75,9 +75,22 @@ public class HelpActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected (MenuItem item) {
 
+        String from = getIntent().getStringExtra("from");
+        if(from.equals("main")) {
+            Intent intent = new Intent(HelpActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            return true;
+        } else if(from.equals("notif")) {
+            Intent intent = new Intent(HelpActivity.this, NotificationsActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            return true;
+        } else if(from.equals("rout")) {
+            Intent intent = new Intent(HelpActivity.this, RoutinesActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            return true;
+        }
         Intent intent = new Intent(HelpActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-
         return true;
     }
 }
