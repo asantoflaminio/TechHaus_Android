@@ -162,7 +162,7 @@ public class DoorActivity extends AppCompatActivity {
 
 
     private void getState(String id) {
-        String url = "http://10.0.2.2:8080/api/devices/" + id + "/getState";
+        String url = API.getDevices() + id + "/getState";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -177,7 +177,7 @@ public class DoorActivity extends AppCompatActivity {
                     if(status.equals("closed")){
                         //imagen blind down
                         //tag de cerrado/down
-                        Log.d("mytag", "ESTA closed");
+
                         ImageView icon = (ImageView) findViewById(R.id.openClosedIcon);
                         TextView what = (TextView) findViewById(R.id.textView5);
                         icon.setImageResource(R.drawable.closed);
