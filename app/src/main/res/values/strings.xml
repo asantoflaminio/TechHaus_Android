@@ -122,5 +122,7 @@
     <string name="FavDev">Faving a device</string>
     <string name="PlayRout">Playing a routine</string>
     <string name="Managing">Managing your notifications</string>
+    <string name="DevForNotif">"Select devices for notifications"</string>
+
 
 </resources>

@@ -1,15 +1,10 @@
 package com.techhaus.techhausandroid;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,15 +17,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.techhaus.techhausandroid.Adapter.MyAdapterNotif;
-import com.techhaus.techhausandroid.Adapter.MyAdapterRoutines;
-import com.techhaus.techhausandroid.Models.TitleChild;
 import com.techhaus.techhausandroid.Models.TitleCreator;
 import com.techhaus.techhausandroid.Models.TitleParent;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -138,7 +128,8 @@ import java.util.Set;
                 return true;
 
             case R.id.action_settings:
-
+                Intent intent2 = new Intent(NotificationsActivity.this, SettingsActivity.class);
+                startActivity(intent2);
                 return true;
 
             default:

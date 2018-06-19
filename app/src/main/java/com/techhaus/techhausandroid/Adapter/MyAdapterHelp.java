@@ -34,7 +34,6 @@ public class MyAdapterHelp extends ExpandableRecyclerAdapter<TitleParentViewHold
     @Override
     public TitleParentViewHolder onCreateParentViewHolder(ViewGroup viewGroup) {
 
-
         View view = inflater.inflate(R.layout.list_help, viewGroup, false);
         final TextView elemNameView = (TextView) view.findViewById(R.id.parentTitle);
         final RelativeLayout relativeLay = (RelativeLayout) view.findViewById(R.id.rel_lay);

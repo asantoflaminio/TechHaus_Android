@@ -115,7 +115,8 @@ public class RoutinesActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_settings:
-
+                Intent intent2 = new Intent(RoutinesActivity.this, SettingsActivity.class);
+                startActivity(intent2);
                 return true;
 
             default:
