@@ -39,6 +39,15 @@ public class SettingsActivity extends AppCompatActivity {
 
         TextView tv = findViewById(R.id.devices_selected);
 
+        //traducciones
+        dev_select[0] = getString(R.string.Alarms);
+        dev_select[1] = getString(R.string.Lamps);
+        dev_select[2] = getString(R.string.Blinds);
+        dev_select[3] = getString(R.string.Doors);
+        dev_select[4] = getString(R.string.ACs);
+        dev_select[5] = getString(R.string.Refrigerators);
+        dev_select[6] = getString(R.string.Ovens);
+
         String devices = "";
         SharedPreferences sharedPreferences = this.getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
