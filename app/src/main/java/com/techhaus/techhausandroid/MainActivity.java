@@ -55,11 +55,13 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_help:
                 Intent intent = new Intent(MainActivity.this, HelpActivity.class);
+                intent.putExtra("from", "main");
                 startActivity(intent);
                 return true;
 
             case R.id.action_settings:
                 Intent intent2 = new Intent(MainActivity.this, SettingsActivity.class);
+                intent2.putExtra("from", "main");
                 startActivity(intent2);
                 return true;
 

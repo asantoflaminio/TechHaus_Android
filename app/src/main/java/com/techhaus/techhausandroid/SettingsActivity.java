@@ -105,9 +105,22 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected (MenuItem item) {
 
+        String from = getIntent().getStringExtra("from");
+        if(from.equals("main")) {
+            Intent intent = new Intent(SettingsActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            return true;
+        } else if(from.equals("notif")) {
+            Intent intent = new Intent(SettingsActivity.this, NotificationsActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            return true;
+        } else if(from.equals("rout")) {
+            Intent intent = new Intent(SettingsActivity.this, RoutinesActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            return true;
+        }
         Intent intent = new Intent(SettingsActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-
         return true;
     }
 
