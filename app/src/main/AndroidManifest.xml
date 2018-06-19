@@ -65,7 +65,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".NotificationsActivity" />
+        <activity android:name=".NotificationsActivity"
+            android:launchMode="singleTop"/>
         <activity android:name=".RoutinesActivity" />
 
         <!-- BlindActivity -->

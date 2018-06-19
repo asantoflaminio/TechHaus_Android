@@ -3,6 +3,7 @@ package com.techhaus.techhausandroid;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -200,6 +201,9 @@ public class MyService extends Service {
             String event = eventAux[2].replace("\"", "");
             String arg =  argsAux[3].replace("\"", "").replace("}", "").replace("data", "");
 
+
+            Intent resultIntent = new Intent(this, NotificationsActivity.class);
+            PendingIntent resultPendingIntent =PendingIntent.getActivity(this,1, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             //mando notif
             createNotificationChannel(this);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
@@ -209,6 +213,7 @@ public class MyService extends Service {
             builder.setAutoCancel(true);
             builder.setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 });
             builder.setLargeIcon(BitmapFactory.decodeResource(this.getResources(), R.drawable.notif_red));
+            builder.setContentIntent(resultPendingIntent);
 
             //notification manager
             Notification notification = builder.build();
