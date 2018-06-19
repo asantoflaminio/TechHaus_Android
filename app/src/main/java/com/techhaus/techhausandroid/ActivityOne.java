@@ -192,7 +192,7 @@ public class ActivityOne extends AppCompatActivity {
 
     private void processDevicesFaved(JSONObject response) throws JSONException {
         JSONArray jsonArray = response.getJSONArray("devices");
-
+        _titleParents = new ArrayList<>();
         for(int i = 0; i < jsonArray.length(); i++){
             JSONObject device = jsonArray.getJSONObject(i);
             String meta = device.getString("meta");
