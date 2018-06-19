@@ -116,7 +116,7 @@
     <string name="Help21">"To see your recent notifications, go to the "Notifications" category"</string>
     <string name="Help22">"There, you will see a list of your notifications. Each notification represents a change on the status of one of your devices. Notifications are sent to you automatically"</string>
     <string name="Help23">"To delete one of your notifications, click on the "Trash" icon on the right of the notification"</string>
-    <string name="Help24">"To delete all of your notifications, click on the button "Clean All" at the top of the list"</string>
+    <string name="Help24">"To delete all of your notifications, click on the button "Clear All" at the top of the list"</string>
     <string name="GetKnow">Getting to know the app</string>
     <string name="PerAct">Performing actions on a device</string>
     <string name="FavDev">Faving a device</string>

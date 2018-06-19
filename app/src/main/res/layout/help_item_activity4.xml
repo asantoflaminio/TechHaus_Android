@@ -59,7 +59,7 @@
                     android:layout_gravity="start"
                     android:layout_marginStart="5dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/help_image_12" />
+                    app:srcCompat="@drawable/help_image_21" />
 
                 <TextView
                     android:id="@+id/help_text_21"
@@ -85,7 +85,7 @@
                     android:layout_gravity="start"
                     android:layout_marginStart="5dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/help_image_12" />
+                    app:srcCompat="@drawable/help_image_22" />
 
                 <TextView
                     android:id="@+id/help_text_22"
@@ -113,7 +113,7 @@
                     android:layout_gravity="start"
                     android:layout_marginStart="5dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/help_image_12" />
+                    app:srcCompat="@drawable/help_image_23" />
 
                 <TextView
                     android:id="@+id/help_text_23"
@@ -139,7 +139,7 @@
                     android:layout_gravity="start"
                     android:layout_marginStart="5dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/help_image_12" />
+                    app:srcCompat="@drawable/help_image_24" />
 
                 <TextView
                     android:id="@+id/help_text_24"
